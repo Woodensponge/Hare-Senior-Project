@@ -1,19 +1,6 @@
 #include "Application.h"
 
-//Constructor for Application. Sets members from parameters (2 Overloads)
-//Overload 1 (Contains title, window width, window height, and SDL2 flags)
-Application::Application(const char *title, int windowWidth, int windowHeight, Uint32 flags)
-{
-    this->window = 0;
-    this->renderer = 0;
-
-    this->windowTitle = title;
-    this->windowWidth = windowWidth;
-    this->windowHeight = windowHeight;
-    this->flags = flags;
-}
-
-//Overload 2 (Contains title, window width, window height, SDL2 flags, and fps).
+//Constructor for Application. Sets members from parameters.
 Application::Application(const char *title, int windowWidth, int windowHeight, Uint32 flags, int fps)
 {
     this->window = 0;

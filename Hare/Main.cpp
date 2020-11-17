@@ -6,7 +6,7 @@
 
 int main()
 {
-    Application* app = new Application("Hare", WINDOW_WIDTH, WINDOW_HEIGHT, 0);
+    Application* app = new Application("Hare", WINDOW_WIDTH, WINDOW_HEIGHT, 0, 60);
     app->Init();
     app->GetDeltaTime();                    //Calling GetDeltaTime before loop in order to calculate time
                                             //taken before the first frame is called.

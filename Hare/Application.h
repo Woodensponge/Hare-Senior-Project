@@ -16,7 +16,6 @@ enum class GameState
 
 struct Application
 {
-	Application(const char* title, int windowWidth, int windowHeight, Uint32 flags);
 	Application(const char* title, int windowWidth, int windowHeight, Uint32 flags, int fps);
 	~Application();
 
