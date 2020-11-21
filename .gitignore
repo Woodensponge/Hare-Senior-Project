@@ -33,3 +33,11 @@
 *.opendb
 *.pdb
 *.ilk
+*.ilk
+*.pdb
+*.ipch
+*.db
+.vs/Hare/v16/.suo
+*.log
+*.tlog
+*.idb

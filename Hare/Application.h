@@ -19,9 +19,11 @@ struct Application
 	Application(const char* title, int windowWidth, int windowHeight, Uint32 flags, int fps);
 	~Application();
 
-	inline double GetDeltaTime();
 	int Init();
-	void Update();
+	void UpdateEvents();
+	void UpdatePhysics();
+	void Render();
+	void Update(double deltaTime);
 
 	const char* windowTitle;
 	Uint32 flags;

@@ -19,25 +19,6 @@ Application::~Application()
     SDL_Quit();
 }
 
-//Calculate DeltaTime in milliseconds.
-inline double Application::GetDeltaTime()
-{
-    if (pastTicks == 0)
-    {
-        pastTicks = SDL_GetTicks();
-        return 0;
-    }
-
-    const double frameTime = 1 / fps;
-    Uint32 presentTicks = SDL_GetTicks();
-
-    double deltaTime = (presentTicks - pastTicks);
-
-    pastTicks = presentTicks;
-
-    return deltaTime;
-}
-
 //Initialization method. Handles SDL2 initialization.
 int Application::Init()
 {
@@ -61,10 +42,8 @@ int Application::Init()
 }
 
 //Update method. Handles rendering, UI, and other things involving the window.
-void Application::Update()
+void Application::Update(double deltaTime)
 {
-    double deltaTime = GetDeltaTime();  //Get the deltatime
-    
     //Game state handling.
     switch (state)
     {
@@ -95,6 +74,6 @@ void Application::Update()
     }
 
     std::cout << deltaTime << std::endl;
-    
-    SDL_Delay(1000 / 10);
+
+    SDL_Delay(1000 / fps);
 }
