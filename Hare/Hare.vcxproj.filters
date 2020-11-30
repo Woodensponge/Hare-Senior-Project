@@ -19,6 +19,12 @@
     <Filter Include="Header Files\Core">
       <UniqueIdentifier>{2b9e748b-a0c3-48f7-8995-a0e70601fa81}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Rendering">
+      <UniqueIdentifier>{4a57c540-a7ed-426c-8f8c-71e3850c3f4e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Rendering">
+      <UniqueIdentifier>{d8a229f1-cde5-483f-bdb2-d9688566eceb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -30,9 +36,9 @@
     <ClCompile Include="Debug.cpp">
       <Filter>Source Files\Core</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
+    <ClCompile Include="Sprite.cpp">
+      <Filter>Source Files\Rendering</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -41,5 +47,11 @@
     <ClInclude Include="Debug.h">
       <Filter>Header Files\Core</Filter>
     </ClInclude>
+    <ClInclude Include="Sprite.h">
+      <Filter>Header Files\Rendering</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

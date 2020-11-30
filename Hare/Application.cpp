@@ -1,4 +1,5 @@
 #include "Application.h"
+#include <SDL_image.h>
 
 //Constructor for Application. Sets members from parameters.
 Application::Application(const char *title, int windowWidth, int windowHeight, Uint32 flags, int fps)
@@ -16,6 +17,10 @@ Application::Application(const char *title, int windowWidth, int windowHeight, U
 //Deconstructor. Completely handles destruction for this object.
 Application::~Application()
 {
+    for (int i = 0; i < (textures.size()); i++)
+        SDL_DestroyTexture(textures[i]);
+
+    IMG_Quit();
     SDL_Quit();
 }
 
@@ -23,6 +28,7 @@ Application::~Application()
 int Application::Init()
 {
     SDL_Init(SDL_INIT_VIDEO);
+    IMG_Init(IMG_INIT_PNG);
 
     window = SDL_CreateWindow
     (
@@ -38,12 +44,23 @@ int Application::Init()
 
     state = GameState::Running;
 
+    SDL_Surface* image = IMG_Load
+    (
+        "C:\\Users\\Woodensponge\\Documents\\GitHub\\Hare\\bin\\Win32\\Debug\\civvie.png"
+    );
+
+    textures.push_back(SDL_CreateTextureFromSurface(renderer, image));
+
+    SDL_FreeSurface(image);
+
     return 0;
 }
 
 //Update method. Handles rendering, UI, and other things involving the window.
 void Application::Update(double deltaTime)
 {
+    SDL_RenderClear(renderer);
+
     //Game state handling.
     switch (state)
     {
@@ -72,6 +89,11 @@ void Application::Update(double deltaTime)
             return;                     //Stop the update method and begin closing.
         }
     }
+
+    for (int i = 0; i < (textures.size()); i++)
+        SDL_RenderCopy(renderer, textures[i], 0 ,0);
+
+    SDL_RenderPresent(renderer);
 
     std::cout << deltaTime << std::endl;
 

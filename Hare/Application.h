@@ -3,7 +3,8 @@
 
 #include <iostream>
 #include <SDL.h>
-#undef main
+#include <vector>
+#undef /*fucking*/ main
 
 enum class GameState
 {
@@ -41,6 +42,8 @@ private:
 	SDL_Window* window;
 	SDL_Renderer* renderer;
 	SDL_Event event;
+
+	std::vector<SDL_Texture*> textures;
 };
 
 #endif

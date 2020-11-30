@@ -1,5 +1,7 @@
 ﻿  Application.cpp
-  Debug.cpp
+C:\Users\Woodensponge\Documents\GitHub\Hare\Hare\Application.cpp(20,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Woodensponge\Documents\GitHub\Hare\Hare\Application.cpp(93,23): warning C4018: '<': signed/unsigned mismatch
   Main.cpp
+  Sprite.cpp
   Generating Code...
   Hare.vcxproj -> C:\Users\Woodensponge\Documents\GitHub\Hare\bin\Win32\Debug\Hare.exe
