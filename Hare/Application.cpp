@@ -95,7 +95,5 @@ void Application::Update(double deltaTime)
 
     SDL_RenderPresent(renderer);
 
-    std::cout << deltaTime << std::endl;
-
     SDL_Delay(1000 / fps);
 }
