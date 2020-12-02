@@ -360,3 +360,8 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+*.tlog
+.vs/Hare/v16/.suo
+*.db
+*.log
+*.idb
