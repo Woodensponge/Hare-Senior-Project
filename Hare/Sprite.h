@@ -1,4 +1,26 @@
 #ifndef SPRITE_H_
 #define SPRITE_H_
 
+#include <SDL.h>
+#undef main
+
+struct Sprite
+{
+	Sprite();
+	Sprite(SDL_Texture* texture);
+	Sprite(SDL_Texture* texture, int x, int y);
+	Sprite(SDL_Texture* texture, int x, int y, SDL_Rect size);
+	~Sprite();
+
+	void SetPosition(int x, int y);
+	void SetSize(SDL_Rect size);
+	void SetTexture(SDL_Texture* texture);
+	void SetTextureFromSurface(SDL_Renderer* renderer, SDL_Surface* surface);
+
+	int x;
+	int y;
+	SDL_Rect size;
+	SDL_Texture* texture;
+};
+
 #endif
