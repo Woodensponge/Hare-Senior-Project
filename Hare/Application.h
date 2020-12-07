@@ -2,8 +2,9 @@
 #define APPLICATION_H_
 
 #include <iostream>
-#include <SDL.h>
 #include <vector>
+#include "Sprite.h"
+#include <SDL.h>
 #undef /*fucking*/ main
 
 enum class GameState
@@ -17,17 +18,24 @@ enum class GameState
 
 struct Application
 {
-	Application(const char* title, int windowWidth, int windowHeight, Uint32 flags, int fps);
+	Application
+	(
+		const char* title, 
+		int windowWidth, 
+		int windowHeight, 
+		Uint32 flags, 
+		int fps, 
+		bool isCapped
+	);
 	~Application();
 
 	int Init();
-	void UpdateEvents();
-	void UpdatePhysics();
-	void Render();
 	void Update(double deltaTime);
 
 	const char* windowTitle;
 	Uint32 flags;
+
+	bool isCapped = false;
 
 	int windowWidth = 0;
 	int windowHeight = 0;
@@ -43,7 +51,7 @@ private:
 	SDL_Renderer* renderer;
 	SDL_Event event;
 
-	std::vector<SDL_Texture*> textures;
+	std::vector<Sprite*> sprites;
 };
 
 #endif

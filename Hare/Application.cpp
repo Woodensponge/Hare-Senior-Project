@@ -1,8 +1,17 @@
 #include "Application.h"
 #include <SDL_image.h>
+#include "CellTable.h"
 
 //Constructor for Application. Sets members from parameters.
-Application::Application(const char *title, int windowWidth, int windowHeight, Uint32 flags, int fps)
+Application::Application
+(
+    const char* title, 
+    int windowWidth, 
+    int windowHeight, 
+    Uint32 flags, 
+    int fps, 
+    bool isCapped
+)
 {
     this->window = 0;
     this->renderer = 0;
@@ -12,13 +21,14 @@ Application::Application(const char *title, int windowWidth, int windowHeight, U
     this->windowHeight = windowHeight;
     this->flags = flags;
     this->fps = fps;
+    this->isCapped = isCapped;
 }
 
 //Deconstructor. Completely handles destruction for this object.
 Application::~Application()
 {
-    for (int i = 0; i < (textures.size()); i++)
-        SDL_DestroyTexture(textures[i]);
+    for (int i = 0; i < (sprites.size()); i++)
+        sprites[i]->~Sprite();
 
     IMG_Quit();
     SDL_Quit();
@@ -49,9 +59,13 @@ int Application::Init()
         "C:\\Users\\Woodensponge\\Documents\\GitHub\\Hare\\bin\\Win32\\Debug\\civvie.png"
     );
 
-    textures.push_back(SDL_CreateTextureFromSurface(renderer, image));
+    sprites.push_back(new Sprite(SDL_CreateTextureFromSurface(renderer, image)));
+    sprites.back()->SetSize(197, 53);
 
     SDL_FreeSurface(image);
+
+    CellTable cellTable = CellTable(window);
+    cellTable.~CellTable();
 
     return 0;
 }
@@ -60,6 +74,7 @@ int Application::Init()
 void Application::Update(double deltaTime)
 {
     SDL_RenderClear(renderer);
+    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 
     //Game state handling.
     switch (state)
@@ -77,12 +92,30 @@ void Application::Update(double deltaTime)
         break;
     }
 
+    std::cout << deltaTime << std::endl;
+
+    //TODO: Make seperate event classes
+
     while (SDL_PollEvent(&event))
     {
         switch (event.type)
         {
         case SDL_KEYDOWN:
-            //TODO: Add player input functionality
+            switch (event.key.keysym.sym)
+            {
+            case SDLK_LEFT:
+                sprites[0]->x = sprites[0]->x - (100 * deltaTime);
+                break;
+            case SDLK_RIGHT:
+                sprites[0]->x = sprites[0]->x + (100 * deltaTime);
+                break;
+            case SDLK_UP:
+                sprites[0]->y = sprites[0]->y - (200 * deltaTime);
+                break;
+            case SDLK_DOWN:
+                sprites[0]->y = sprites[0]->y + (200 * deltaTime);
+                break;
+            }
             break;
         case SDL_QUIT:
             state = GameState::Closing;
@@ -90,10 +123,11 @@ void Application::Update(double deltaTime)
         }
     }
 
-    for (int i = 0; i < (textures.size()); i++)
-        SDL_RenderCopy(renderer, textures[i], 0 ,0);
+    for (int i = 0; i < (sprites.size()); i++)
+    {
+        sprites[i]->Update();
+        SDL_RenderCopy(renderer, sprites[i]->texture, 0, sprites[i]->size);
+    }
 
     SDL_RenderPresent(renderer);
-
-    SDL_Delay(1000 / fps);
 }

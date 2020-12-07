@@ -4,15 +4,17 @@
 Sprite::Sprite()
 {
 	this->texture = 0;
-	this->x = 0;
-	this->y = 0;
+
+	this->size = new SDL_Rect();
+	this->sourceRect = new SDL_Rect();
 }
 
 Sprite::Sprite(SDL_Texture* texture)
 {
 	this->texture = texture;
-	this->x = 0;
-	this->y = 0;
+
+	this->size = new SDL_Rect();
+	this->sourceRect = new SDL_Rect();
 }
 
 Sprite::Sprite(SDL_Texture* texture, int x, int y)
@@ -21,24 +23,25 @@ Sprite::Sprite(SDL_Texture* texture, int x, int y)
 	this->x = x;
 	this->y = y;
 
-	//TODO: Does not calling SDL_DestroyTexture on a perameter cause a memory leak?
-	SDL_DestroyTexture(texture);
+	this->size = new SDL_Rect();
+	this->sourceRect = new SDL_Rect();
 }
 
-Sprite::Sprite(SDL_Texture* texture, int x, int y, SDL_Rect size)
+Sprite::Sprite(SDL_Texture* texture, int x, int y, SDL_Rect* size)
 {
 	this->texture = texture;
 	this->x = x;
 	this->y = y;
-	this->size = size;
 
-	//TODO: Does not calling SDL_DestroyTexture on a perameter cause a memory leak?
-	SDL_DestroyTexture(texture);
+	this->size = size;
+	this->sourceRect = new SDL_Rect();
 }
 
 Sprite::~Sprite()
 {
 	SDL_DestroyTexture(texture);
+	delete sourceRect;
+	delete size;
 }
 
 //Function definitions
@@ -55,9 +58,27 @@ void Sprite::SetPosition(int x, int y)
 /*
 Sets the size of the sprites SDL_Rect member.
 */
-void Sprite::SetSize(SDL_Rect size)
+void Sprite::SetSize(SDL_Rect* size)
 {
 	this->size = size;
+}
+
+/*
+Sets the size of the sprites SDL_Rect member. Will update in the Update function.
+*/
+void Sprite::SetSize(int w, int h)
+{
+	this->w = w;
+	this->h = h;
+
+}
+
+/*
+Sets the source rectangle for the texture of the sprites.
+*/
+void Sprite::SetSourceRectangle(SDL_Rect* sourceRect)
+{
+	this->sourceRect = sourceRect;
 }
 
 /*
@@ -76,4 +97,16 @@ The surface used in the parameter is not freed or modified.
 void Sprite::SetTextureFromSurface(SDL_Renderer* renderer, SDL_Surface* surface)
 {
 	this->texture = SDL_CreateTextureFromSurface(renderer, surface);	
+}
+
+/*
+Updates the sprite.
+*/
+void Sprite::Update()
+{
+	this->size->x = x;
+	this->size->y = y;
+
+	this->size->w = w;
+	this->size->h = h;
 }

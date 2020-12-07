@@ -151,12 +151,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
+    <ClCompile Include="Cell.cpp" />
+    <ClCompile Include="CellTable.cpp" />
     <ClCompile Include="Debug.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Sprite.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h" />
+    <ClInclude Include="Cell.h" />
+    <ClInclude Include="CellTable.h" />
     <ClInclude Include="Debug.h" />
     <ClInclude Include="Sprite.h" />
   </ItemGroup>

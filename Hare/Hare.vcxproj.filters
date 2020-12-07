@@ -25,6 +25,12 @@
     <Filter Include="Header Files\Rendering">
       <UniqueIdentifier>{d8a229f1-cde5-483f-bdb2-d9688566eceb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Things">
+      <UniqueIdentifier>{7babdb86-0e40-40a2-a419-8c612ef2289d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Things">
+      <UniqueIdentifier>{17a0e085-eee3-406a-90a8-6ec1f64202ec}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -39,6 +45,12 @@
     <ClCompile Include="Sprite.cpp">
       <Filter>Source Files\Rendering</Filter>
     </ClCompile>
+    <ClCompile Include="Cell.cpp">
+      <Filter>Source Files\Things</Filter>
+    </ClCompile>
+    <ClCompile Include="CellTable.cpp">
+      <Filter>Source Files\Things</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -49,6 +61,12 @@
     </ClInclude>
     <ClInclude Include="Sprite.h">
       <Filter>Header Files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Cell.h">
+      <Filter>Header Files\Things</Filter>
+    </ClInclude>
+    <ClInclude Include="CellTable.h">
+      <Filter>Header Files\Things</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
