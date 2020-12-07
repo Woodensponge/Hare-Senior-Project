@@ -369,5 +369,3 @@ FodyWeavers.xsd
 .vs/Hare/v16/.suo
 *.db
 *.log
-*.idb
-*.ipch
