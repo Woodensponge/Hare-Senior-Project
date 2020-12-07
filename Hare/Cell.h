@@ -1,6 +1,8 @@
 #ifndef CELL_H_
 #define CELL_H_
 
+#include "Simulation.h"
+
 #include <vector>
 
 enum class CellType
@@ -9,14 +11,16 @@ enum class CellType
 	Empty
 };
 
+enum class CellStatus
+{
+	OnFire
+};
+
 struct Cell
 {
 	CellType type;
 
-	int x;
-	int y;
-
-	inline void Update(std::vector<std::vector<Cell>>* table);
+	inline void Update(Simulation* sim);
 };
 
 #endif

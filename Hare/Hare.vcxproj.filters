@@ -25,11 +25,17 @@
     <Filter Include="Header Files\Rendering">
       <UniqueIdentifier>{d8a229f1-cde5-483f-bdb2-d9688566eceb}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Things">
+    <Filter Include="Header Files\Cellular Automata">
+      <UniqueIdentifier>{17a0e085-eee3-406a-90a8-6ec1f64202ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Cellular Automata">
       <UniqueIdentifier>{7babdb86-0e40-40a2-a419-8c612ef2289d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Things">
-      <UniqueIdentifier>{17a0e085-eee3-406a-90a8-6ec1f64202ec}</UniqueIdentifier>
+    <Filter Include="Source Files\World">
+      <UniqueIdentifier>{9758442b-3040-4b89-8d69-1e44741e82d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\World">
+      <UniqueIdentifier>{801a47ee-b16c-4f37-9aa6-8b5d3d0173bd}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -46,10 +52,13 @@
       <Filter>Source Files\Rendering</Filter>
     </ClCompile>
     <ClCompile Include="Cell.cpp">
-      <Filter>Source Files\Things</Filter>
+      <Filter>Source Files\Cellular Automata</Filter>
     </ClCompile>
-    <ClCompile Include="CellTable.cpp">
-      <Filter>Source Files\Things</Filter>
+    <ClCompile Include="Simulation.cpp">
+      <Filter>Source Files\Cellular Automata</Filter>
+    </ClCompile>
+    <ClCompile Include="Level.cpp">
+      <Filter>Source Files\World</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -63,10 +72,13 @@
       <Filter>Header Files\Rendering</Filter>
     </ClInclude>
     <ClInclude Include="Cell.h">
-      <Filter>Header Files\Things</Filter>
+      <Filter>Header Files\Cellular Automata</Filter>
     </ClInclude>
-    <ClInclude Include="CellTable.h">
-      <Filter>Header Files\Things</Filter>
+    <ClInclude Include="Simulation.h">
+      <Filter>Header Files\Cellular Automata</Filter>
+    </ClInclude>
+    <ClInclude Include="Level.h">
+      <Filter>Header Files\World</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

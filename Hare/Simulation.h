@@ -1,9 +1,20 @@
 #ifndef SIMULATION_H_
 #define SIMULATION_H_
 
+#include "Cell.h"
+
 #include <SDL.h>
 #include <vector>
-#include "Cell.h"
+
+/*
+================-| A NOTE TO KEEP IN MIND |-================
+As of right now, all of the tables coordinates for the cells
+are unsigned. This is subject to change in the future,
+mainly because how actual levels are made in the future can
+heavily influence how and where Cells are placed in the
+simulation.
+============================================================
+*/
 
 struct Simulation
 {
@@ -12,7 +23,7 @@ struct Simulation
 	Simulation(Uint32 width, Uint32 height);
 	~Simulation();
 
-	void GetCell(Uint32 x, Uint32 y);
+	Cell* GetCell(Uint32 x, Uint32 y);
 	
 	void SetCell(Uint32 x, Uint32 y, Cell cell);
 	void ForceSetCell(Uint32 x, Uint32 y, Cell cell);

@@ -1,6 +1,6 @@
 #include "Cell.h"
 
-inline void Cell::Update(std::vector<std::vector<Cell>>* table)
+inline void Cell::Update(Simulation* sim)
 {
 	switch (this->type)
 	{
