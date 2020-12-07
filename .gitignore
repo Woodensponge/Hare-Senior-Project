@@ -363,8 +363,11 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+#Custom .gitignore stuff
 *.tlog
 .vs/Hare/v16/.suo
 *.db
 *.log
 *.idb
+*.ipch
