@@ -17,7 +17,6 @@ struct CellTable
 	//Height of the table/simulation
 	Uint32 height;
 
-	std::vector<std::vector<Cell>> table;
 	void Update();
 };
 
