@@ -1,6 +1,7 @@
 #include "Application.h"
+
 #include <SDL_image.h>
-#include "CellTable.h"
+#include "Level.h"
 
 //Constructor for Application. Sets members from parameters.
 Application::Application
@@ -63,9 +64,6 @@ int Application::Init()
     sprites.back()->SetSize(197, 53);
 
     SDL_FreeSurface(image);
-
-    CellTable cellTable = CellTable(window);
-    cellTable.~CellTable();
 
     return 0;
 }

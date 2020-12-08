@@ -1,9 +1,10 @@
 #ifndef CELL_H_
 #define CELL_H_
 
-#include "Simulation.h"
-
 #include <vector>
+
+//Create a "Class" of Simulation to avoid header recursion
+class Simulation;
 
 enum class CellType
 {
@@ -20,7 +21,7 @@ struct Cell
 {
 	CellType type;
 
-	inline void Update(Simulation* sim);
+	void Update(Simulation* sim);
 };
 
 #endif

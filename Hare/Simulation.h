@@ -16,6 +16,8 @@ simulation.
 ============================================================
 */
 
+//TODO: Fix Visual Studio shitting the bed when it comes to including "Cell.h"
+
 struct Simulation
 {
 	Simulation();

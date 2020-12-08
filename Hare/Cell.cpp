@@ -1,6 +1,7 @@
 #include "Cell.h"
+#include "Simulation.h"
 
-inline void Cell::Update(Simulation* sim)
+void Cell::Update(Simulation* sim)
 {
 	switch (this->type)
 	{
