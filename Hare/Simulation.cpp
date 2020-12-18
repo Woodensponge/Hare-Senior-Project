@@ -22,6 +22,18 @@ Simulation::~Simulation()
 	table.clear();
 }
 
+
+void Simulation::InitCells()
+{
+	for (int x = 0; x < this->width; x++)
+	{
+		for (int y = 0; y < this->height; y++)
+		{
+			table[x][y] = Cell();
+		}
+	}
+}
+
 /*
 ======-| Cell Management |-=======
 A couple of methods are put in place to organize cell updating, collecting

@@ -5,7 +5,7 @@
 #include <vector>
 #include "Sprite.h"
 #include <SDL.h>
-#undef /*fucking*/ main
+#undef main
 
 enum class GameState
 {

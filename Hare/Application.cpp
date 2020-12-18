@@ -61,7 +61,7 @@ int Application::Init()
     );
 
     sprites.push_back(new Sprite(SDL_CreateTextureFromSurface(renderer, image)));
-    sprites.back()->SetSize(197, 53);
+    sprites.back()->SetSize(50, 50);
 
     SDL_FreeSurface(image);
 
@@ -102,10 +102,10 @@ void Application::Update(double deltaTime)
             switch (event.key.keysym.sym)
             {
             case SDLK_LEFT:
-                sprites[0]->x = sprites[0]->x - (100 * deltaTime);
+                sprites[0]->x = sprites[0]->x - (200 * deltaTime);
                 break;
             case SDLK_RIGHT:
-                sprites[0]->x = sprites[0]->x + (100 * deltaTime);
+                sprites[0]->x = sprites[0]->x + (200 * deltaTime);
                 break;
             case SDLK_UP:
                 sprites[0]->y = sprites[0]->y - (200 * deltaTime);

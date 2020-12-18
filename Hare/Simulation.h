@@ -16,8 +16,6 @@ simulation.
 ============================================================
 */
 
-//TODO: Fix Visual Studio shitting the bed when it comes to including "Cell.h"
-
 struct Simulation
 {
 	Simulation();
@@ -40,6 +38,8 @@ struct Simulation
 	Uint32 height = 480;
 
 	std::vector<std::vector<Cell>> table; 
+private:
+	void InitCells();
 };
 
 #endif
