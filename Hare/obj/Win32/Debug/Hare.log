@@ -1,25 +1,2 @@
-﻿  Application.cpp
-C:\Users\Woodensponge\Documents\GitHub\Hare\Hare\Simulation.h(20,1): warning C4099: 'Simulation': type name first seen using 'class' now seen using 'struct'
-C:\Users\Woodensponge\Documents\GitHub\Hare\Hare\Simulation.h(19): message : see declaration of 'Simulation'
-C:\Users\Woodensponge\Documents\GitHub\Hare\Hare\Application.cpp(31,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Woodensponge\Documents\GitHub\Hare\Hare\Application.cpp(105,47): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\Woodensponge\Documents\GitHub\Hare\Hare\Application.cpp(108,47): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\Woodensponge\Documents\GitHub\Hare\Hare\Application.cpp(111,47): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\Woodensponge\Documents\GitHub\Hare\Hare\Application.cpp(114,47): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\Woodensponge\Documents\GitHub\Hare\Hare\Application.cpp(124,23): warning C4018: '<': signed/unsigned mismatch
-  Cell.cpp
-C:\Users\Woodensponge\Documents\GitHub\Hare\Hare\Simulation.h(20,1): warning C4099: 'Simulation': type name first seen using 'class' now seen using 'struct'
-C:\Users\Woodensponge\Documents\GitHub\Hare\Hare\Simulation.h(19): message : see declaration of 'Simulation'
-  Level.cpp
-C:\Users\Woodensponge\Documents\GitHub\Hare\Hare\Simulation.h(20,1): warning C4099: 'Simulation': type name first seen using 'class' now seen using 'struct'
-C:\Users\Woodensponge\Documents\GitHub\Hare\Hare\Simulation.h(19): message : see declaration of 'Simulation'
-  Main.cpp
-  Simulation.cpp
-C:\Users\Woodensponge\Documents\GitHub\Hare\Hare\Simulation.h(20,1): warning C4099: 'Simulation': type name first seen using 'class' now seen using 'struct'
-C:\Users\Woodensponge\Documents\GitHub\Hare\Hare\Simulation.h(19): message : see declaration of 'Simulation'
-C:\Users\Woodensponge\Documents\GitHub\Hare\Hare\Simulation.cpp(28,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Woodensponge\Documents\GitHub\Hare\Hare\Simulation.cpp(30,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Woodensponge\Documents\GitHub\Hare\Hare\Simulation.cpp(111,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Woodensponge\Documents\GitHub\Hare\Hare\Simulation.cpp(113,21): warning C4018: '<': signed/unsigned mismatch
-  Generating Code...
+﻿  Main.cpp
   Hare.vcxproj -> C:\Users\Woodensponge\Documents\GitHub\Hare\bin\Win32\Debug\Hare.exe
