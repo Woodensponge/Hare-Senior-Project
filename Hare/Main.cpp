@@ -9,6 +9,8 @@ int main()
     Application* app = new Application("Hare", WINDOW_WIDTH, WINDOW_HEIGHT, 0, 60, true);
     app->Init();
 
+    //TODO: Work on the Timer class and make framerate calculation dependant on that class.
+
     //Setup variables to calculate Delta Time for framerate
     Uint32 lastTicks = SDL_GetTicks();
     int frameTime = 0;

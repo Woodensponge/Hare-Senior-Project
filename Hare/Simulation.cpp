@@ -3,18 +3,23 @@
 //Constructors and destructors
 Simulation::Simulation()
 {
+	InitCells();
 }
 
 Simulation::Simulation(Uint32 size)
 {
 	this->width = size;
 	this->height = size;
+
+	InitCells();
 }
 
 Simulation::Simulation(Uint32 width, Uint32 height)
 {
 	this->width = width;
 	this->height = height;
+
+	InitCells();
 }
 
 Simulation::~Simulation()
@@ -22,14 +27,14 @@ Simulation::~Simulation()
 	table.clear();
 }
 
-
 void Simulation::InitCells()
 {
 	for (int x = 0; x < this->width; x++)
 	{
 		for (int y = 0; y < this->height; y++)
 		{
-			table[x][y] = Cell();
+			//TODO: Replace the debug contructors with a normal one.
+			table[x][y] = Cell(CellType::Sand);
 		}
 	}
 }
