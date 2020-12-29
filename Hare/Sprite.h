@@ -27,8 +27,8 @@ struct Sprite
 	int w = 640;
 	int h = 480;
 
-	SDL_Rect* size;
 	SDL_Rect* sourceRect;
+	SDL_Rect* size;
 	SDL_Texture* texture;
 };
 

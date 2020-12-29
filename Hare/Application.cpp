@@ -38,8 +38,10 @@ Application::~Application()
 //Initialization method. Handles SDL2 initialization.
 int Application::Init()
 {
-    SDL_Init(SDL_INIT_VIDEO);
-    IMG_Init(IMG_INIT_PNG);
+    if (SDL_Init(SDL_INIT_VIDEO))
+        std::cout << "SDL_Init has failed! SDL_ERROR:" << SDL_GetError() << std::endl;
+    if (!IMG_Init(IMG_INIT_PNG))
+        std::cout << "IMG_Init has failed! ERROR: " << SDL_GetError() << std::endl;
 
     window = SDL_CreateWindow
     (
@@ -93,7 +95,6 @@ void Application::Update(double deltaTime)
     std::cout << deltaTime << std::endl;
 
     //TODO: Make seperate event classes
-
     while (SDL_PollEvent(&event))
     {
         switch (event.type)

@@ -5,7 +5,7 @@
 #include <SDL.h>
 
 //Create a "Class" of Simulation to avoid header recursion
-class Simulation;
+struct Simulation;
 
 enum class CellType
 {
