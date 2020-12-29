@@ -11,6 +11,12 @@ struct Sprite
 	Sprite(SDL_Texture* texture, int x, int y);
 	Sprite(SDL_Texture* texture, int x, int y, int w, int h);
 	Sprite(SDL_Texture* texture, int x, int y, SDL_Rect* size);
+
+	Sprite(const char* imageName);
+	Sprite(const char* imageName, int x, int y);
+	Sprite(const char* imageName, int x, int y, int w, int h);
+	Sprite(const char* imageName, int x, int y, SDL_Rect* size);
+
 	~Sprite();
 
 	void SetPosition(int x, int y);
@@ -18,7 +24,7 @@ struct Sprite
 	void SetSize(int w, int h);
 	void SetSourceRectangle(SDL_Rect* sourceRect);
 	void SetTexture(SDL_Texture* texture);
-	void SetTextureFromSurface(SDL_Renderer* renderer, SDL_Surface* surface);
+	void SetTextureFromSurface(SDL_Surface* surface);
 	void Update();
 
 	int x = 0;

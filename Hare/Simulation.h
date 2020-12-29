@@ -37,7 +37,7 @@ struct Simulation
 	Uint32 width = 640;
 	Uint32 height = 480;
 
-	std::vector<std::vector<Cell>> table; 
+	std::vector<std::vector<Cell>> table;
 private:
 	void InitCells();
 };

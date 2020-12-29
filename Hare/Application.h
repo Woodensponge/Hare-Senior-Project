@@ -43,12 +43,13 @@ struct Application
 
 	GameState state = GameState::None;
 
+	static SDL_Renderer* renderer;
+
 private:
 
 	Uint32 pastTicks = 0;				//Used to calculate delta time.
 
 	SDL_Window* window;
-	SDL_Renderer* renderer;
 	SDL_Event event;
 
 	std::vector<Sprite*> sprites;

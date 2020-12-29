@@ -3,6 +3,8 @@
 #include <SDL_image.h>
 #include "Level.h"
 
+SDL_Renderer* Application::renderer = nullptr;
+
 //Constructor for Application. Sets members from parameters.
 Application::Application
 (
@@ -57,15 +59,8 @@ int Application::Init()
 
     state = GameState::Running;
 
-    SDL_Surface* image = IMG_Load
-    (
-        "C:\\Users\\Woodensponge\\Documents\\GitHub\\Hare\\bin\\Win32\\Debug\\civvie.png"
-    );
-
-    sprites.push_back(new Sprite(SDL_CreateTextureFromSurface(renderer, image)));
+    sprites.push_back(new Sprite("civvie.png"));
     sprites.back()->SetSize(50, 50);
-
-    SDL_FreeSurface(image);
 
     return 0;
 }

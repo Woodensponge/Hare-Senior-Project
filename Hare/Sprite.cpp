@@ -1,4 +1,6 @@
 #include "Sprite.h"
+#include "Application.h"
+#include <SDL_image.h>
 
 //Constructors and destructors
 Sprite::Sprite()
@@ -27,9 +29,70 @@ Sprite::Sprite(SDL_Texture* texture, int x, int y)
 	this->sourceRect = new SDL_Rect();
 }
 
+Sprite::Sprite(SDL_Texture* texture, int x, int y, int w, int h)
+{
+	this->texture = texture;
+	this->x = x;
+	this->y = y;
+
+	this->size->w = w;
+	this->size->h = h;
+	this->sourceRect = new SDL_Rect();
+}
+
 Sprite::Sprite(SDL_Texture* texture, int x, int y, SDL_Rect* size)
 {
 	this->texture = texture;
+	this->x = x;
+	this->y = y;
+
+	this->size = size;
+	this->sourceRect = new SDL_Rect();
+}
+
+Sprite::Sprite(const char* imageName)
+{
+	SDL_Surface* image = IMG_Load(imageName);
+	this->texture = SDL_CreateTextureFromSurface(Application::renderer, image);
+	SDL_FreeSurface(image);
+
+	this->size = new SDL_Rect();
+	this->sourceRect = new SDL_Rect();
+}
+
+Sprite::Sprite(const char* imageName, int x, int y)
+{
+	SDL_Surface* image = IMG_Load(imageName);
+	this->texture = SDL_CreateTextureFromSurface(Application::renderer, image);
+	SDL_FreeSurface(image);
+
+	this->x = x;
+	this->y = y;
+
+	this->size = new SDL_Rect();
+	this->sourceRect = new SDL_Rect();
+}
+
+Sprite::Sprite(const char* imageName, int x, int y, int w, int h)
+{
+	SDL_Surface* image = IMG_Load(imageName);
+	this->texture = SDL_CreateTextureFromSurface(Application::renderer, image);
+	SDL_FreeSurface(image);
+
+	this->x = x;
+	this->y = y;
+
+	this->size->w = w;
+	this->size->h = h;
+	this->sourceRect = new SDL_Rect();
+}
+
+Sprite::Sprite(const char* imageName, int x, int y, SDL_Rect* size)
+{
+	SDL_Surface* image = IMG_Load(imageName);
+	this->texture = SDL_CreateTextureFromSurface(Application::renderer, image);
+	SDL_FreeSurface(image);
+
 	this->x = x;
 	this->y = y;
 
@@ -70,7 +133,6 @@ void Sprite::SetSize(int w, int h)
 {
 	this->w = w;
 	this->h = h;
-
 }
 
 /*
@@ -94,9 +156,9 @@ void Sprite::SetTexture(SDL_Texture* texture)
 Sets the sprites SDL_Texture* member to whatever the parameters specify. Used with SDL_Surface* variables.
 The surface used in the parameter is not freed or modified.
 */
-void Sprite::SetTextureFromSurface(SDL_Renderer* renderer, SDL_Surface* surface)
+void Sprite::SetTextureFromSurface(SDL_Surface* surface)
 {
-	this->texture = SDL_CreateTextureFromSurface(renderer, surface);	
+	this->texture = SDL_CreateTextureFromSurface(Application::renderer, surface);
 }
 
 /*
