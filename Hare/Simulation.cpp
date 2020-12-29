@@ -29,9 +29,9 @@ Simulation::~Simulation()
 
 void Simulation::InitCells()
 {
-	for (int x = 0; x < this->width; x++)
+	for (Uint32 x = 0; x < this->width; x++)
 	{
-		for (int y = 0; y < this->height; y++)
+		for (Uint32 y = 0; y < this->height; y++)
 		{
 			//TODO: Replace the debug contructors with a normal one.
 			table[x][y] = Cell(CellType::Sand);
@@ -113,9 +113,9 @@ Only recommended for loading up the simulation or for testing purposes.
 */
 void Simulation::UpdateAll()
 {
-	for (int x = 0; x < this->width; x++)
+	for (Uint32 x = 0; x < this->width; x++)
 	{
-		for (int y = 0; y < this->height; y++)
+		for (Uint32 y = 0; y < this->height; y++)
 		{
 			table[x][y].Update(this);
 		}

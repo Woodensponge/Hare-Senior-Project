@@ -28,7 +28,7 @@ Application::Application
 //Deconstructor. Completely handles destruction for this object.
 Application::~Application()
 {
-    for (int i = 0; i < (sprites.size()); i++)
+    for (size_t i = 0; i < (sprites.size()); i++)
         sprites[i]->~Sprite();
 
     IMG_Quit();
@@ -122,7 +122,7 @@ void Application::Update(double deltaTime)
         }
     }
 
-    for (int i = 0; i < (sprites.size()); i++)
+    for (size_t i = 0; i < (sprites.size()); i++)
     {
         sprites[i]->Update();
         SDL_RenderCopy(renderer, sprites[i]->texture, 0, sprites[i]->size);
