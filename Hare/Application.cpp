@@ -59,7 +59,7 @@ int Application::Init()
 
     state = GameState::Running;
 
-    sprites.push_back(new Sprite("civvie.png"));
+    sprites.push_back(new Sprite("Assets/Player-Simple.png"));
     sprites.back()->SetSize(50, 50);
 
     return 0;

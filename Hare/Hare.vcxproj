@@ -163,6 +163,7 @@
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="Debug.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="PlayState.cpp" />
     <ClCompile Include="Simulation.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="TextureManager.cpp" />
@@ -174,6 +175,7 @@
     <ClInclude Include="Cell.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="Debug.h" />
+    <ClInclude Include="PlayState.h" />
     <ClInclude Include="Simulation.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="TextureManager.h" />

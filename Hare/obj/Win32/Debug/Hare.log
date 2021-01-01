@@ -1,2 +1,17 @@
-﻿  Sprite.cpp
+﻿  Application.cpp
+C:\Users\Woodensponge\Documents\GitHub\Hare\Hare\Application.cpp(101,47): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\Woodensponge\Documents\GitHub\Hare\Hare\Application.cpp(104,47): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\Woodensponge\Documents\GitHub\Hare\Hare\Application.cpp(107,47): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\Woodensponge\Documents\GitHub\Hare\Hare\Application.cpp(110,47): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  Cell.cpp
+  Level.cpp
+  Debug.cpp
+  Main.cpp
+  PlayState.cpp
+  Simulation.cpp
+  Sprite.cpp
+  TextureManager.cpp
+  TileSet.cpp
+  Timer.cpp
+  Generating Code...
   Hare.vcxproj -> C:\Users\Woodensponge\Documents\GitHub\Hare\bin\Win32\Debug\Hare.exe
