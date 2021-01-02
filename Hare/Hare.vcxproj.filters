@@ -1,31 +1,111 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="Application.cpp" />
-    <ClCompile Include="Cell.cpp" />
-    <ClCompile Include="Level.cpp" />
-    <ClCompile Include="Debug.cpp" />
-    <ClCompile Include="Main.cpp" />
-    <ClCompile Include="PlayState.cpp" />
-    <ClCompile Include="Simulation.cpp" />
-    <ClCompile Include="Sprite.cpp" />
-    <ClCompile Include="TextureManager.cpp" />
-    <ClCompile Include="TileSet.cpp" />
-    <ClCompile Include="Timer.cpp" />
+    <ClCompile Include="Application.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="Cell.cpp">
+      <Filter>Source files\Cellular Automata</Filter>
+    </ClCompile>
+    <ClCompile Include="Debug.cpp">
+      <Filter>Source files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Level.cpp">
+      <Filter>Source files\World</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayState.cpp">
+      <Filter>Source files\States</Filter>
+    </ClCompile>
+    <ClCompile Include="Simulation.cpp">
+      <Filter>Source files\Cellular Automata</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprite.cpp">
+      <Filter>Source files\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureManager.cpp">
+      <Filter>Source files\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="TileSet.cpp">
+      <Filter>Source files\World</Filter>
+    </ClCompile>
+    <ClCompile Include="Timer.cpp">
+      <Filter>Source files\Core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Application.h" />
-    <ClInclude Include="Cell.h" />
-    <ClInclude Include="Level.h" />
-    <ClInclude Include="Debug.h" />
-    <ClInclude Include="PlayState.h" />
-    <ClInclude Include="Simulation.h" />
-    <ClInclude Include="Sprite.h" />
-    <ClInclude Include="TextureManager.h" />
-    <ClInclude Include="TileSet.h" />
-    <ClInclude Include="Timer.h" />
+    <ClInclude Include="Application.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="Cell.h">
+      <Filter>Header files\Cellular Automata</Filter>
+    </ClInclude>
+    <ClInclude Include="Debug.h">
+      <Filter>Header files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Level.h">
+      <Filter>Header files\World</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayState.h">
+      <Filter>Header files\States</Filter>
+    </ClInclude>
+    <ClInclude Include="Simulation.h">
+      <Filter>Header files\Cellular Automata</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprite.h">
+      <Filter>Header files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureManager.h">
+      <Filter>Header files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="TileSet.h">
+      <Filter>Header files\World</Filter>
+    </ClInclude>
+    <ClInclude Include="Timer.h">
+      <Filter>Header files\Core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source files">
+      <UniqueIdentifier>{d364dbb3-ff22-4e18-bdf8-9b7b9e1bec6e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files">
+      <UniqueIdentifier>{eb5fb455-5fdb-49bb-a03b-c5c8fb12bd62}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Cellular Automata">
+      <UniqueIdentifier>{2e2c7917-8e53-4455-9c8c-66eef9069421}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\Cellular Automata">
+      <UniqueIdentifier>{c2002c0c-2689-4f70-acdc-b8d8cdabaa12}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\Core">
+      <UniqueIdentifier>{75a820c7-5559-420a-abb9-71c679e399e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Core">
+      <UniqueIdentifier>{2e9dbd9a-95f5-46cc-a1ae-12faa6aad962}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\World">
+      <UniqueIdentifier>{9cf6e272-5952-432c-b0c8-636ea020c4d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\World">
+      <UniqueIdentifier>{fa0f79ad-6c22-4cb9-a0c9-e1796850f19e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\States">
+      <UniqueIdentifier>{7ce45766-3526-483f-808a-951002592728}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\States">
+      <UniqueIdentifier>{0892277f-1974-419a-947a-eb9bfb95e9df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Rendering">
+      <UniqueIdentifier>{3b3b0940-6f00-4781-a301-637bbe1df3e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\Rendering">
+      <UniqueIdentifier>{70a1917a-84cc-4198-825d-fd83224a59b0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>
