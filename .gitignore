@@ -370,3 +370,8 @@ FodyWeavers.xsd
 *.db
 *.log
 *.psd
+*.tlog
+*.tlog
+*.tlog
+*.lastbuildstate
+Hare/obj/Win32/Debug/Hare.tlog/Hare.lastbuildstate

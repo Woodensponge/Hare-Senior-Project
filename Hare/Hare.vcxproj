@@ -167,6 +167,7 @@
     <ClCompile Include="Simulation.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="TextureManager.cpp" />
+    <ClCompile Include="Tile.cpp" />
     <ClCompile Include="TileSet.cpp" />
     <ClCompile Include="Timer.cpp" />
   </ItemGroup>
@@ -179,6 +180,7 @@
     <ClInclude Include="Simulation.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="TextureManager.h" />
+    <ClInclude Include="Tile.h" />
     <ClInclude Include="TileSet.h" />
     <ClInclude Include="Timer.h" />
   </ItemGroup>

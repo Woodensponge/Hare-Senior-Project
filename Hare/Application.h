@@ -30,7 +30,7 @@ struct Application
 	~Application();
 
 	int Init();
-	void Update(double deltaTime);
+	void Update();
 
 	const char* windowTitle;
 	Uint32 flags;
@@ -39,7 +39,7 @@ struct Application
 
 	int windowWidth = 0;
 	int windowHeight = 0;
-	int fps = 60;
+	static int fps;
 
 	GameState state = GameState::None;
 

@@ -1,9 +1,11 @@
 #include "Application.h"
+#include "Timer.h"
 
 #include <SDL_image.h>
 #include "Level.h"
 
 SDL_Renderer* Application::renderer = nullptr;
+int Application::fps = 60;
 
 //Constructor for Application. Sets members from parameters.
 Application::Application
@@ -62,11 +64,15 @@ int Application::Init()
     sprites.push_back(new Sprite("Assets/Player-Simple.png"));
     sprites.back()->SetSize(50, 50);
 
+    //Level testing
+    Level level = Level(window);
+    level.~Level();
+
     return 0;
 }
 
 //Update method. Handles rendering, UI, and other things involving the window.
-void Application::Update(double deltaTime)
+void Application::Update()
 {
     SDL_RenderClear(renderer);
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
@@ -87,8 +93,6 @@ void Application::Update(double deltaTime)
         break;
     }
 
-    std::cout << deltaTime << std::endl;
-
     //TODO: Make seperate event classes
     while (SDL_PollEvent(&event))
     {
@@ -98,16 +102,16 @@ void Application::Update(double deltaTime)
             switch (event.key.keysym.sym)
             {
             case SDLK_LEFT:
-                sprites[0]->x = sprites[0]->x - (200 * deltaTime);
+                sprites[0]->x = sprites[0]->x - (10 * Timer::GetDeltaTime(true));
                 break;
             case SDLK_RIGHT:
-                sprites[0]->x = sprites[0]->x + (200 * deltaTime);
+                sprites[0]->x = sprites[0]->x + (10 * Timer::GetDeltaTime(true));
                 break;
             case SDLK_UP:
-                sprites[0]->y = sprites[0]->y - (200 * deltaTime);
+                sprites[0]->y = sprites[0]->y - (10 * Timer::GetDeltaTime(true));
                 break;
             case SDLK_DOWN:
-                sprites[0]->y = sprites[0]->y + (200 * deltaTime);
+                sprites[0]->y = sprites[0]->y + (10 * Timer::GetDeltaTime(true));
                 break;
             }
             break;

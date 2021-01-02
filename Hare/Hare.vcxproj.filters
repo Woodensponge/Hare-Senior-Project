@@ -75,8 +75,13 @@
     <ClCompile Include="TextureManager.cpp">
       <Filter>Source Files\Rendering</Filter>
     </ClCompile>
+<<<<<<< Updated upstream
     <ClCompile Include="PlayState.cpp">
       <Filter>Source Files\States</Filter>
+=======
+    <ClCompile Include="Tile.cpp">
+      <Filter>Source Files\World</Filter>
+>>>>>>> Stashed changes
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -107,8 +112,13 @@
     <ClInclude Include="TextureManager.h">
       <Filter>Header Files\Rendering</Filter>
     </ClInclude>
+<<<<<<< Updated upstream
     <ClInclude Include="PlayState.h">
       <Filter>Header Files\States</Filter>
+=======
+    <ClInclude Include="Tile.h">
+      <Filter>Header Files\World</Filter>
+>>>>>>> Stashed changes
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
