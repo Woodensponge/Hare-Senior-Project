@@ -1,5 +1,7 @@
 #include "Sprite.h"
 #include "Application.h"
+#include "TextureManager.h"
+
 #include <SDL_image.h>
 
 //Constructors and destructors
@@ -52,9 +54,7 @@ Sprite::Sprite(SDL_Texture* texture, int x, int y, SDL_Rect* size)
 
 Sprite::Sprite(const char* imageName)
 {
-	SDL_Surface* image = IMG_Load(imageName);
-	this->texture = SDL_CreateTextureFromSurface(Application::renderer, image);
-	SDL_FreeSurface(image);
+	this->texture = TextureManager::LoadTexture(imageName);
 
 	this->size = new SDL_Rect();
 	this->sourceRect = new SDL_Rect();
@@ -62,9 +62,7 @@ Sprite::Sprite(const char* imageName)
 
 Sprite::Sprite(const char* imageName, int x, int y)
 {
-	SDL_Surface* image = IMG_Load(imageName);
-	this->texture = SDL_CreateTextureFromSurface(Application::renderer, image);
-	SDL_FreeSurface(image);
+	this->texture = TextureManager::LoadTexture(imageName);
 
 	this->x = x;
 	this->y = y;
@@ -75,9 +73,7 @@ Sprite::Sprite(const char* imageName, int x, int y)
 
 Sprite::Sprite(const char* imageName, int x, int y, int w, int h)
 {
-	SDL_Surface* image = IMG_Load(imageName);
-	this->texture = SDL_CreateTextureFromSurface(Application::renderer, image);
-	SDL_FreeSurface(image);
+	this->texture = TextureManager::LoadTexture(imageName);
 
 	this->x = x;
 	this->y = y;
@@ -89,9 +85,7 @@ Sprite::Sprite(const char* imageName, int x, int y, int w, int h)
 
 Sprite::Sprite(const char* imageName, int x, int y, SDL_Rect* size)
 {
-	SDL_Surface* image = IMG_Load(imageName);
-	this->texture = SDL_CreateTextureFromSurface(Application::renderer, image);
-	SDL_FreeSurface(image);
+	this->texture = TextureManager::LoadTexture(imageName);
 
 	this->x = x;
 	this->y = y;

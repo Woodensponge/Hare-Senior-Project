@@ -4,6 +4,7 @@
 #include <SDL_image.h>
 #include "Level.h"
 
+SDL_Event Application::event;
 SDL_Renderer* Application::renderer = nullptr;
 int Application::fps = 60;
 
