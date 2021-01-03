@@ -1,5 +1,2 @@
 ﻿  Main.cpp
-  Sprite.cpp
-C:\Users\Woodensponge\Documents\GitHub\Hare\Hare\TextureManager.h(14,2): warning C4091: 'static ': ignored on left of 'TextureManager' when no variable is declared
-  Generating Code...
   Hare.vcxproj -> C:\Users\Woodensponge\Documents\GitHub\Hare\bin\Win32\Debug\Hare.exe

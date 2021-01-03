@@ -6,8 +6,8 @@
 
 double Timer::deltaTime = 0;
 
-Uint64 pastPC = 0;
-Uint64 presentPC = 0;
+Uint32 pastTicks = 0;
+Uint32 presentTicks = 0;
 
 double Timer::GetDeltaTime(bool isIndependentOnFramerate)
 {
@@ -19,17 +19,17 @@ double Timer::GetDeltaTime(bool isIndependentOnFramerate)
 
 void Timer::UpdateDeltaTime()
 {
-	presentPC = SDL_GetPerformanceCounter();	//Get the PC for this call.
+	presentTicks = SDL_GetTicks();	//Get the PC for this call.
 
-	if (presentPC == 0)							//Make sure we don't divide by zero
+	if (presentTicks == 0)							//Make sure we don't divide by zero
 	{
 		deltaTime = 0;
 		return;
 	}
 
 	//Calculate delta time.
-	deltaTime = (double)((double)(presentPC - pastPC) / SDL_GetPerformanceFrequency());
-	pastPC = presentPC;
+	deltaTime = (double)((presentTicks - pastTicks) / 1000.0f);
+	pastTicks = presentTicks;
 
 	std::cout << deltaTime << std::endl;		//Print deltatime to the console.
 }

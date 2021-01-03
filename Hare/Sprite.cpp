@@ -2,6 +2,7 @@
 #include "Application.h"
 #include "TextureManager.h"
 
+#include <cmath>
 #include <SDL_image.h>
 
 //Constructors and destructors
@@ -21,7 +22,7 @@ Sprite::Sprite(SDL_Texture* texture)
 	this->sourceRect = new SDL_Rect();
 }
 
-Sprite::Sprite(SDL_Texture* texture, int x, int y)
+Sprite::Sprite(SDL_Texture* texture, double x, double y)
 {
 	this->texture = texture;
 	this->x = x;
@@ -31,7 +32,7 @@ Sprite::Sprite(SDL_Texture* texture, int x, int y)
 	this->sourceRect = new SDL_Rect();
 }
 
-Sprite::Sprite(SDL_Texture* texture, int x, int y, int w, int h)
+Sprite::Sprite(SDL_Texture* texture, double x, double y, int w, int h)
 {
 	this->texture = texture;
 	this->x = x;
@@ -42,7 +43,7 @@ Sprite::Sprite(SDL_Texture* texture, int x, int y, int w, int h)
 	this->sourceRect = new SDL_Rect();
 }
 
-Sprite::Sprite(SDL_Texture* texture, int x, int y, SDL_Rect* size)
+Sprite::Sprite(SDL_Texture* texture, double x, double y, SDL_Rect* size)
 {
 	this->texture = texture;
 	this->x = x;
@@ -60,7 +61,7 @@ Sprite::Sprite(const char* imageName)
 	this->sourceRect = new SDL_Rect();
 }
 
-Sprite::Sprite(const char* imageName, int x, int y)
+Sprite::Sprite(const char* imageName, double x, double y)
 {
 	this->texture = TextureManager::LoadTexture(imageName);
 
@@ -71,7 +72,7 @@ Sprite::Sprite(const char* imageName, int x, int y)
 	this->sourceRect = new SDL_Rect();
 }
 
-Sprite::Sprite(const char* imageName, int x, int y, int w, int h)
+Sprite::Sprite(const char* imageName, double x, double y, int w, int h)
 {
 	this->texture = TextureManager::LoadTexture(imageName);
 
@@ -83,7 +84,7 @@ Sprite::Sprite(const char* imageName, int x, int y, int w, int h)
 	this->sourceRect = new SDL_Rect();
 }
 
-Sprite::Sprite(const char* imageName, int x, int y, SDL_Rect* size)
+Sprite::Sprite(const char* imageName, double x, double y, SDL_Rect* size)
 {
 	this->texture = TextureManager::LoadTexture(imageName);
 
@@ -106,7 +107,7 @@ Sprite::~Sprite()
 /*
 Sets the sprites X and Y coordinates to whatever the parameters specify.
 */
-void Sprite::SetPosition(int x, int y)
+void Sprite::SetPosition(double x, double y)
 {
 	this->x = x;
 	this->y = y;
@@ -160,8 +161,8 @@ Updates the sprite.
 */
 void Sprite::Update()
 {
-	this->size->x = x;
-	this->size->y = y;
+	this->size->x = lround(x);
+	this->size->y = lround(y);
 
 	this->size->w = w;
 	this->size->h = h;

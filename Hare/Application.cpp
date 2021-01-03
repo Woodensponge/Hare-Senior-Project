@@ -76,7 +76,7 @@ int Application::Init()
 void Application::Update()
 {
     SDL_RenderClear(renderer);
-    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+    SDL_SetRenderDrawColor(renderer, 170, 170, 170, 255);
 
     //Game state handling.
     switch (state)
