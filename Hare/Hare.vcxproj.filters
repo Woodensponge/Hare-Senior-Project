@@ -40,6 +40,18 @@
     <ClCompile Include="State.cpp">
       <Filter>Source files\States</Filter>
     </ClCompile>
+    <ClCompile Include="Sound.cpp">
+      <Filter>Source files\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="Music.cpp">
+      <Filter>Source files\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundManager.cpp">
+      <Filter>Source files\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="MusicManager.cpp">
+      <Filter>Source files\Sound</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -77,6 +89,18 @@
     </ClInclude>
     <ClInclude Include="State.h">
       <Filter>Header files\States</Filter>
+    </ClInclude>
+    <ClInclude Include="Sound.h">
+      <Filter>Header files\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="Music.h">
+      <Filter>Header files\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="MusicManager.h">
+      <Filter>Header files\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundManager.h">
+      <Filter>Header files\Sound</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
