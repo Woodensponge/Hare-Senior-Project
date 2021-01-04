@@ -31,5 +31,5 @@ void Timer::UpdateDeltaTime()
 	deltaTime = (double)((presentTicks - pastTicks) / 1000.0f);
 	pastTicks = presentTicks;
 
-	std::cout << deltaTime << std::endl;		//Print deltatime to the console.
+	//std::cout << deltaTime << std::endl;		//Print deltatime to the console.
 }

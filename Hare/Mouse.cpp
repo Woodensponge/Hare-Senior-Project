@@ -7,5 +7,5 @@ int Mouse::y = 0;
 
 void Mouse::UpdateMousePosition()
 {
-	//TODO: Add shit :)
+	SDL_GetMouseState(&x, &y);
 }

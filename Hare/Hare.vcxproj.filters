@@ -34,6 +34,9 @@
     <ClCompile Include="Timer.cpp">
       <Filter>Source files\Core</Filter>
     </ClCompile>
+    <ClCompile Include="Mouse.cpp">
+      <Filter>Source files\Core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -64,6 +67,9 @@
       <Filter>Header files\World</Filter>
     </ClInclude>
     <ClInclude Include="Timer.h">
+      <Filter>Header files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Mouse.h">
       <Filter>Header files\Core</Filter>
     </ClInclude>
   </ItemGroup>

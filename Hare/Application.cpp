@@ -1,8 +1,9 @@
 #include "Application.h"
 #include "Timer.h"
+#include "Level.h"
+#include "Mouse.h"
 
 #include <SDL_image.h>
-#include "Level.h"
 
 SDL_Event Application::event;
 SDL_Renderer* Application::renderer = nullptr;
@@ -33,8 +34,8 @@ Application::Application
 //Deconstructor. Completely handles destruction for this object.
 Application::~Application()
 {
-    for (size_t i = 0; i < (sprites.size()); i++)
-        sprites[i]->~Sprite();
+    for (Sprite* i : sprites)
+        i->~Sprite();
 
     IMG_Quit();
     SDL_Quit();
@@ -77,6 +78,9 @@ void Application::Update()
 {
     SDL_RenderClear(renderer);
     SDL_SetRenderDrawColor(renderer, 170, 170, 170, 255);
+
+    Mouse::UpdateMousePosition();
+    std::cout << Mouse::x << " : " << Mouse::y << std::endl;
 
     //Game state handling.
     switch (state)
@@ -122,10 +126,10 @@ void Application::Update()
         }
     }
 
-    for (size_t i = 0; i < (sprites.size()); i++)
+    for (Sprite* i : sprites)
     {
-        sprites[i]->Update();
-        SDL_RenderCopy(renderer, sprites[i]->texture, 0, sprites[i]->size);
+        i->Update();
+        SDL_RenderCopy(renderer, i->texture, 0, i->size);
     }
 
     SDL_RenderPresent(renderer);
