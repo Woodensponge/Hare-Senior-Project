@@ -2,12 +2,19 @@
 
 using namespace Audio;
 
+Music::Music(const char* filePath)
+	:filePath(filePath), isLooped(false)
+{
+
+}
+
 Music::Music(const char* filePath, bool isLooped)
-	:filePath("File Not Specified"), isLooped(false)
+	:filePath(filePath), isLooped(isLooped)
 {
 
 }
 
 Music::~Music()
 {
+
 }

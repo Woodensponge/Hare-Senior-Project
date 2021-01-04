@@ -8,6 +8,7 @@ namespace Audio
 {
 	struct Music
 	{
+		Music(const char* filePath);
 		Music(const char* filePath, bool isLooped);
 		~Music();
 
