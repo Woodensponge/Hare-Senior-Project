@@ -19,7 +19,7 @@ double Timer::GetDeltaTime(bool isIndependentOnFramerate)
 
 void Timer::UpdateDeltaTime()
 {
-	presentTicks = SDL_GetTicks();	//Get the PC for this call.
+	presentTicks = SDL_GetTicks();					//Get the ticks for this call.
 
 	if (presentTicks == 0)							//Make sure we don't divide by zero
 	{
@@ -31,5 +31,5 @@ void Timer::UpdateDeltaTime()
 	deltaTime = (double)((presentTicks - pastTicks) / 1000.0f);
 	pastTicks = presentTicks;
 
-	//std::cout << deltaTime << std::endl;		//Print deltatime to the console.
+	//std::cout << deltaTime << std::endl;			//Print deltatime to the console.
 }
