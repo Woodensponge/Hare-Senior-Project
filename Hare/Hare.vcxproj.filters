@@ -119,5 +119,11 @@
     <Filter Include="Header files\Rendering">
       <UniqueIdentifier>{70a1917a-84cc-4198-825d-fd83224a59b0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source files\Sound">
+      <UniqueIdentifier>{da36c17b-b771-42a5-a631-964d64cbc873}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\Sound">
+      <UniqueIdentifier>{5c9c3711-fa78-41e9-976a-1912d7172097}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>
