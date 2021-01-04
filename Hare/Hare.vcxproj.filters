@@ -37,6 +37,9 @@
     <ClCompile Include="Mouse.cpp">
       <Filter>Source files\Core</Filter>
     </ClCompile>
+    <ClCompile Include="State.cpp">
+      <Filter>Source files\States</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -71,6 +74,9 @@
     </ClInclude>
     <ClInclude Include="Mouse.h">
       <Filter>Header files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="State.h">
+      <Filter>Header files\States</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
