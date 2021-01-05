@@ -1,13 +1,16 @@
 #include "Application.h"
-#include "Timer.h"
 #include "Level.h"
 #include "Mouse.h"
+#include "PlayState.h"
+#include "EventHandler.h"
 
 #include <SDL_image.h>
 
+//Static member definitions...
 SDL_Event Application::event;
 SDL_Renderer* Application::renderer = nullptr;
 int Application::fps = 60;
+GameState Application::gameState = GameState::None;
 
 //Constructor for Application. Sets members from parameters.
 Application::Application
@@ -29,13 +32,16 @@ Application::Application
     this->flags = flags;
     this->fps = fps;
     this->isCapped = isCapped;
+
+    this->state = new States::State();
 }
 
 //Deconstructor. Completely handles destruction for this object.
 Application::~Application()
 {
-    for (Sprite* i : sprites)
-        i->~Sprite();
+    delete state;
+
+    Events::EventHandler::DestroyQueue();
 
     IMG_Quit();
     SDL_Quit();
@@ -45,9 +51,23 @@ Application::~Application()
 int Application::Init()
 {
     if (SDL_Init(SDL_INIT_VIDEO))
-        std::cout << "SDL_Init has failed! SDL_ERROR:" << SDL_GetError() << std::endl;
+    {
+        std::string errorMessage = "SDL_Init has failed! SDL_ERROR: ";
+        errorMessage += SDL_GetError();
+        std::cout << errorMessage << std::endl;
+        SDL_ShowSimpleMessageBox(0, "Error", errorMessage.c_str(), window);
+
+        return -1;
+    }
     if (!IMG_Init(IMG_INIT_PNG))
-        std::cout << "IMG_Init has failed! ERROR: " << SDL_GetError() << std::endl;
+    {
+        std::string errorMessage = "IMG_Init has failed! ERROR: ";
+        errorMessage += SDL_GetError();
+        std::cout << errorMessage << std::endl;
+        SDL_ShowSimpleMessageBox(0, "Error", errorMessage.c_str(), window);
+
+        return -2;
+    }
 
     window = SDL_CreateWindow
     (
@@ -61,14 +81,9 @@ int Application::Init()
 
     renderer = SDL_CreateRenderer(window, -1, 0);
 
-    state = GameState::Running;
-
-    sprites.push_back(new Sprite("Assets/Player-Simple.png"));
-    sprites.back()->SetSize(50, 50);
-
-    //Level testing
-    Level level = Level(window);
-    level.~Level();
+    gameState = GameState::Running;
+    state = new States::PlayState(window);
+    state->Init();
 
     return 0;
 }
@@ -83,11 +98,8 @@ void Application::Update()
     std::cout << MOUSE_X << " : " << MOUSE_Y << std::endl;
 
     //Game state handling.
-    switch (state)
+    switch (gameState)
     {
-    case GameState::Paused:
-        //TODO: Add pause functionality.
-        break;
     case GameState::Minimized:
         //TODO: Add minimize functionality.
         break;
@@ -97,40 +109,19 @@ void Application::Update()
         //TODO: Throw an exception here when state == GameState::None.
         break;
     }
-
-    //TODO: Make seperate event classes
+    
     while (SDL_PollEvent(&event))
     {
+        Events::EventHandler::UpdateEvents(&event);
         switch (event.type)
         {
-        case SDL_KEYDOWN:
-            switch (event.key.keysym.sym)
-            {
-            case SDLK_LEFT:
-                sprites[0]->x = sprites[0]->x - (10 * Timer::GetDeltaTime(true));
-                break;
-            case SDLK_RIGHT:
-                sprites[0]->x = sprites[0]->x + (10 * Timer::GetDeltaTime(true));
-                break;
-            case SDLK_UP:
-                sprites[0]->y = sprites[0]->y - (10 * Timer::GetDeltaTime(true));
-                break;
-            case SDLK_DOWN:
-                sprites[0]->y = sprites[0]->y + (10 * Timer::GetDeltaTime(true));
-                break;
-            }
-            break;
         case SDL_QUIT:
-            state = GameState::Closing;
+            gameState = GameState::Closing;
             return;                     //Stop the update method and begin closing.
         }
     }
 
-    for (Sprite* i : sprites)
-    {
-        i->Update();
-        SDL_RenderCopy(renderer, i->texture, 0, i->size);
-    }
+    state->Update();
 
     SDL_RenderPresent(renderer);
 }

@@ -1,16 +1,17 @@
 #ifndef APPLICATION_H_
 #define APPLICATION_H_
 
+#include "Sprite.h"
+#include "State.h"
+
 #include <iostream>
 #include <vector>
-#include "Sprite.h"
 #include <SDL.h>
 #undef /*fucking*/ main
 
 enum class GameState
 {
 	Running,
-	Paused,
 	Minimized,
 	Closing,
 	None
@@ -41,18 +42,16 @@ struct Application
 	int windowHeight = 0;
 	static int fps;
 
-	GameState state = GameState::None;
+	static GameState gameState;
 
 	static SDL_Renderer* renderer;
 	static SDL_Event event;
 
 private:
-
-	Uint32 pastTicks = 0;				//Used to calculate delta time.
-
 	SDL_Window* window;
-
 	std::vector<Sprite*> sprites;
+
+	States::State* state;
 };
 
 #endif

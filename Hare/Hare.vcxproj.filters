@@ -52,6 +52,15 @@
     <ClCompile Include="MusicManager.cpp">
       <Filter>Source files\Sound</Filter>
     </ClCompile>
+    <ClCompile Include="EventHandler.cpp">
+      <Filter>Source files\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="Event.cpp">
+      <Filter>Source files\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyboardEvent.cpp">
+      <Filter>Source files\Events\Event Types</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -102,6 +111,15 @@
     <ClInclude Include="SoundManager.h">
       <Filter>Header files\Sound</Filter>
     </ClInclude>
+    <ClInclude Include="EventHandler.h">
+      <Filter>Header files\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="Event.h">
+      <Filter>Header files\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyboardEvent.h">
+      <Filter>Header files\Events\Event Types</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -148,6 +166,18 @@
     </Filter>
     <Filter Include="Header files\Sound">
       <UniqueIdentifier>{5c9c3711-fa78-41e9-976a-1912d7172097}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Events">
+      <UniqueIdentifier>{edd719b2-920d-4944-b3ec-2279c1967ee5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\Events">
+      <UniqueIdentifier>{8e81b272-7925-4481-b794-5ce211b6a830}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Events\Event Types">
+      <UniqueIdentifier>{533dc39a-fed6-48c3-95d3-f2fde30730a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\Events\Event Types">
+      <UniqueIdentifier>{e3fb5060-7084-415e-9342-5d5d8b073e90}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

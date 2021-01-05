@@ -8,7 +8,14 @@
 int main()
 {
     Application* app = new Application("Hare", WINDOW_WIDTH, WINDOW_HEIGHT, 0, 60, true);
-    app->Init();
+    
+    int initReturnCode = app->Init();
+
+    if (initReturnCode != 0)
+    {
+        delete app;
+        return initReturnCode;
+    }
 
     //TODO: Work on the Timer class and make framerate calculation dependant on that class.
 
@@ -18,7 +25,7 @@ int main()
 
     double deltaTime = 0;
 
-    while (app->state != GameState::Closing)
+    while (app->gameState != GameState::Closing)
     {
         Timer::UpdateDeltaTime();
 
@@ -36,7 +43,7 @@ int main()
             }
     }
 
-    app->~Application();
+    delete app;
 
     return 0;
 }
