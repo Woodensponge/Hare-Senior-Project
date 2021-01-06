@@ -135,6 +135,7 @@ void Application::Update()
         {
         case States::StateID::PlayState:
             state = new States::PlayState(window);
+            state->Init();
         }
     }
 
