@@ -16,9 +16,6 @@
     <ClCompile Include="Main.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
-    <ClCompile Include="PlayState.cpp">
-      <Filter>Source files\States</Filter>
-    </ClCompile>
     <ClCompile Include="Simulation.cpp">
       <Filter>Source files\Cellular Automata</Filter>
     </ClCompile>
@@ -61,6 +58,9 @@
     <ClCompile Include="KeyboardEvent.cpp">
       <Filter>Source files\Events\Event Types</Filter>
     </ClCompile>
+    <ClCompile Include="PlayState.cpp">
+      <Filter>Source files\States\State Types</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -74,9 +74,6 @@
     </ClInclude>
     <ClInclude Include="Level.h">
       <Filter>Header files\World</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayState.h">
-      <Filter>Header files\States</Filter>
     </ClInclude>
     <ClInclude Include="Simulation.h">
       <Filter>Header files\Cellular Automata</Filter>
@@ -119,6 +116,9 @@
     </ClInclude>
     <ClInclude Include="KeyboardEvent.h">
       <Filter>Header files\Events\Event Types</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayState.h">
+      <Filter>Header files\States\State Types</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -178,6 +178,12 @@
     </Filter>
     <Filter Include="Header files\Events\Event Types">
       <UniqueIdentifier>{e3fb5060-7084-415e-9342-5d5d8b073e90}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\States\State Types">
+      <UniqueIdentifier>{6ea5e076-5025-4942-a8ef-b7fb586e9428}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\States\State Types">
+      <UniqueIdentifier>{6e512368-ff88-4835-b7a6-f2bb5c7ec8d1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

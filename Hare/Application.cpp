@@ -123,5 +123,20 @@ void Application::Update()
 
     state->Update();
 
+    if (state->switchToState != States::StateID::NotSpecified
+        && state->switchToState != state->stateID)
+    {
+        States::StateID switchToState = state->switchToState;
+        state->~State();
+
+        Events::EventHandler::DestroyQueue();
+
+        switch (switchToState)
+        {
+        case States::StateID::PlayState:
+            state = new States::PlayState(window);
+        }
+    }
+
     SDL_RenderPresent(renderer);
 }
