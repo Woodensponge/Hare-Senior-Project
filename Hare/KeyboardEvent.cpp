@@ -6,10 +6,15 @@ using namespace Events::EventTypes;
 
 KeyboardEvent::KeyboardEvent()
 {
+    if (this->eventID == Events::EventID::KeyboardEvent)
+    {
+        std::cout << "WE GAMING" << std::endl;
+    }
 }
 
 KeyboardEvent::~KeyboardEvent()
 {
+    std::cout << "DESTRUCTOR CALLED" << std::endl;
 }
 
 void KeyboardEvent::Update(SDL_Event* event)

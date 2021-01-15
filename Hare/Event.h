@@ -7,16 +7,18 @@ namespace Events
 {
 	enum class EventID
 	{
-		KeyboardEvent,
-		None
+		None,
+		KeyboardEvent
 	};
 
 	struct Event
 	{
 		virtual ~Event();
 		virtual void Update(SDL_Event* event);
+		virtual void ResetOnUpdate();
 
 		EventID eventID = EventID::None;
+		bool resetsOnUpdate = false;
 	};
 }
 

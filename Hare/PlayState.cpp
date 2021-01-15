@@ -20,6 +20,8 @@ PlayState::~PlayState()
 		delete i;
 
     sprites.~vector();
+    //TODO: Destruct everything in the event vector
+    RemoveEvent(Events::EventID::KeyboardEvent);
 }
 
 void PlayState::Init()
@@ -31,7 +33,7 @@ void PlayState::Init()
     Level level = Level(window);
     level.~Level();
 
-    Events::EventHandler::AddEventToQueue(new Events::EventTypes::KeyboardEvent);
+    this->AddEvent(new Events::EventTypes::KeyboardEvent);
 }
 
 void PlayState::Update()
@@ -63,9 +65,9 @@ void PlayState::Update()
     }
     */
 
-    for (Sprite* i : sprites)
+    for (Sprite* sprite : sprites)
     {
-        i->Update();
-        SDL_RenderCopy(Application::renderer, i->texture, 0, i->size);
+        sprite->Update();
+        SDL_RenderCopy(Application::renderer, sprite->texture, 0, sprite->size);
     }
 }

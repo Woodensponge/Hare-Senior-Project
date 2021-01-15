@@ -1,13 +1,17 @@
 #ifndef STATE_H_
 #define STATE_H_
 
+#include "Event.h"
+
+#include <vector>
+
 namespace States
 {
 	//Defines what type of state is being used.
 	enum class StateID
 	{
-		PlayState,
-		NotSpecified
+		NotSpecified,
+		PlayState
 	};
 
 	enum class SubStateID
@@ -23,6 +27,12 @@ namespace States
 
 		virtual void Init();
 		virtual void Update();
+		
+		void AddEvent(Events::Event* event);
+		void RemoveEvent(Events::EventID eventID);
+		void RemoveAllEvents();
+
+		std::vector<Events::Event*> events;
 
 		StateID stateID	= StateID::NotSpecified;
 		StateID switchToState = StateID::NotSpecified;

@@ -3,6 +3,7 @@
 #include "Mouse.h"
 #include "PlayState.h"
 #include "EventHandler.h"
+#include "Event.h"
 
 #include <SDL_image.h>
 
@@ -54,6 +55,7 @@ int Application::Init()
     {
         std::string errorMessage = "SDL_Init has failed! SDL_ERROR: ";
         errorMessage += SDL_GetError();
+
         std::cout << errorMessage << std::endl;
         SDL_ShowSimpleMessageBox(0, "Error", errorMessage.c_str(), window);
 
@@ -63,6 +65,7 @@ int Application::Init()
     {
         std::string errorMessage = "IMG_Init has failed! ERROR: ";
         errorMessage += SDL_GetError();
+
         std::cout << errorMessage << std::endl;
         SDL_ShowSimpleMessageBox(0, "Error", errorMessage.c_str(), window);
 
@@ -122,7 +125,16 @@ void Application::Update()
     }
 
     state->Update();
+    
+    for (Events::Event* event : state->events)
+    {
+        if (event->resetsOnUpdate)
+        {
+            event->ResetOnUpdate();
+        }
+    }
 
+    //State switching
     if (state->switchToState != States::StateID::NotSpecified
         && state->switchToState != state->stateID)
     {
