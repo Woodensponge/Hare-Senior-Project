@@ -19,23 +19,25 @@ void State::Update()	//Leave the method definition empty since we don't need to 
 
 void State::AddEvent(Events::Event* event)
 {
-	this->events.push_back(event);
 	Events::EventHandler::AddEventToQueue(event);
 }
 
 void State::RemoveEvent(Events::EventID eventID)
 {
 	std::cout << "BEGIN REMOVING EVENT" << std::endl;
+	std::cout << Events::EventHandler::GetQueue().size() << std::endl;
 
-	for (Events::Event* event : this->events)
+	for (Events::Event* event : Events::EventHandler::GetQueue())
 	{
 		std::cout << "dumb more dumb" << std::endl;
 		std::cout << "dumb EVEN more dumb" << std::endl;
 
+		std::cout << event->EventIDToChar() << std::endl;
+
 		//TODO: I have no idea why this isn't working but it's not a priority right now i guess.
 		if (event->eventID == Events::EventID::KeyboardEvent)
 		{
-			std::cout << "Dumb" << std::endl;
+			std::cout << "Dumb ULTRA" << std::endl;
 			delete event;
 		}
 

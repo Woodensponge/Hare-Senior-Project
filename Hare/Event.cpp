@@ -11,6 +11,19 @@ void Event::Update(SDL_Event* event)	//Leave the method definition empty since w
 {										//add anything here.
 }
 
-void Events::Event::ResetOnUpdate()		//Leave the method definition empty since we don't need to
+void Event::ResetOnUpdate()				//Leave the method definition empty since we don't need to
 {										//add anything here.
+}
+
+const char* Event::EventIDToChar()
+{
+	//TODO: I love enum class but holy shit I hate doing shit like this. Gotta find a better way of
+	//doing this but it's not a priority at the moment.
+	switch (eventID)
+	{
+	case EventID::None:
+		return "None";
+	case EventID::KeyboardEvent:
+		return "KeyboardEvent";
+	}
 }

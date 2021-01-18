@@ -17,6 +17,8 @@ namespace Events
 		virtual void Update(SDL_Event* event);
 		virtual void ResetOnUpdate();
 
+		const char* EventIDToChar();
+
 		EventID eventID = EventID::None;
 		bool resetsOnUpdate = false;
 	};

@@ -9,6 +9,8 @@ namespace Events
 {
 	struct EventHandler
 	{
+		inline static std::vector<Event*> GetQueue() { return eventQueue; };
+
 		static void UpdateEvents(SDL_Event* event);
 		static void AddEventToQueue(Event* event);
 		static void DestroyQueue();

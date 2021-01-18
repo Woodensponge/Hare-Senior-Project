@@ -6,10 +6,7 @@ using namespace Events::EventTypes;
 
 KeyboardEvent::KeyboardEvent()
 {
-    if (this->eventID == Events::EventID::KeyboardEvent)
-    {
-        std::cout << "WE GAMING" << std::endl;
-    }
+    this->eventID = Events::EventID::KeyboardEvent;
 }
 
 KeyboardEvent::~KeyboardEvent()

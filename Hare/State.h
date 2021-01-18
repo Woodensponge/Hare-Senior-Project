@@ -32,8 +32,6 @@ namespace States
 		void RemoveEvent(Events::EventID eventID);
 		void RemoveAllEvents();
 
-		std::vector<Events::Event*> events;
-
 		StateID stateID	= StateID::NotSpecified;
 		StateID switchToState = StateID::NotSpecified;
 		SubStateID subStateID = SubStateID::NoSubstate;

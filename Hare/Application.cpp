@@ -126,7 +126,7 @@ void Application::Update()
 
     state->Update();
     
-    for (Events::Event* event : state->events)
+    for (Events::Event* event : Events::EventHandler::GetQueue())
     {
         if (event->resetsOnUpdate)
         {
