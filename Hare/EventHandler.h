@@ -13,6 +13,7 @@ namespace Events
 
 		static void UpdateEvents(SDL_Event* event);
 		static void AddEventToQueue(Event* event);
+		static void DestroyEvent(Event* event);
 		static void DestroyQueue();
 
 	private:

@@ -1,15 +1,4 @@
-﻿  Application.cpp
-  Event.cpp
-  EventHandler.cpp
-  KeyboardEvent.cpp
-  Main.cpp
+﻿  KeyboardEvent.cpp
   PlayState.cpp
-  Sprite.cpp
-C:\Users\Woodensponge\Documents\GitHub\Hare\Hare\TextureManager.h(14,2): warning C4091: 'static ': ignored on left of 'TextureManager' when no variable is declared
-  State.cpp
-  TextureManager.cpp
-C:\Users\Woodensponge\Documents\GitHub\Hare\Hare\TextureManager.h(14,2): warning C4091: 'static ': ignored on left of 'TextureManager' when no variable is declared
-  Timer.cpp
   Generating Code...
-C:\Users\Woodensponge\Documents\GitHub\Hare\Hare\Event.cpp(27): warning C4715: 'Events::Event::EventIDToChar': not all control paths return a value
   Hare.vcxproj -> C:\Users\Woodensponge\Documents\GitHub\Hare\bin\Win32\Debug\Hare.exe

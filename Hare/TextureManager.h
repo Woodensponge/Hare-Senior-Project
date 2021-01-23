@@ -4,7 +4,7 @@
 #include "Sprite.h"
 #include <vector>
 
-static struct TextureManager
+struct TextureManager
 {
 	static SDL_Texture* LoadTexture(const char* imagePath);
 	static SDL_Texture* LoadTextureFromSurface(SDL_Surface* texture);

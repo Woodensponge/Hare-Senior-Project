@@ -26,4 +26,6 @@ const char* Event::EventIDToChar()
 	case EventID::KeyboardEvent:
 		return "KeyboardEvent";
 	}
+
+	return "EventID not specifed in EventIDToChar()";
 }

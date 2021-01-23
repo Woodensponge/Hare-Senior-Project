@@ -23,8 +23,6 @@ namespace Events
 			void Update(SDL_Event* event);
 
 			static PlayerControls currentAction[5];
-
-			EventID eventID = EventID::KeyboardEvent;
 		};
 	}
 }

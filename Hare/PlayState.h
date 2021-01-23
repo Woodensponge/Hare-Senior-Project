@@ -3,6 +3,7 @@
 
 #include "State.h"
 #include "Sprite.h"
+#include "Level.h"
 
 #include <SDL.h>
 #include <vector>
@@ -23,6 +24,7 @@ namespace States
 
 		std::vector<Sprite*> sprites;
 		SDL_Window* window;
+		Level level;
 	};
 }
 

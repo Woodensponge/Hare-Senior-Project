@@ -8,7 +8,7 @@
 using namespace States;
 
 PlayState::PlayState(SDL_Window* window)
-	: window(window)
+	: window(window), level(window)
 {
 	SDL_GetWindowSize(window, &windowWidth, &windowHeight);
     stateID = StateID::PlayState;
@@ -19,9 +19,8 @@ PlayState::~PlayState()
     for (Sprite* i : sprites)
 		delete i;
 
+    level.~Level();
     sprites.~vector();
-    //TODO: Destruct everything in the event vector
-    RemoveEvent(Events::EventID::KeyboardEvent);
 }
 
 void PlayState::Init()
@@ -29,9 +28,6 @@ void PlayState::Init()
     sprites.push_back(new Sprite("Assets/Player-Simple.png"));
     sprites.back()->SetSize(50, 50);
 
-    //Level testing
-    Level level = Level(window);
-    level.~Level();
 
     this->AddEvent(new Events::EventTypes::KeyboardEvent);
 }

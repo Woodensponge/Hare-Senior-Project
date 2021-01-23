@@ -11,7 +11,7 @@ KeyboardEvent::KeyboardEvent()
 
 KeyboardEvent::~KeyboardEvent()
 {
-    std::cout << "DESTRUCTOR CALLED" << std::endl;
+    std::cout << "KEYBOARD EVENT DESTRUCTOR CALLED" << std::endl;
 }
 
 void KeyboardEvent::Update(SDL_Event* event)
