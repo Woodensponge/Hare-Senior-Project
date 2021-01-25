@@ -22,8 +22,6 @@ struct Level
 	Uint32 height;
 
 	//Simulation sim;
-	std::vector<std::vector<Sprite*>> tiles;	//Tiles will be a vector made of sprites for now. Will be replaced with
-												//a "TileSet" object.
 };
 
 

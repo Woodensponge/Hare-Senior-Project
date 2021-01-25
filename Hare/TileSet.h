@@ -1,10 +1,20 @@
 #ifndef TILESET_H_
 #define TILESET_H_
 
+#include "Sprite.h"
+
+#include <vector>
+
 struct TileSet
 {
-	static void LoadMap(const char* rawMap[]);
-	static void RenderMap();
+	TileSet();
+	~TileSet();
+
+	void LoadMap(const char* rawMap[]);
+	void RenderMap();
+
+	std::vector<std::vector<Sprite*>> tiles;	//Tiles will be a vector made of sprites for now.
+
 private:
 	
 };
