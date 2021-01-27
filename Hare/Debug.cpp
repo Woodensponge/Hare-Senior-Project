@@ -3,10 +3,14 @@
 #include <iostream>
 #include <string>
 
-template<class T>
-void Debug::Log(T arg)
+void Debug::Log(const std::any arg)
 {
-	std::string string = arg;
-	std::cout << string << std::endl;
-	//TODO: Add file logging
+	std::string argString;
+
+	std::any_cast(arg);
+	
+	if (isnan(arg))
+	{
+		argString.append();
+	}
 }

@@ -1,12 +1,12 @@
 #ifndef DEBUG_H_
 #define DEBUG_H_
 
+#include <iostream>
 #include <any>
 
 struct Debug
 {
-	template<class T>
-	static void Log(T arg);
+	static void Log(const std::any arg);
 };
 
 #endif
