@@ -7,6 +7,8 @@
 
 int main()
 {
+    //TODO: Do some JSON Testing before starting up the SDL stuff.
+
     Application* app = new Application("Hare", WINDOW_WIDTH, WINDOW_HEIGHT, 0, 60, true);
     
     int initReturnCode = app->Init();
@@ -16,8 +18,6 @@ int main()
         delete app;
         return initReturnCode;
     }
-
-    //TODO: Work on the Timer class and make framerate calculation dependant on that class.
 
     //Setup variables to calculate Delta Time for framerate
     Uint32 lastTicks = SDL_GetTicks();
