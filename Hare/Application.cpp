@@ -98,7 +98,7 @@ void Application::Update()
     SDL_SetRenderDrawColor(renderer, 170, 170, 170, 255);
 
     Mouse::UpdateMousePosition();
-    std::cout << MOUSE_X << " : " << MOUSE_Y << std::endl;
+    std::cout << MOUSE_X() << " : " << MOUSE_Y() << std::endl;
 
     //Game state handling.
     switch (gameState)

@@ -1,8 +1,8 @@
 #ifndef MOUSE_H_
 #define MOUSE_H_
 
-#define MOUSE_X Mouse::GetMouseX()
-#define MOUSE_Y Mouse::GetMouseY()
+#define MOUSE_X() Mouse::GetMouseX()
+#define MOUSE_Y() Mouse::GetMouseY()
 
 struct Mouse 
 {
