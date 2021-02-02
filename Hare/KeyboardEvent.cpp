@@ -1,4 +1,5 @@
 #include "KeyboardEvent.h"
+#include "Debug.h"
 
 #include <iostream>
 
@@ -11,7 +12,7 @@ KeyboardEvent::KeyboardEvent()
 
 KeyboardEvent::~KeyboardEvent()
 {
-    std::cout << "KEYBOARD EVENT DESTRUCTOR CALLED" << std::endl;
+    DEBUG_LOG << "KEYBOARD EVENT DESTRUCTOR CALLED";
 }
 
 void KeyboardEvent::Update(SDL_Event* event)
@@ -22,16 +23,16 @@ void KeyboardEvent::Update(SDL_Event* event)
         switch (event->key.keysym.sym)
         {
         case SDLK_LEFT:
-            std::cout << "KEYLEFT" << std::endl;
+            DEBUG_LOG_DEBUGONLY << "KEYLEFT";
             break;
         case SDLK_RIGHT:
-            std::cout << "KEYRIGHT" << std::endl;
+            DEBUG_LOG_DEBUGONLY << "KEYRIGHT";
             break;
         case SDLK_UP:
-            std::cout << "KEYUP" << std::endl;
+            DEBUG_LOG_DEBUGONLY << "KEYUP";
             break;
         case SDLK_DOWN:
-            std::cout << "KEYDOWN" << std::endl;
+            DEBUG_LOG_DEBUGONLY << "KEYDOWN";
             break;
         }
         break;

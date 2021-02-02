@@ -4,6 +4,7 @@
 #include "PlayState.h"
 #include "EventHandler.h"
 #include "Event.h"
+#include "Debug.h"
 
 #include <SDL_image.h>
 
@@ -56,7 +57,7 @@ int Application::Init()
         std::string errorMessage = "SDL_Init has failed! SDL_ERROR: ";
         errorMessage += SDL_GetError();
 
-        std::cout << errorMessage << std::endl;
+        DEBUG_LOG << errorMessage;
         SDL_ShowSimpleMessageBox(0, "Error", errorMessage.c_str(), window);
 
         return -1;
@@ -66,7 +67,7 @@ int Application::Init()
         std::string errorMessage = "IMG_Init has failed! ERROR: ";
         errorMessage += SDL_GetError();
 
-        std::cout << errorMessage << std::endl;
+        DEBUG_LOG << errorMessage;
         SDL_ShowSimpleMessageBox(0, "Error", errorMessage.c_str(), window);
 
         return -2;
@@ -98,7 +99,7 @@ void Application::Update()
     SDL_SetRenderDrawColor(renderer, 170, 170, 170, 255);
 
     Mouse::UpdateMousePosition();
-    std::cout << MOUSE_X() << " : " << MOUSE_Y() << std::endl;
+    DEBUG_LOG_DEBUGONLY << MOUSE_X() << " : " << MOUSE_Y();
 
     //Game state handling.
     switch (gameState)

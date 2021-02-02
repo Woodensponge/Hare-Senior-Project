@@ -6,9 +6,9 @@
 #include <string>
 
 //LOGGING MACROS
-#define DEBUG_LOG(argument) Debug::Log() << argument	
-#define DEBUG_LOG_DEBUGONLY(argument) Debug::Log(Debug::LogEnum::DebugOnly) << argument
-#define DEBUG_LOG_RELEASEONLY(argument) Debug::Log(Debug::LogEnum::ReleaseOnly) << argument	
+#define DEBUG_LOG Debug::Log()
+#define DEBUG_LOG_DEBUGONLY Debug::Log(Debug::LogEnum::DebugOnly)
+#define DEBUG_LOG_RELEASEONLY Debug::Log(Debug::LogEnum::ReleaseOnly)	
 
 namespace Debug
 {
