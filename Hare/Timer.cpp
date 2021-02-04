@@ -1,10 +1,10 @@
 #include "Timer.h"
-#include "Application.h"
 
 #include <SDL.h>
 #include <iostream> //For debugging purposes
 
 double Timer::deltaTime = 0;
+int Timer::fps = 60;
 
 Uint32 pastTicks = 0;
 Uint32 presentTicks = 0;
@@ -12,7 +12,7 @@ Uint32 presentTicks = 0;
 double Timer::GetDeltaTime(bool isIndependentOnFramerate)
 {
 	if (isIndependentOnFramerate)
-		return GetDeltaTime() * Application::fps;
+		return GetDeltaTime() * fps;
 	
 	return GetDeltaTime();
 }

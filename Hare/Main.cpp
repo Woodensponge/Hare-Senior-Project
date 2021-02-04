@@ -15,7 +15,7 @@ int main()
     //TODO: Do some JSON Testing before starting up the SDL stuff.
 
     Application* app = new Application("Hare", WINDOW_WIDTH, WINDOW_HEIGHT, 0, 60, true);
-    
+
     int initReturnCode = app->Init();
 
     if (initReturnCode != 0)
@@ -42,9 +42,9 @@ int main()
         //Calculate Delta Time for framerate
         frameTime = SDL_GetTicks() - lastTicks;
         if (app->isCapped)
-            if ((1000 / app->fps) > frameTime)
+            if ((1000 / Timer::fps) > frameTime)
             {
-                SDL_Delay((1000 / app->fps) - frameTime);
+                SDL_Delay((1000 / Timer::fps) - frameTime);
             }
     }
 

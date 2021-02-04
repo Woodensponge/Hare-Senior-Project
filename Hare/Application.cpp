@@ -5,13 +5,13 @@
 #include "EventHandler.h"
 #include "Event.h"
 #include "Debug.h"
+#include "Timer.h"
 
 #include <SDL_image.h>
 
 //Static member definitions...
 SDL_Event Application::event;
 SDL_Renderer* Application::renderer = nullptr;
-int Application::fps = 60;
 GameState Application::gameState = GameState::None;
 
 //Constructor for Application. Sets members from parameters.
@@ -32,7 +32,7 @@ Application::Application
     this->windowWidth = windowWidth;
     this->windowHeight = windowHeight;
     this->flags = flags;
-    this->fps = fps;
+    Timer::fps = fps;
     this->isCapped = isCapped;
 
     this->state = new States::State();
