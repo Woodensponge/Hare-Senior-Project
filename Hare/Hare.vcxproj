@@ -180,6 +180,7 @@
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="Event.cpp" />
     <ClCompile Include="EventHandler.cpp" />
+    <ClCompile Include="JsonManager.cpp" />
     <ClCompile Include="KeyboardEvent.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="Debug.cpp" />
@@ -203,6 +204,7 @@
     <ClInclude Include="Cell.h" />
     <ClInclude Include="Event.h" />
     <ClInclude Include="EventHandler.h" />
+    <ClInclude Include="JsonManager.h" />
     <ClInclude Include="KeyboardEvent.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="Debug.h" />

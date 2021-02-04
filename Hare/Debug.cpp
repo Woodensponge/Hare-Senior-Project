@@ -34,6 +34,6 @@ Log::~Log()
 {
 	if (canLog)
 	{
-		std::cout << _buffer.str() << std::endl;
+		std::cout << oss.str() << std::endl;
 	}
 }

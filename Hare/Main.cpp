@@ -1,8 +1,12 @@
 #include "Application.h"
 #include "Timer.h"
 #include "Debug.h"
+#include "JsonManager.h"
 
 #include <json/json.h>
+
+#include <fstream>
+#include <iostream>
 
 #define WINDOW_WIDTH 600
 #define WINDOW_HEIGHT 480
@@ -12,6 +16,9 @@ int main()
     DEBUG_LOG << "Program starting up.";
     DEBUG_LOG_DEBUGONLY << "(DEBUG BUILD)";
     DEBUG_LOG_RELEASEONLY << "(RELEASE BUILD)";
+
+    Json::Value jsonFile = JsonManager::OpenJson("Assets/test.json");
+    DEBUG_LOG_DEBUGONLY << jsonFile;
 
     //TODO: Do some JSON Testing before starting up the SDL stuff.
 

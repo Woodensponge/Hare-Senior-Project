@@ -29,11 +29,11 @@ namespace Debug
 		template <typename T>
 		Log& operator<<(T const& value)
 		{
-			_buffer << value;
+			oss << value;
 			return *this;
 		}
 	private:
-		std::ostringstream _buffer;
+		std::ostringstream oss;
 		bool canLog = true;
 	};
 }

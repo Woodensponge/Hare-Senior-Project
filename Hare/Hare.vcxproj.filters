@@ -64,6 +64,9 @@
     <ClCompile Include="PlayerController.cpp">
       <Filter>Source files\Events\Event Types</Filter>
     </ClCompile>
+    <ClCompile Include="JsonManager.cpp">
+      <Filter>Source files\Core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -125,6 +128,9 @@
     </ClInclude>
     <ClInclude Include="PlayerController.h">
       <Filter>Header files\Events\Event Types</Filter>
+    </ClInclude>
+    <ClInclude Include="JsonManager.h">
+      <Filter>Header files\Core</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
