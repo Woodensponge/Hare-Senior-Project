@@ -23,6 +23,4 @@ C:\Users\Woodensponge\Documents\GitHub\Hare\Hare\EventHandler.cpp(21,20): warnin
   Compiling...
   Timer.cpp
   Generating Code...
-     Creating library C:\Users\Woodensponge\Documents\GitHub\Hare\bin\Win32\Debug\Hare.lib and object C:\Users\Woodensponge\Documents\GitHub\Hare\bin\Win32\Debug\Hare.exp
-Main.obj : error LNK2019: unresolved external symbol "public: __thiscall Json::Value::Value(enum Json::ValueType)" (??0Value@Json@@QAE@W4ValueType@1@@Z) referenced in function "public: void __thiscall Json::Value::`default constructor closure'(void)" (??_FValue@Json@@QAEXXZ)
-C:\Users\Woodensponge\Documents\GitHub\Hare\bin\Win32\Debug\Hare.exe : fatal error LNK1120: 1 unresolved externals
+  Hare.vcxproj -> C:\Users\Woodensponge\Documents\GitHub\Hare\bin\Win32\Debug\Hare.exe

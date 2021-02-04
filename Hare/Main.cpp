@@ -2,6 +2,8 @@
 #include "Timer.h"
 #include "Debug.h"
 
+#include <json/json.h>
+
 #define WINDOW_WIDTH 600
 #define WINDOW_HEIGHT 480
 
