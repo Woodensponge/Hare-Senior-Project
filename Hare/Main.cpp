@@ -1,4 +1,3 @@
-#include <iostream>
 #include "Application.h"
 #include "Timer.h"
 #include "Debug.h"

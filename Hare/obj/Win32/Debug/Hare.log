@@ -1,5 +1,28 @@
 ﻿  Application.cpp
+  Cell.cpp
+  Event.cpp
+  EventHandler.cpp
+C:\Users\Woodensponge\Documents\GitHub\Hare\Hare\EventHandler.cpp(21,20): warning C4018: '<': signed/unsigned mismatch
+  KeyboardEvent.cpp
+  Level.cpp
+  Debug.cpp
+  Main.cpp
+  Mouse.cpp
+  Music.cpp
+  MusicManager.cpp
+  PlayerController.cpp
   PlayState.cpp
+  Simulation.cpp
+  Sound.cpp
+  SoundManager.cpp
+  Sprite.cpp
   State.cpp
+  TextureManager.cpp
+  TileSet.cpp
   Generating Code...
-  Hare.vcxproj -> C:\Users\Woodensponge\Documents\GitHub\Hare\bin\Win32\Debug\Hare.exe
+  Compiling...
+  Timer.cpp
+  Generating Code...
+     Creating library C:\Users\Woodensponge\Documents\GitHub\Hare\bin\Win32\Debug\Hare.lib and object C:\Users\Woodensponge\Documents\GitHub\Hare\bin\Win32\Debug\Hare.exp
+Main.obj : error LNK2019: unresolved external symbol "public: __thiscall Json::Value::Value(enum Json::ValueType)" (??0Value@Json@@QAE@W4ValueType@1@@Z) referenced in function "public: void __thiscall Json::Value::`default constructor closure'(void)" (??_FValue@Json@@QAEXXZ)
+C:\Users\Woodensponge\Documents\GitHub\Hare\bin\Win32\Debug\Hare.exe : fatal error LNK1120: 1 unresolved externals

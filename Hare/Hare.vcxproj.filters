@@ -61,6 +61,9 @@
     <ClCompile Include="PlayState.cpp">
       <Filter>Source files\States\State Types</Filter>
     </ClCompile>
+    <ClCompile Include="PlayerController.cpp">
+      <Filter>Source files\Events\Event Types</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -119,6 +122,9 @@
     </ClInclude>
     <ClInclude Include="PlayState.h">
       <Filter>Header files\States\State Types</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerController.h">
+      <Filter>Header files\Events\Event Types</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
