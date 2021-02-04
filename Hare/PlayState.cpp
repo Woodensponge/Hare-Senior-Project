@@ -6,6 +6,7 @@
 #include "KeyboardEvent.h"
 
 using namespace States;
+using namespace Events;
 
 PlayState::PlayState(SDL_Window* window)
 	: window(window), level(window)
@@ -29,7 +30,7 @@ void PlayState::Init()
     sprites.back()->SetSize(50, 50);
 
 
-    this->AddEvent(new Events::EventTypes::KeyboardEvent);
+    this->AddEvent(new EventTypes::KeyboardEvent);
 }
 
 void PlayState::Update()

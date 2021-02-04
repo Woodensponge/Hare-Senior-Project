@@ -3,6 +3,7 @@
 
 #include "Event.h"
 
+//TODO: Considering the removal of KeyboardEvent
 namespace Events
 {
 	namespace EventTypes
@@ -15,6 +16,7 @@ namespace Events
 			MoveDown,
 			NotMoving
 		};
+
 		struct KeyboardEvent : Event
 		{
 			KeyboardEvent();

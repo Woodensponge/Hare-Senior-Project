@@ -8,7 +8,8 @@ namespace Events
 	enum class EventID
 	{
 		None,
-		KeyboardEvent
+		KeyboardEvent,
+		PlayerController
 	};
 
 	struct Event

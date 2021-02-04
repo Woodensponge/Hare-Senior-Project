@@ -1,18 +1,21 @@
+//TODO: Considering the removal of KeyboardEvent
+
 #include "KeyboardEvent.h"
 #include "Debug.h"
 
 #include <iostream>
 
+using namespace Events;
 using namespace Events::EventTypes;
 
 KeyboardEvent::KeyboardEvent()
 {
-    this->eventID = Events::EventID::KeyboardEvent;
+    this->eventID = EventID::KeyboardEvent;
 }
 
 KeyboardEvent::~KeyboardEvent()
 {
-    DEBUG_LOG << "KEYBOARD EVENT DESTRUCTOR CALLED";
+    DEBUG_LOG_DEBUGONLY << "KEYBOARD EVENT DESTRUCTOR CALLED";
 }
 
 void KeyboardEvent::Update(SDL_Event* event)
