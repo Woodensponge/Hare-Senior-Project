@@ -19,8 +19,7 @@ int main()
 
     Json::Value jsonFile = JsonManager::OpenJson("Assets/test.json");
     DEBUG_LOG_DEBUGONLY << jsonFile;
-
-    //TODO: Do some JSON Testing before starting up the SDL stuff.
+    jsonFile.~Value();
 
     Application* app = new Application("Hare", WINDOW_WIDTH, WINDOW_HEIGHT, 0, 60, true);
 
