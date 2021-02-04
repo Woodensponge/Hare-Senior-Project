@@ -9,7 +9,9 @@ namespace Events
 	{
 		struct PlayerController : Event
 		{
-
+			PlayerController();
+			~PlayerController();
+			void Update(SDL_Event* event);
 		};
 	}
 }
