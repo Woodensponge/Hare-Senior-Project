@@ -7,6 +7,7 @@
 #include <iostream>
 #include <vector>
 #include <SDL.h>
+
 #undef /*fucking*/ main
 
 enum class GameState
