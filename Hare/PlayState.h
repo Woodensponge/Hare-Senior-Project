@@ -17,7 +17,6 @@ namespace States
 
 		void Init();
 		void Update();
-
 	private:
 		int windowWidth;
 		int windowHeight;

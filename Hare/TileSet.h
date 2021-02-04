@@ -13,10 +13,7 @@ struct TileSet
 	void LoadMap(const char* rawMap[]);
 	void RenderMap();
 
-	std::vector<std::vector<Sprite*>> tiles;	//Tiles will be a vector made of sprites for now.
-
-private:
-	
+	std::vector<std::vector<Sprite*>> tiles;	//Tiles will be a vector made of sprites for now.	
 };
 
 #endif
