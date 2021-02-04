@@ -12,4 +12,4 @@
 ## Build Dependencies
  Most of the libraries (such as SDL2) are linked with the project via NuGet, but some packages need to be installed via [vcpkg](https://github.com/Microsoft/vcpkg/).
 ### List of Dependencies (for vcpkg)
-* [jsoncpp](https://github.com/open-source-parsers/jsoncpp)
+* [jsoncpp](https://github.com/open-source-parsers/jsoncpp) (Make sure to install the x64 library if necessary)
