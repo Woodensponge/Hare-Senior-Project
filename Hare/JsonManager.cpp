@@ -6,16 +6,19 @@
 
 Json::Value JsonManager::OpenJson(const char* arg)
 {
-    Json::Value jsonFile;
+    Json::Value jsonFile;                                       //Create a Json::Value object
 
-    std::ifstream ifs;
+    std::ifstream ifs;                                          //Open a file with the ifstream
     ifs.open(arg);
 
-    Json::CharReaderBuilder builder;
+    if (!ifs.good())                                            //If the file doesn't exist...
+        return Json::Value();                                   //Return an empty object (all members are null)
 
-    builder["collectComments"] = true;
-    JSONCPP_STRING errs;
-    if (!parseFromStream(builder, ifs, &jsonFile, &errs)) {
+    Json::CharReaderBuilder builder;                            //Create a jsoncpp builder
+
+    builder["collectComments"] = true;                          //Collect metadata
+    JSONCPP_STRING errs;                                        //Collect any errors
+    if (!parseFromStream(builder, ifs, &jsonFile, &errs)) {     //Parse from the stream (jsoncpp)
         DEBUG_LOG << errs;
         return -1;
     }

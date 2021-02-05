@@ -4,6 +4,7 @@
 #include <iostream>
 #include <sstream>
 #include <string>
+#include <SDL_video.h>
 
 //LOGGING MACROS
 #define DEBUG_LOG Debug::Log()
@@ -35,6 +36,11 @@ namespace Debug
 	private:
 		std::ostringstream oss;
 		bool canLog = true;
+	};
+
+	struct Error
+	{
+		static void ShowSDLMessageBox(const char* errorMessage, SDL_Window* window);
 	};
 }
 

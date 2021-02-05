@@ -54,22 +54,12 @@ int Application::Init()
 {
     if (SDL_Init(SDL_INIT_VIDEO))
     {
-        std::string errorMessage = "SDL_Init has failed! SDL_ERROR: ";
-        errorMessage += SDL_GetError();
-
-        DEBUG_LOG << errorMessage;
-        SDL_ShowSimpleMessageBox(0, "Error", errorMessage.c_str(), window);
-
+        Debug::Error::ShowSDLMessageBox("SDL_Init has failed!", window);
         return -1;
     }
     if (!IMG_Init(IMG_INIT_PNG))
     {
-        std::string errorMessage = "IMG_Init has failed! ERROR: ";
-        errorMessage += SDL_GetError();
-
-        DEBUG_LOG << errorMessage;
-        SDL_ShowSimpleMessageBox(0, "Error", errorMessage.c_str(), window);
-
+        Debug::Error::ShowSDLMessageBox("IMG_Init has failed!", window);
         return -2;
     }
 

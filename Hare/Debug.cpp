@@ -1,3 +1,4 @@
+#include "Application.h"
 #include "Debug.h"
 
 #include <SDL.h>
@@ -36,4 +37,13 @@ Log::~Log()
 	{
 		std::cout << oss.str() << std::endl;
 	}
+}
+
+void Error::ShowSDLMessageBox(const char* errorMessage, SDL_Window* window)
+{
+	std::ostringstream oss;
+	oss << errorMessage << "\nSDL Error: " << SDL_GetError();
+
+	DEBUG_LOG << oss.str().c_str();
+	SDL_ShowSimpleMessageBox(0, "Error", oss.str().c_str(), window);
 }

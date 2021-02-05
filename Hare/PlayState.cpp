@@ -4,6 +4,7 @@
 #include "Level.h"
 #include "EventHandler.h"
 #include "KeyboardEvent.h"
+#include "TextureManager.h"
 
 using namespace States;
 using namespace Events;
@@ -64,7 +65,6 @@ void PlayState::Update()
 
     for (Sprite* sprite : sprites)
     {
-        sprite->Update();
-        SDL_RenderCopy(Application::renderer, sprite->texture, 0, sprite->size);
+        TextureManager::RenderSprite(sprite);
     }
 }

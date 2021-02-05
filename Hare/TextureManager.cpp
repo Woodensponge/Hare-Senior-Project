@@ -18,3 +18,9 @@ SDL_Texture* TextureManager::LoadTextureFromSurface(SDL_Surface* surface)
 
 	return texture;
 }
+
+void TextureManager::RenderSprite(Sprite* sprite)
+{
+	sprite->Update();
+	SDL_RenderCopy(Application::renderer, sprite->texture, 0, sprite->size);
+}
