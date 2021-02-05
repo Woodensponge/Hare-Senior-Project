@@ -40,7 +40,7 @@ namespace Debug
 
 	struct Error
 	{
-		static void ShowSDLMessageBox(const char* errorMessage, SDL_Window* window);
+		static void ShowSDLMessageBox(const char* errorMessage);
 	};
 }
 

@@ -21,7 +21,6 @@ namespace Events
 		const char* EventIDToChar();
 
 		EventID eventID = EventID::None;
-		bool resetsOnUpdate = false;
 	};
 }
 

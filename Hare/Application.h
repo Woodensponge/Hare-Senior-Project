@@ -33,6 +33,7 @@ struct Application
 
 	int Init();
 	void Update();
+	inline static SDL_Window* GetWindow() { return window; };
 
 	const char* windowTitle;
 	Uint32 flags;
@@ -47,7 +48,7 @@ struct Application
 	static SDL_Renderer* renderer;
 	static SDL_Event event;
 private:
-	SDL_Window* window;
+	static SDL_Window* window;
 	std::vector<Sprite*> sprites;
 
 	States::State* state;

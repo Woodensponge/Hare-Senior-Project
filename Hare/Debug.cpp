@@ -39,11 +39,11 @@ Log::~Log()
 	}
 }
 
-void Error::ShowSDLMessageBox(const char* errorMessage, SDL_Window* window)
+void Error::ShowSDLMessageBox(const char* errorMessage)
 {
 	std::ostringstream oss;
 	oss << errorMessage << "\nSDL Error: " << SDL_GetError();
 
 	DEBUG_LOG << oss.str().c_str();
-	SDL_ShowSimpleMessageBox(0, "Error", oss.str().c_str(), window);
+	SDL_ShowSimpleMessageBox(0, "Error", oss.str().c_str(), Application::GetWindow());
 }

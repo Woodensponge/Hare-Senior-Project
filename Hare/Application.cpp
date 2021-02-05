@@ -12,6 +12,7 @@
 //Static member definitions...
 SDL_Event Application::event;
 SDL_Renderer* Application::renderer = nullptr;
+SDL_Window* Application::window = nullptr;
 GameState Application::gameState = GameState::None;
 
 //Constructor for Application. Sets members from parameters.
@@ -24,18 +25,10 @@ Application::Application
     int fps, 
     bool isCapped
 )
+    :windowTitle(title), windowWidth(windowWidth), windowHeight(windowHeight), flags(flags),
+    isCapped(isCapped), state(new States::State())
 {
-    this->window = 0;
-    this->renderer = 0;
-
-    this->windowTitle = title;
-    this->windowWidth = windowWidth;
-    this->windowHeight = windowHeight;
-    this->flags = flags;
     Timer::fps = fps;
-    this->isCapped = isCapped;
-
-    this->state = new States::State();
 }
 
 //Deconstructor. Completely handles destruction for this object.
@@ -54,12 +47,12 @@ int Application::Init()
 {
     if (SDL_Init(SDL_INIT_VIDEO))
     {
-        Debug::Error::ShowSDLMessageBox("SDL_Init has failed!", window);
+        Debug::Error::ShowSDLMessageBox("SDL_Init has failed!");
         return -1;
     }
     if (!IMG_Init(IMG_INIT_PNG))
     {
-        Debug::Error::ShowSDLMessageBox("IMG_Init has failed!", window);
+        Debug::Error::ShowSDLMessageBox("IMG_Init has failed!");
         return -2;
     }
 
@@ -119,27 +112,25 @@ void Application::Update()
     
     for (Events::Event* event : Events::EventHandler::GetQueue())
     {
-        if (event->resetsOnUpdate)
-        {
-            event->ResetOnUpdate();
-        }
+        event->ResetOnUpdate();
     }
 
     //State switching
     if (state->switchToState != States::StateID::NotSpecified
         && state->switchToState != state->stateID)
     {
+        //Keep the desired state to switch in this scope and deconstruct the state pointer
         States::StateID switchToState = state->switchToState;
         state->~State();
 
-        Events::EventHandler::DestroyQueue();
+        Events::EventHandler::DestroyQueue();           //Destroy all events in event queue
 
-        switch (switchToState)
+        switch (switchToState)                          //Switch to desired state
         {
-        case States::StateID::PlayState:
-            state = new States::PlayState(window);
-            state->Init();
+        case States::StateID::PlayState:                //If the states ID is "PlayState"...
+            state = new States::PlayState(window);      //Create a new PlayState
         }
+        state->Init();
     }
 
     SDL_RenderPresent(renderer);
