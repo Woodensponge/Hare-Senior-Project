@@ -5,6 +5,7 @@
 #include "EventHandler.h"
 #include "KeyboardEvent.h"
 #include "TextureManager.h"
+#include "Debug.h"
 
 using namespace States;
 using namespace Events;
@@ -32,6 +33,8 @@ void PlayState::Init()
 
     this->AddEvent(new EventTypes::KeyboardEvent);
     level = Level("Assets/Tilemaps/Level-Test-Tilemap.json");
+    DEBUG_LOG << "LEVEL WIDTH: " << level.width << " LEVEL HEIGHT: " << level.height;
+    level.tileMap.RenderMap();
 }
 
 void PlayState::Update()

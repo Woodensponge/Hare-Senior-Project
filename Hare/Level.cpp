@@ -29,8 +29,6 @@ Level::Level(const char* tileMapJsonFile)
 	tileMap = TileMap(tileMapJsonFile);
 	width = tileMap.GetGeneralWidth();
 	height = tileMap.GetGeneralHeight();
-
-	DEBUG_LOG << "LEVEL WIDTH: " << width << " LEVEL HEIGHT: " << height;
 }
 
 Level::~Level()

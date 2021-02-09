@@ -25,7 +25,7 @@ struct TileMap
 		int height = 0;
 		int x = 0;
 		int y = 0;
-		const char* imageName = "";
+		int tileID = 0;
 	};
 
 private:
