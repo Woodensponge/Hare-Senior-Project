@@ -32,7 +32,7 @@ void PlayState::Init()
     sprites.back()->SetSize(50, 50);
 
     this->AddEvent(new EventTypes::KeyboardEvent);
-    level = Level("Assets/Tilemaps/Level-Test-Tilemap.json");
+    level = Level("Assets/Levels/Level-Test.json");
     DEBUG_LOG << "LEVEL WIDTH: " << level.width << " LEVEL HEIGHT: " << level.height;
     level.tileMap.RenderMap();
 }

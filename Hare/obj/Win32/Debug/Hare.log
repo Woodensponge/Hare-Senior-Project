@@ -1,7 +1,4 @@
-﻿  Application.cpp
-  Level.cpp
+﻿  JsonManager.cpp
   PlayState.cpp
-  TileMap.cpp
-C:\Users\Woodensponge\Documents\GitHub\Hare\Hare\TileMap.cpp(36,20): warning C4018: '<': signed/unsigned mismatch
   Generating Code...
   Hare.vcxproj -> C:\Users\Woodensponge\Documents\GitHub\Hare\bin\Win32\Debug\Hare.exe

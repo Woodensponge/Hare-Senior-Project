@@ -1,5 +1,6 @@
 #include "Level.h"
 #include "Debug.h"
+#include "JsonManager.h"
 
 Level::Level(int width, int height)
 	:width(width), height(height)
@@ -24,9 +25,10 @@ Level::Level(SDL_Window* window, const char* tileMapJsonFile)
 	tileMap = TileMap(tileMapJsonFile);
 }
 
-Level::Level(const char* tileMapJsonFile)
+Level::Level(const char* levelFile)
 {
-	tileMap = TileMap(tileMapJsonFile);
+	Json::Value levelFileJson = JsonManager::OpenJson(levelFile);
+	tileMap = TileMap(levelFileJson["tilemap"].asCString());
 	width = tileMap.GetGeneralWidth();
 	height = tileMap.GetGeneralHeight();
 }

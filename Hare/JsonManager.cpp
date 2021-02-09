@@ -12,8 +12,10 @@ Json::Value JsonManager::OpenJson(const char* arg)
     ifs.open(arg);
 
     if (!ifs.good())                                            //If the file doesn't exist...
+    {
+        DEBUG_LOG << "JSON FILE CANNOT BE FOUND! RETURNING NULL!";
         return Json::Value();                                   //Return an empty object (all members are null)
-
+    }
     Json::CharReaderBuilder builder;                            //Create a jsoncpp builder
 
     builder["collectComments"] = true;                          //Collect metadata
