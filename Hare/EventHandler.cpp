@@ -18,7 +18,7 @@ void EventHandler::AddEventToQueue(Event* event)
 void Events::EventHandler::DestroyEvent(Event* event)
 {
 	//TODO: Finding a good cpp style right this fucking instant
-	for (int i = 0; i < eventQueue.size(); i++)
+	for (unsigned int i = 0; i < eventQueue.size(); i++)
 	{
 		if (eventQueue[i] == event)
 		{

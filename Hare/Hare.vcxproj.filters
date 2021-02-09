@@ -25,9 +25,6 @@
     <ClCompile Include="TextureManager.cpp">
       <Filter>Source files\Rendering</Filter>
     </ClCompile>
-    <ClCompile Include="TileSet.cpp">
-      <Filter>Source files\World</Filter>
-    </ClCompile>
     <ClCompile Include="Timer.cpp">
       <Filter>Source files\Core</Filter>
     </ClCompile>
@@ -67,6 +64,9 @@
     <ClCompile Include="JsonManager.cpp">
       <Filter>Source files\Core</Filter>
     </ClCompile>
+    <ClCompile Include="TileMap.cpp">
+      <Filter>Source files\World</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -89,9 +89,6 @@
     </ClInclude>
     <ClInclude Include="TextureManager.h">
       <Filter>Header files\Rendering</Filter>
-    </ClInclude>
-    <ClInclude Include="TileSet.h">
-      <Filter>Header files\World</Filter>
     </ClInclude>
     <ClInclude Include="Timer.h">
       <Filter>Header files\Core</Filter>
@@ -131,6 +128,9 @@
     </ClInclude>
     <ClInclude Include="JsonManager.h">
       <Filter>Header files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="TileMap.h">
+      <Filter>Header files\World</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

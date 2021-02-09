@@ -30,8 +30,8 @@ void PlayState::Init()
     sprites.push_back(new Sprite("Assets/Player-Simple.png"));
     sprites.back()->SetSize(50, 50);
 
-
     this->AddEvent(new EventTypes::KeyboardEvent);
+    level = Level("Assets/Tilemaps/Level-Test-Tilemap.json");
 }
 
 void PlayState::Update()
@@ -62,6 +62,8 @@ void PlayState::Update()
         }
     }
     */
+
+    level.Update();
 
     for (Sprite* sprite : sprites)
     {

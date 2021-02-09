@@ -1,22 +1,41 @@
 #include "Level.h"
-#include <iostream>
-
+#include "Debug.h"
 
 Level::Level(int width, int height)
+	:width(width), height(height)
 {
-	this->width = width;
-	this->height = height;
+	tileMap = TileMap();
+}
+
+Level::Level(int width, int height, const char* tileMapJsonFile)
+	:width(width), height(height)
+{
+	tileMap = TileMap(tileMapJsonFile);
 }
 
 Level::Level(SDL_Window* window)
 {
 	SDL_GetWindowSize(window, (int*)&width, (int*)&height);
-	std::cout << "WINDOW WIDTH: " << width << " WINDOW HEIGHT: " << height << std::endl;
+}
+
+Level::Level(SDL_Window* window, const char* tileMapJsonFile)
+{
+	SDL_GetWindowSize(window, (int*)&width, (int*)&height);
+	tileMap = TileMap(tileMapJsonFile);
+}
+
+Level::Level(const char* tileMapJsonFile)
+{
+	tileMap = TileMap(tileMapJsonFile);
+	width = tileMap.GetGeneralWidth();
+	height = tileMap.GetGeneralHeight();
+
+	DEBUG_LOG << "LEVEL WIDTH: " << width << " LEVEL HEIGHT: " << height;
 }
 
 Level::~Level()
 {
-	
+	tileMap.~TileMap();
 }
 
 void Level::Update()
