@@ -15,8 +15,19 @@ struct TileMap
 
 	void LoadMap(const char* file);
 	void RenderMap();
+	void RenderMap(const char* tileSetFile);
 	int GetGeneralHeight();
 	int GetGeneralWidth();
+
+	struct Tile
+	{
+		int width = 0;
+		int height = 0;
+		int x = 0;
+		int y = 0;
+		const char* imageName = "";
+	};
+
 private:
 	Json::Value tileMapJson;
 	Json::Value tileSetJson;

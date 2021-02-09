@@ -1,4 +1,12 @@
 { "columns":0,
+ "editorsettings":
+    {
+     "export":
+        {
+         "format":"json",
+         "target":""
+        }
+    },
  "grid":
     {
      "height":1,
@@ -14,35 +22,35 @@
  "tiles":[
         {
          "id":1,
-         "image":"..\/Tiles\/TileSquare-Simple.png",
+         "image":"Tiles\/TileSquare-Simple.png",
          "imageheight":20,
          "imagewidth":20,
          "type":"TileSquare"
         }, 
         {
          "id":2,
-         "image":"..\/Tiles\/TileRamp-LeftBottom-Simple.png",
+         "image":"Tiles\/TileRamp-LeftBottom-Simple.png",
          "imageheight":20,
          "imagewidth":20,
          "type":"TileRamp"
         }, 
         {
          "id":3,
-         "image":"..\/Tiles\/TileRamp-LeftTop-Simple.png",
+         "image":"Tiles\/TileRamp-LeftTop-Simple.png",
          "imageheight":20,
          "imagewidth":20,
          "type":"TileRamp"
         }, 
         {
          "id":4,
-         "image":"..\/Tiles\/TileRamp-RightBottom-Simple.png",
+         "image":"Tiles\/TileRamp-RightBottom-Simple.png",
          "imageheight":20,
          "imagewidth":20,
          "type":"TileRamp"
         }, 
         {
          "id":5,
-         "image":"..\/Tiles\/TileRamp-RightTop-Simple.png",
+         "image":"Tiles\/TileRamp-RightTop-Simple.png",
          "imageheight":20,
          "imagewidth":20,
          "type":"TileRamp"

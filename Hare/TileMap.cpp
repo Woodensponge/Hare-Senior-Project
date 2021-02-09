@@ -20,10 +20,16 @@ TileMap::~TileMap()
 void TileMap::LoadMap(const char* file)
 {
 	tileMapJson = JsonManager::OpenJson(file);	//Open the Json file containing the tilemap data
-	std::vector<Sprite*> sprites;
 }
 
 void TileMap::RenderMap()
+{
+	std::vector<std::vector<Sprite*>> tiles;	//Declare a 2d sprites vector
+	//Create a tileSetJson with the test tile set.
+	Json::Value tileSetJson = JsonManager::OpenJson("Assets/Tilemaps/Level-Test-Tileset.json");
+}
+
+void TileMap::RenderMap(const char* tileSetFile)
 {
 
 }
