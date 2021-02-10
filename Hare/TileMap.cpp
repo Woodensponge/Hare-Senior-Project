@@ -26,17 +26,31 @@ void TileMap::LoadMap(const char* file)
 void TileMap::RenderMap()
 {
 	DEBUG_LOG << "RENDERING TILEMAP";
-	std::vector<std::vector<Tile>> tiles;	//Declare a 2d sprites vector
+	std::vector<std::vector<Tile>> tiles;		//Declare a 2d sprites vector
 	//Create a tileSetJson with the test tile set.
 	Json::Value tileSetJson = JsonManager::OpenJson("Assets/Tilemaps/Level-Test-Tileset.json");
 
-	//tileMapJson["layers"][0]["data"]
-
 	//TODO: Keep working on rendering tilesets.
-	for (int i = 0; i < tileMapJson["layers"][0]["data"].size(); i++)
+	
+	int iterator = 0;
+
+	//Parse JSON data to the 2D vector
+	for (int y = 0; y < GetGeneralHeight(); y++)
 	{
-		Tile tile;
-		tile.width, tile.height = 20;
+		tiles.push_back(std::vector<Tile>());
+
+		for (int x = 0; x < GetGeneralWidth(); x++)
+		{
+			iterator++;
+
+			Tile tile;
+			tile.width, tile.height = 20;
+			tile.tileID = tileMapJson["layers"][0]["data"][iterator - 1].asInt();
+			tile.x = x;
+			tile.y = y;
+
+			tiles[y].push_back(tile);
+		}
 	}
 
 	DEBUG_LOG << "FINISHED RENDERING";
