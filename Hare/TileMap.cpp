@@ -20,18 +20,15 @@ TileMap::~TileMap()
 
 void TileMap::LoadMap(const char* file)
 {
-	tileMapJson = JsonManager::OpenJson(file);	//Open the Json file containing the tilemap data
-}
+	DEBUG_LOG << "LOADING TILEMAP";
 
-void TileMap::RenderMap()
-{
-	DEBUG_LOG << "RENDERING TILEMAP";
-	std::vector<std::vector<Tile>> tiles;		//Declare a 2d sprites vector
+	tileMapJson = JsonManager::OpenJson(file);	//Open the Json file containing the tilemap data
+
 	//Create a tileSetJson with the test tile set.
 	Json::Value tileSetJson = JsonManager::OpenJson("Assets/Tilemaps/Level-Test-Tileset.json");
 
 	//TODO: Keep working on rendering tilesets.
-	
+
 	int iterator = 0;
 
 	//Parse JSON data to the 2D vector
@@ -53,12 +50,14 @@ void TileMap::RenderMap()
 		}
 	}
 
-	DEBUG_LOG << "FINISHED RENDERING";
+	DEBUG_LOG << "FINISHED LOADING";
 }
 
 void TileMap::RenderMap(const char* tileSetFile)
 {
+	DEBUG_LOG << "RENDERING TILEMAP";
 
+	DEBUG_LOG << "FINISHED RENDERING";
 }
 
 int TileMap::GetGeneralHeight()

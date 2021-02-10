@@ -12,7 +12,7 @@ namespace States
 {
 	struct PlayState : State
 	{
-		PlayState(SDL_Window* window);
+		PlayState(const char* levelJson);
 		~PlayState();
 
 		void Init();

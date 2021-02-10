@@ -11,11 +11,7 @@
 
 struct Level
 {
-	Level(int width, int height);
-	Level(int width, int height, const char* tileMapJsonFile);
-	Level(SDL_Window* window);
-	Level(SDL_Window* window, const char* tileMapJsonFile);
-	Level(const char* tileMapJsonFile);
+	Level(const char* levelJson);
 	~Level();
 
 	void Update();
@@ -24,6 +20,8 @@ struct Level
 	Uint32 width;
 	//Height of the level
 	Uint32 height;
+
+	Json::Value levelFileJson;
 
 	TileMap tileMap;
 };

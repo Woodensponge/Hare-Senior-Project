@@ -10,9 +10,10 @@
 using namespace States;
 using namespace Events;
 
-PlayState::PlayState(SDL_Window* window)
-	: window(window), level(window)
+PlayState::PlayState(const char* levelJson)
+	: level(levelJson)
 {
+    window = Application::GetWindow();
 	SDL_GetWindowSize(window, &windowWidth, &windowHeight);
     stateID = StateID::PlayState;
 }
@@ -32,9 +33,8 @@ void PlayState::Init()
     sprites.back()->SetSize(50, 50);
 
     this->AddEvent(new EventTypes::KeyboardEvent);
-    level = Level("Assets/Levels/Level-Test.json");
     DEBUG_LOG << "LEVEL WIDTH: " << level.width << " LEVEL HEIGHT: " << level.height;
-    level.tileMap.RenderMap();
+    level.tileMap.RenderMap(level.levelFileJson["tileset"].asCString());
 }
 
 void PlayState::Update()

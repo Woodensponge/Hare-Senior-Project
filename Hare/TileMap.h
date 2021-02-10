@@ -9,16 +9,6 @@
 
 struct TileMap
 {
-	TileMap();
-	TileMap(const char* file);
-	~TileMap();
-
-	void LoadMap(const char* file);
-	void RenderMap();
-	void RenderMap(const char* tileSetFile);
-	int GetGeneralHeight();
-	int GetGeneralWidth();
-
 	struct Tile
 	{
 		int width = 0;
@@ -28,10 +18,22 @@ struct TileMap
 		int tileID = 0;
 	};
 
+	TileMap();
+	TileMap(const char* file);
+	~TileMap();
+
+	void LoadMap(const char* file);
+	void RenderMap(const char* tileSetFile);
+	int GetGeneralHeight();
+	int GetGeneralWidth();
+	inline Tile GetTile(int x, int y) { return tiles[y][x]; };
+
 private:
 	Json::Value tileMapJson;
 	Json::Value tileSetJson;
 	SDL_Texture* tileMapTexture;
+
+	std::vector<std::vector<Tile>> tiles;
 };
 
 #endif
