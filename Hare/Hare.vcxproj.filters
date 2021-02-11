@@ -67,6 +67,12 @@
     <ClCompile Include="TileMap.cpp">
       <Filter>Source files\World</Filter>
     </ClCompile>
+    <ClCompile Include="Layer.cpp">
+      <Filter>Source files\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="LayerManager.cpp">
+      <Filter>Source files\Rendering</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -131,6 +137,12 @@
     </ClInclude>
     <ClInclude Include="TileMap.h">
       <Filter>Header files\World</Filter>
+    </ClInclude>
+    <ClInclude Include="Layer.h">
+      <Filter>Header files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="LayerManager.h">
+      <Filter>Header files\Rendering</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

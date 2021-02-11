@@ -47,6 +47,7 @@ struct Application
 
 	static SDL_Renderer* renderer;
 	static SDL_Event event;
+
 private:
 	static SDL_Window* window;
 	std::vector<Sprite*> sprites;

@@ -33,6 +33,7 @@ namespace Debug
 			oss << value;
 			return *this;
 		}
+
 	private:
 		std::ostringstream oss;
 		bool canLog = true;

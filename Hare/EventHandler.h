@@ -15,6 +15,7 @@ namespace Events
 		static void AddEventToQueue(Event* event);
 		static void DestroyEvent(Event* event);
 		static void DestroyQueue();
+
 	private:
 		static std::vector<Event*> eventQueue;
 	};
