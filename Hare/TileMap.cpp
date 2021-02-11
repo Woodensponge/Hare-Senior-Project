@@ -42,7 +42,12 @@ void TileMap::LoadMap(const char* file)
 
 			Tile tile;
 			tile.width, tile.height = 20;
+
 			tile.tileID = tileMapJson["layers"][0]["data"][iterator - 1].asInt();
+
+			if (tile.tileID != 0)
+				tile.tileID -= 1;
+
 			tile.x = x;
 			tile.y = y;
 
@@ -56,6 +61,28 @@ void TileMap::LoadMap(const char* file)
 void TileMap::RenderMap(const char* tileSetFile)
 {
 	DEBUG_LOG << "RENDERING TILEMAP";
+
+	Json::Value tileSetJson = JsonManager::OpenJson(tileSetFile);
+
+	DEBUG_LOG << tileSetJson["tiles"].size() << " tiles in the tileset";
+
+	for (std::vector<Tile> vector : tiles)		//For each loop for the 2D array "tiles"
+	{
+		for (Tile tile : vector)				//Continuation of 2D for each loop
+		{
+			for (int i = 0; i < tileSetJson["tiles"].size(); i++)
+			{
+				if (tile.tileID == tileSetJson["tiles"][i]["id"].asInt())
+				{
+					tile.imageName = "Assets\/Tilemaps\/" + tileSetJson["tiles"][i]["image"].asString();
+				}
+				else
+				{
+					tile.imageName = "None";
+				}
+			}
+		}
+	}
 
 	DEBUG_LOG << "FINISHED RENDERING";
 }

@@ -11,11 +11,12 @@ struct TileMap
 {
 	struct Tile
 	{
-		int width = 0;
-		int height = 0;
+		unsigned int width = 0;
+		unsigned int height = 0;
 		int x = 0;
 		int y = 0;
-		int tileID = 0;
+		unsigned int tileID = 0;
+		std::string imageName;
 	};
 
 	TileMap();

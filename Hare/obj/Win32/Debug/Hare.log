@@ -1,6 +1,4 @@
-﻿  Application.cpp
-  Level.cpp
-  PlayState.cpp
-  TileMap.cpp
-  Generating Code...
+﻿  TileMap.cpp
+C:\Users\Woodensponge\Documents\GitHub\Hare\Hare\TileMap.cpp(73,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Woodensponge\Documents\GitHub\Hare\Hare\TileMap.cpp(77,23): warning C4129: '/': unrecognized character escape sequence
   Hare.vcxproj -> C:\Users\Woodensponge\Documents\GitHub\Hare\bin\Win32\Debug\Hare.exe
