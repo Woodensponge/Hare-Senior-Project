@@ -67,7 +67,7 @@ int Application::Init()
     renderer = SDL_CreateRenderer(window, -1, 0);
 
     gameState = GameState::Running;
-    state = new States::PlayState("Assets/Levels/Level-Test.json");
+    state = new States::PlayState("Assets/Levels/Level-TestComplex.json");
     state->Init();
 
     return 0;
@@ -126,7 +126,8 @@ void Application::Update()
         switch (switchToState)                          //Switch to desired state
         {
         case States::StateID::PlayState:                //If the states ID is "PlayState"...
-            state = new States::PlayState("Assets/Levels/Level-Test.json");      //Create a new PlayState
+            //Create a new PlayState
+            state = new States::PlayState("Assets/Levels/Level-Test.json");
         }
         state->Init();
     }

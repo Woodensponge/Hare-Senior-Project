@@ -14,6 +14,7 @@ Json::Value JsonManager::OpenJson(const char* arg)
     if (!ifs.good())                                            //If the file doesn't exist...
     {
         DEBUG_LOG << "JSON FILE CANNOT BE FOUND! RETURNING NULL!";
+        DEBUG_LOG << "File name: " << arg;
         return Json::Value();                                   //Return an empty object (all members are null)
     }
     Json::CharReaderBuilder builder;                            //Create a jsoncpp builder

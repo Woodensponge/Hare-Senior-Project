@@ -17,10 +17,6 @@ int main()
     DEBUG_LOG_DEBUGONLY << "(DEBUG BUILD)";
     DEBUG_LOG_RELEASEONLY << "(RELEASE BUILD)";
 
-    Json::Value jsonFile = JsonManager::OpenJson("Assets/Tilemaps/Level-Test-Tilemap.json");
-    DEBUG_LOG_DEBUGONLY << jsonFile["height"];
-    jsonFile.~Value();
-
     Application* app = new Application("Hare", WINDOW_WIDTH, WINDOW_HEIGHT, 0, 60, true);
 
     int initReturnCode = app->Init();

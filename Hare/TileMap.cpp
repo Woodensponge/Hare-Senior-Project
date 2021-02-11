@@ -10,7 +10,8 @@ TileMap::TileMap()
 	tileMapJson = Json::Value();
 }
 
-TileMap::TileMap(const char* file)
+TileMap::TileMap(const char* file, const char* levelDevName)
+	:levelDevName(levelDevName)
 {
 	LoadMap(file);
 }
@@ -31,9 +32,6 @@ void TileMap::LoadMap(const char* file)
 	DEBUG_LOG << "LOADING TILEMAP";
 
 	tileMapJson = JsonManager::OpenJson(file);	//Open the Json file containing the tilemap data
-
-	//Create a tileSetJson with the test tile set.
-	Json::Value tileSetJson = JsonManager::OpenJson("Assets/Tilemaps/Level-Test-Tileset.json");
 
 	//TODO: Keep working on rendering tilesets.
 
@@ -86,7 +84,11 @@ void TileMap::RenderMap(const char* tileSetFile)
 			{
 				if (tile.tileID == tileSetJson["tiles"][i]["id"].asInt())
 				{
-					tile.imageName = "Assets/Tilemaps/" + tileSetJson["tiles"][i]["image"].asString();
+					tile.imageName = 
+						"Assets/Tilemaps/" 
+						+ levelDevName 
+						+ "/" 
+						+ tileSetJson["tiles"][i]["image"].asString();
 				}
 
 				//DEBUG_LOG << tile.imageName;

@@ -20,7 +20,7 @@ struct TileMap
 	};
 
 	TileMap();
-	TileMap(const char* file);
+	TileMap(const char* file, const char* levelDevName);
 	~TileMap();
 
 	void LoadMap(const char* file);
@@ -34,6 +34,8 @@ private:
 	Json::Value tileMapJson;
 	Json::Value tileSetJson;
 	SDL_Texture* tileMapTexture = nullptr;
+
+	std::string levelDevName;
 
 	std::vector<std::vector<Tile>> tiles;
 	std::vector<Sprite*> sprites;				//TODO: FOR TESTING ONLY.

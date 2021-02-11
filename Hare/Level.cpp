@@ -5,7 +5,7 @@
 Level::Level(const char* levelFile)
 {
 	levelFileJson = JsonManager::OpenJson(levelFile);
-	tileMap = TileMap(levelFileJson["tilemap"].asCString());
+	tileMap = TileMap(levelFileJson["tilemap"].asCString(), levelFileJson["devname"].asCString());
 	width = tileMap.GetGeneralWidth();
 	height = tileMap.GetGeneralHeight();
 }
