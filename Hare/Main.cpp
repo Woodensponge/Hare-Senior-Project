@@ -28,26 +28,30 @@ int main()
     }
 
     //Setup variables to calculate Delta Time for framerate
-    Uint32 lastTicks = SDL_GetTicks();
-    int frameTime = 0;
-
-    double deltaTime = 0;
+    float elapsedMS = 0;
 
     while (app->gameState != GameState::Closing)
     {
         Timer::UpdateDeltaTime();
 
+#ifdef _DEBUG
+        SDL_SetWindowTitle(app->GetWindow(), std::to_string(Timer::GetDeltaTime()).c_str());
+#endif 
+
         //Get ticks right now to calculate Delta Time for framerate
-        lastTicks = SDL_GetTicks();
+        Uint64 start = SDL_GetPerformanceCounter();
 
         app->Update();
 
+        Uint64 end = SDL_GetPerformanceCounter();
+        
         //Calculate Delta Time for framerate
-        frameTime = SDL_GetTicks() - lastTicks;
+        elapsedMS = (end - start) / (float)SDL_GetPerformanceFrequency() * 1000.0f;
+
         if (app->isCapped)
-            if ((1000 / Timer::fps) > frameTime)
+            if ((1000 / Timer::fps) > elapsedMS)
             {
-                SDL_Delay((1000 / Timer::fps) - frameTime);
+                SDL_Delay((1000 / Timer::fps) - elapsedMS);
             }
     }
 

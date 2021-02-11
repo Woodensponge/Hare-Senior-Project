@@ -29,7 +29,7 @@ namespace States
 		virtual void Update();
 		
 		void AddEvent(Events::Event* event);
-		void RemoveEvent(Events::EventID eventID);
+		void RemoveEvents(Events::EventID eventID);
 		void RemoveAllEvents();
 
 		StateID stateID	= StateID::NotSpecified;
