@@ -34,8 +34,6 @@ Application::Application
 //Deconstructor. Completely handles destruction for this object.
 Application::~Application()
 {
-    delete state;
-
     Events::EventHandler::DestroyQueue();
 
     IMG_Quit();
@@ -79,7 +77,7 @@ int Application::Init()
 void Application::Update()
 {
     SDL_RenderClear(renderer);
-    SDL_SetRenderDrawColor(renderer, 170, 170, 170, 255);
+    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 
     Mouse::UpdateMousePosition();
     //DEBUG_LOG_DEBUGONLY << MOUSE_X() << " : " << MOUSE_Y();

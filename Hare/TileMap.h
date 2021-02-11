@@ -11,12 +11,12 @@ struct TileMap
 {
 	struct Tile
 	{
-		unsigned int width = 0;
-		unsigned int height = 0;
+		int width = 0;
+		int height = 0;
 		int x = 0;
 		int y = 0;
 		unsigned int tileID = 0;
-		std::string imageName;
+		std::string imageName = "None";
 	};
 
 	TileMap();
@@ -25,6 +25,7 @@ struct TileMap
 
 	void LoadMap(const char* file);
 	void RenderMap(const char* tileSetFile);
+	void Update();
 	int GetGeneralHeight();
 	int GetGeneralWidth();
 	inline Tile GetTile(int x, int y) { return tiles[y][x]; };
@@ -32,9 +33,10 @@ struct TileMap
 private:
 	Json::Value tileMapJson;
 	Json::Value tileSetJson;
-	SDL_Texture* tileMapTexture;
+	SDL_Texture* tileMapTexture = nullptr;
 
 	std::vector<std::vector<Tile>> tiles;
+	std::vector<Sprite*> sprites;				//TODO: FOR TESTING ONLY.
 };
 
 #endif

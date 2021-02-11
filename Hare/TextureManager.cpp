@@ -1,10 +1,12 @@
 #include "TextureManager.h"
 #include "Application.h"
+#include "Debug.h"
 
 #include <SDL_image.h>
 
 SDL_Texture* TextureManager::LoadTexture(const char* imagePath)
 {
+	//DEBUG_LOG_DEBUGONLY << imagePath;
 	SDL_Surface* image = IMG_Load(imagePath);
 	SDL_Texture* texture = SDL_CreateTextureFromSurface(Application::renderer, image);
 	SDL_FreeSurface(image);

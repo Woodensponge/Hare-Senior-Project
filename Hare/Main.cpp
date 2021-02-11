@@ -8,7 +8,7 @@
 #include <fstream>
 #include <iostream>
 
-#define WINDOW_WIDTH 600
+#define WINDOW_WIDTH 640
 #define WINDOW_HEIGHT 480
 
 int main()
@@ -55,7 +55,15 @@ int main()
             }
     }
 
+    app->~Application();
     delete app;
+
+#ifdef _CONSOLE
+
+    std::cout << "Press enter to exit" << std::endl;
+    std::cin.get();
+
+#endif
 
     return 0;
 }

@@ -1,6 +1,7 @@
 #include "Sprite.h"
 #include "Application.h"
 #include "TextureManager.h"
+#include "Debug.h"
 
 #include <cmath>
 #include <SDL_image.h>
@@ -38,8 +39,9 @@ Sprite::Sprite(SDL_Texture* texture, double x, double y, int w, int h)
 	this->x = x;
 	this->y = y;
 
-	this->size->w = w;
-	this->size->h = h;
+	this->w = w;
+	this->h = h;
+	this->size = new SDL_Rect();
 	this->sourceRect = new SDL_Rect();
 }
 
@@ -79,8 +81,9 @@ Sprite::Sprite(const char* imageName, double x, double y, int w, int h)
 	this->x = x;
 	this->y = y;
 
-	this->size->w = w;
-	this->size->h = h;
+	this->w = w;
+	this->h = h;
+	this->size = new SDL_Rect();
 	this->sourceRect = new SDL_Rect();
 }
 

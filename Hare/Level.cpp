@@ -17,5 +17,5 @@ Level::~Level()
 
 void Level::Update()
 {
-
+	tileMap.Update();
 }

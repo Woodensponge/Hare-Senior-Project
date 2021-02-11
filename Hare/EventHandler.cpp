@@ -1,4 +1,5 @@
 #include "EventHandler.h"
+#include "Debug.h"
 #include <iostream>
 using namespace Events;
 
@@ -31,6 +32,13 @@ void Events::EventHandler::DestroyEvent(Event* event)
 
 void EventHandler::DestroyQueue()
 {
+	DEBUG_LOG << "Destroying eventQueue with size " << eventQueue.size();
+
+	if (eventQueue.empty())
+		return;
+
 	for (Event* event : eventQueue)
 		delete event;
+
+	eventQueue.clear();
 }
