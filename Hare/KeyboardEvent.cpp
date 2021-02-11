@@ -11,6 +11,7 @@ using namespace Events::EventTypes;
 KeyboardEvent::KeyboardEvent()
 {
     this->eventID = EventID::KeyboardEvent;
+    this->isSingleOnly = true;
 }
 
 KeyboardEvent::~KeyboardEvent()

@@ -21,6 +21,8 @@ namespace Events
 		const char* EventIDToChar();
 
 		EventID eventID = EventID::None;
+		bool isSingleOnly = false;				//Dictates whether or not multiple events of the same type
+												//can exist at the same time.
 	};
 }
 

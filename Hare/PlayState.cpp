@@ -37,6 +37,7 @@ void PlayState::Init()
     sprites.back()->SetPosition(50, 50);
 
     this->AddEvent(new EventTypes::KeyboardEvent);
+    this->AddEvent(new EventTypes::KeyboardEvent);
     DEBUG_LOG << "LEVEL WIDTH: " << level.width << " LEVEL HEIGHT: " << level.height;
     level.tileMap.RenderMap(level.levelFileJson["tileset"].asCString());
 }

@@ -79,7 +79,7 @@ void Application::Update()
     SDL_RenderClear(renderer);
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 
-    Mouse::UpdateMousePosition();
+    Mouse::UpdateMouse();
     //DEBUG_LOG_DEBUGONLY << MOUSE_X() << " : " << MOUSE_Y();
 
     //Game state handling.

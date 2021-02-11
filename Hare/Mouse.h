@@ -6,7 +6,7 @@
 
 struct Mouse 
 {
-	static void UpdateMousePosition();
+	static void UpdateMouse();
 	static inline int GetMouseX() { return x; };
 	static inline int GetMouseY() { return y; };
 

@@ -55,10 +55,8 @@ int main()
     delete app;
 
 #ifdef _CONSOLE
-
-    std::cout << "Press enter to exit" << std::endl;
+    std::cout << "Press \"Enter\" to exit..." << std::endl;
     std::cin.get();
-
 #endif
 
     return 0;

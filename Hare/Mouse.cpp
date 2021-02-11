@@ -5,7 +5,7 @@
 int Mouse::x = 0;
 int Mouse::y = 0;
 
-void Mouse::UpdateMousePosition()
+void Mouse::UpdateMouse()
 {
 	SDL_GetMouseState(&x, &y);
 }

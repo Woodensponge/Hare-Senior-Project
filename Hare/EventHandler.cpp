@@ -13,6 +13,18 @@ void EventHandler::UpdateEvents(SDL_Event* SDLEvent)
 
 void EventHandler::AddEventToQueue(Event* event)
 {
+	if (event->isSingleOnly == true)			//If only one event can exist at a time...
+	{
+		for (Event* _event : eventQueue)		//Check the event queue for events with the same ID
+		{
+			//If an event of the same ID exists in the event queue...
+			if (event->eventID == _event->eventID)
+			{
+				delete event;					//Delete the event assigned.
+				return;							//Stop the method.
+			}
+		}
+	}
 	eventQueue.push_back(event);
 }
 

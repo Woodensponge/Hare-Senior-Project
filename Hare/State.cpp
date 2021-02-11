@@ -23,7 +23,7 @@ void State::AddEvent(Event* event)
 	EventHandler::AddEventToQueue(event);
 }
 
-void State::RemoveEvent(Events::EventID eventID)
+void State::RemoveEvents(Events::EventID eventID)
 {
 	std::cout << "BEGIN REMOVING EVENT" << std::endl;
 
