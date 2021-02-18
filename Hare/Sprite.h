@@ -36,7 +36,6 @@ struct Sprite
 	SDL_Rect sourceRect;
 	SDL_Rect size;
 	SDL_Texture* texture;
-	bool fuckme = false;
 };
 
 #endif
