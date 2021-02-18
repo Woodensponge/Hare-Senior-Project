@@ -10,19 +10,19 @@ struct Sprite
 	Sprite(SDL_Texture* texture);
 	Sprite(SDL_Texture* texture, double x, double y);
 	Sprite(SDL_Texture* texture, double x, double y, int w, int h);
-	Sprite(SDL_Texture* texture, double x, double y, SDL_Rect* size);
+	Sprite(SDL_Texture* texture, double x, double y, SDL_Rect size);
 
 	Sprite(const char* imageName);
 	Sprite(const char* imageName, double x, double y);
 	Sprite(const char* imageName, double x, double y, int w, int h);
-	Sprite(const char* imageName, double x, double y, SDL_Rect* size);
+	Sprite(const char* imageName, double x, double y, SDL_Rect size);
 
 	~Sprite();
 
 	void SetPosition(double x, double y);
-	void SetSize(SDL_Rect* size);
+	void SetSize(SDL_Rect size);
 	void SetSize(int w, int h);
-	void SetSourceRectangle(SDL_Rect* sourceRect);
+	void SetSourceRectangle(SDL_Rect sourceRect);
 	void SetTexture(SDL_Texture* texture);
 	void SetTextureFromSurface(SDL_Surface* surface);
 	void Update();
@@ -33,9 +33,10 @@ struct Sprite
 	int w = 640;
 	int h = 480;
 
-	SDL_Rect* sourceRect;
-	SDL_Rect* size;
+	SDL_Rect sourceRect;
+	SDL_Rect size;
 	SDL_Texture* texture;
+	bool fuckme = false;
 };
 
 #endif

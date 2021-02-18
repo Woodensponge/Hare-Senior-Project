@@ -17,46 +17,45 @@ int main()
     DEBUG_LOG_DEBUGONLY << "(DEBUG BUILD)";
     DEBUG_LOG_RELEASEONLY << "(RELEASE BUILD)";
 
-    Application* app = new Application("Hare", WINDOW_WIDTH, WINDOW_HEIGHT, 0, 60, true);
+    Application app = Application("Hare", WINDOW_WIDTH, WINDOW_HEIGHT, 0, 60, true);
 
-    int initReturnCode = app->Init();
+    int initReturnCode = app.Init();
 
     if (initReturnCode != 0)
     {
-        delete app;
+        app.~Application();
         return initReturnCode;
     }
 
     //Setup variables to calculate Delta Time for framerate
     float elapsedMS = 0;
 
-    while (app->gameState != GameState::Closing)
+    while (app.gameState != GameState::Closing)
     {
         Timer::UpdateDeltaTime();
 
 #ifdef _DEBUG
-        SDL_SetWindowTitle(app->GetWindow(), std::to_string(Timer::GetDeltaTime()).c_str());
+        SDL_SetWindowTitle(app.GetWindow(), std::to_string(Timer::GetDeltaTime()).c_str());
 #endif 
 
         //Get ticks right now to calculate Delta Time for framerate
         Uint64 start = SDL_GetPerformanceCounter();
 
-        app->Update();
+        app.Update();
 
         Uint64 end = SDL_GetPerformanceCounter();
         
         //Calculate Delta Time for framerate
         elapsedMS = (end - start) / (float)SDL_GetPerformanceFrequency() * 1000.0f;
 
-        if (app->isCapped)
+        if (app.isCapped)
             if ((1000 / Timer::fps) > elapsedMS)
             {
                 SDL_Delay((1000 / Timer::fps) - elapsedMS);
             }
     }
 
-    app->~Application();
-    delete app;
+    app.~Application();
 
 #ifdef _CONSOLE
     std::cout << "Press \"Enter\" to exit..." << std::endl;

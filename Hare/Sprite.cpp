@@ -11,16 +11,16 @@ Sprite::Sprite()
 {
 	this->texture = 0;
 
-	this->size = new SDL_Rect();
-	this->sourceRect = new SDL_Rect();
+	this->size = SDL_Rect();
+	this->sourceRect = SDL_Rect();
 }
 
 Sprite::Sprite(SDL_Texture* texture)
 {
 	this->texture = texture;
 
-	this->size = new SDL_Rect();
-	this->sourceRect = new SDL_Rect();
+	this->size = SDL_Rect();
+	this->sourceRect = SDL_Rect();
 }
 
 Sprite::Sprite(SDL_Texture* texture, double x, double y)
@@ -29,8 +29,8 @@ Sprite::Sprite(SDL_Texture* texture, double x, double y)
 	this->x = x;
 	this->y = y;
 
-	this->size = new SDL_Rect();
-	this->sourceRect = new SDL_Rect();
+	this->size = SDL_Rect();
+	this->sourceRect = SDL_Rect();
 }
 
 Sprite::Sprite(SDL_Texture* texture, double x, double y, int w, int h)
@@ -41,26 +41,26 @@ Sprite::Sprite(SDL_Texture* texture, double x, double y, int w, int h)
 
 	this->w = w;
 	this->h = h;
-	this->size = new SDL_Rect();
-	this->sourceRect = new SDL_Rect();
+	this->size = SDL_Rect();
+	this->sourceRect = SDL_Rect();
 }
 
-Sprite::Sprite(SDL_Texture* texture, double x, double y, SDL_Rect* size)
+Sprite::Sprite(SDL_Texture* texture, double x, double y, SDL_Rect size)
 {
 	this->texture = texture;
 	this->x = x;
 	this->y = y;
 
 	this->size = size;
-	this->sourceRect = new SDL_Rect();
+	this->sourceRect = SDL_Rect();
 }
 
 Sprite::Sprite(const char* imageName)
 {
 	this->texture = TextureManager::LoadTexture(imageName);
 
-	this->size = new SDL_Rect();
-	this->sourceRect = new SDL_Rect();
+	this->size = SDL_Rect();
+	this->sourceRect = SDL_Rect();
 }
 
 Sprite::Sprite(const char* imageName, double x, double y)
@@ -70,8 +70,8 @@ Sprite::Sprite(const char* imageName, double x, double y)
 	this->x = x;
 	this->y = y;
 
-	this->size = new SDL_Rect();
-	this->sourceRect = new SDL_Rect();
+	this->size = SDL_Rect();
+	this->sourceRect = SDL_Rect();
 }
 
 Sprite::Sprite(const char* imageName, double x, double y, int w, int h)
@@ -83,11 +83,11 @@ Sprite::Sprite(const char* imageName, double x, double y, int w, int h)
 
 	this->w = w;
 	this->h = h;
-	this->size = new SDL_Rect();
-	this->sourceRect = new SDL_Rect();
+	this->size = SDL_Rect();
+	this->sourceRect = SDL_Rect();
 }
 
-Sprite::Sprite(const char* imageName, double x, double y, SDL_Rect* size)
+Sprite::Sprite(const char* imageName, double x, double y, SDL_Rect size)
 {
 	this->texture = TextureManager::LoadTexture(imageName);
 
@@ -95,14 +95,12 @@ Sprite::Sprite(const char* imageName, double x, double y, SDL_Rect* size)
 	this->y = y;
 
 	this->size = size;
-	this->sourceRect = new SDL_Rect();
+	this->sourceRect = SDL_Rect();
 }
 
 Sprite::~Sprite()
 {
 	SDL_DestroyTexture(texture);
-	delete sourceRect;
-	delete size;
 }
 
 //Function definitions
@@ -119,7 +117,7 @@ void Sprite::SetPosition(double x, double y)
 /*
 Sets the size of the sprites SDL_Rect member.
 */
-void Sprite::SetSize(SDL_Rect* size)
+void Sprite::SetSize(SDL_Rect size)
 {
 	this->size = size;
 }
@@ -136,7 +134,7 @@ void Sprite::SetSize(int w, int h)
 /*
 Sets the source rectangle for the texture of the sprites.
 */
-void Sprite::SetSourceRectangle(SDL_Rect* sourceRect)
+void Sprite::SetSourceRectangle(SDL_Rect sourceRect)
 {
 	this->sourceRect = sourceRect;
 }
@@ -164,9 +162,9 @@ Updates the sprite.
 */
 void Sprite::Update()
 {
-	this->size->x = lround(x);
-	this->size->y = lround(y);
+	this->size.x = lround(x);
+	this->size.y = lround(y);
 
-	this->size->w = w;
-	this->size->h = h;
+	this->size.w = w;
+	this->size.h = h;
 }

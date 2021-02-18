@@ -35,6 +35,7 @@ Application::Application
 Application::~Application()
 {
     Events::EventHandler::DestroyQueue();
+    state->~State();
 
     IMG_Quit();
     SDL_Quit();

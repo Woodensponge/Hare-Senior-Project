@@ -23,7 +23,7 @@ struct Level
 
 	Json::Value levelFileJson;
 
-	TileMap tileMap;
+	TileMap* tileMap;
 };
 
 
