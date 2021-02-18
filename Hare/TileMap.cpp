@@ -52,6 +52,8 @@ void TileMap::LoadMap(const char* file)
 			iterator++;
 
 			Tile* tile = new Tile;
+			delete tile->sprite;
+
 			tile->width = 20;
 			tile->height = 20;
 

@@ -14,7 +14,8 @@ struct TileMap
 	{
 		~Tile()
 		{
-			sprite->~Sprite();
+			DEBUG_LOG << "DESTROYED";
+			delete sprite;
 		}
 
 		int width = 0;

@@ -12,7 +12,7 @@ Level::Level(const char* levelFile)
 
 Level::~Level()
 {
-	tileMap->~TileMap();
+	delete tileMap;
 }
 
 void Level::Update()
