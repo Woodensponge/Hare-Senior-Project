@@ -13,7 +13,6 @@ struct TextureManager
 	static void ClearQueue();
 	static void DestroyQueue();
 
-private:
 	static std::vector<Sprite*> renderQueue;
 };
 

@@ -23,6 +23,7 @@ namespace States
 		int windowHeight;
 
 		std::vector<Sprite*> sprites;
+		Sprite* spriteCrosshair;
 		SDL_Window* window;
 		Level level;
 	};

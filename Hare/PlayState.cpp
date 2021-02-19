@@ -5,6 +5,7 @@
 #include "EventHandler.h"
 #include "KeyboardEvent.h"
 #include "TextureManager.h"
+#include "Mouse.h"
 #include "Debug.h"
 
 using namespace States;
@@ -20,20 +21,32 @@ PlayState::PlayState(const char* levelJson)
 
 PlayState::~PlayState()
 {
+    SDL_ShowCursor(1);
+
     for (Sprite* i : sprites)
 		delete i;
 
     sprites.~vector();
+
+    delete spriteCrosshair;
 }
 
 void PlayState::Init()
 {
+    /*
     sprites.push_back(new Sprite("Assets/Player-Simple.png"));
     sprites.back()->SetSize(50, 50);
 
     sprites.push_back(new Sprite("Assets/Player-Simple.png"));
     sprites.back()->SetSize(50, 50);
     sprites.back()->SetPosition(50, 50);
+    */
+
+    //Crosshair
+    spriteCrosshair = new Sprite("Assets/Crosshairs/Crosshair-Simple.png", 0, 0, 20, 20);
+    spriteCrosshair->layer = 99; //Crosshair is always on top, no matter what.
+
+    SDL_ShowCursor(0);
 
     this->AddEvent(new EventTypes::KeyboardEvent);
     this->AddEvent(new EventTypes::KeyboardEvent);
@@ -43,12 +56,17 @@ void PlayState::Init()
 
 void PlayState::Update()
 {
-    /*
     for (Sprite* sprite : sprites)
     {
         TextureManager::RenderSprite(sprite);
     }
-    */
 
     level.Update();
+
+    spriteCrosshair->SetPosition
+    (
+        MOUSE_X() - (spriteCrosshair->w / 2),
+        MOUSE_Y() - (spriteCrosshair->h / 2)
+    );
+    TextureManager::RenderSprite(spriteCrosshair);
 }
