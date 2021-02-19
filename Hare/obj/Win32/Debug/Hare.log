@@ -1,2 +1,3 @@
-﻿  Application.cpp
+﻿  Main.cpp
+C:\Users\Woodensponge\Documents\GitHub\Hare\Hare\Main.cpp(54,47): warning C4244: 'argument': conversion from 'float' to 'Uint32', possible loss of data
   Hare.vcxproj -> C:\Users\Woodensponge\Documents\GitHub\Hare\bin\Win32\Debug\Hare.exe

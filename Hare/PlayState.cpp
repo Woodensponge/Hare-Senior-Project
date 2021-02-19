@@ -44,33 +44,6 @@ void PlayState::Init()
 void PlayState::Update()
 {
     /*
-    while (SDL_PollEvent(&Application::event))
-    {
-        switch (Application::event.type)
-        {
-        case SDL_KEYDOWN:
-            std::cout << "KEYDOWN" << std::endl;
-            switch (Application::event.key.keysym.sym)
-            {
-            case SDLK_LEFT:
-                sprites[0]->x = sprites[0]->x - (10 * Timer::GetDeltaTime(true));
-                break;
-            case SDLK_RIGHT:
-                sprites[0]->x = sprites[0]->x + (10 * Timer::GetDeltaTime(true));
-                break;
-            case SDLK_UP:
-                sprites[0]->y = sprites[0]->y - (10 * Timer::GetDeltaTime(true));
-                break;
-            case SDLK_DOWN:
-                sprites[0]->y = sprites[0]->y + (10 * Timer::GetDeltaTime(true));
-                break;
-            }
-            break;
-        }
-    }
-    */
-
-    /*
     for (Sprite* sprite : sprites)
     {
         TextureManager::RenderSprite(sprite);

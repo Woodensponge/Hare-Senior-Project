@@ -34,6 +34,8 @@ Application::Application
 //Deconstructor. Completely handles destruction for this object.
 Application::~Application()
 {
+    DEBUG_LOG << "DECONSTRUCT APPLICATION";
+
     Events::EventHandler::DestroyQueue();
 
     state->~State();

@@ -20,8 +20,6 @@ TileMap::~TileMap()
 {
 	tileMapJson.~Value();
 
-	//TODO: Research smart pointers
-	//Destroy every tile in the vector;
 	for (std::vector<Tile*> vector : tiles)		//For each loop for the 2D array "tiles"
 		for (Tile* tile : vector)				//Continuation of 2D for each loop
 			delete tile;

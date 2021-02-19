@@ -55,9 +55,9 @@ int main()
             }
     }
 
-    app.~Application();
-
 #ifdef _CONSOLE
+    SDL_MinimizeWindow(app.GetWindow());
+
     std::cout << "Press \"Enter\" to exit..." << std::endl;
     std::cin.get();
 #endif

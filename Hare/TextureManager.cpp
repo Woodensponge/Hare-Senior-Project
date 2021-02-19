@@ -6,7 +6,6 @@
 
 SDL_Texture* TextureManager::LoadTexture(const char* imagePath)
 {
-	DEBUG_LOG << &imagePath;
 	SDL_Surface* image = IMG_Load(imagePath);
 	SDL_Texture* texture = SDL_CreateTextureFromSurface(Application::renderer, image);
 	SDL_FreeSurface(image);
