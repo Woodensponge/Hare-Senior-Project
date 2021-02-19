@@ -4,6 +4,8 @@
 
 #include <SDL_image.h>
 
+std::vector<Sprite*> TextureManager::renderQueue;
+
 SDL_Texture* TextureManager::LoadTexture(const char* imagePath)
 {
 	SDL_Surface* image = IMG_Load(imagePath);
@@ -22,5 +24,36 @@ SDL_Texture* TextureManager::LoadTextureFromSurface(SDL_Surface* surface)
 void TextureManager::RenderSprite(Sprite* sprite)
 {
 	sprite->Update();
-	SDL_RenderCopy(Application::renderer, sprite->texture, 0, &sprite->size);
+	renderQueue.push_back(sprite);
+}
+
+void TextureManager::RenderQueue()
+{
+	for (Sprite* sprite : renderQueue)
+	{
+		SDL_RenderCopy(Application::renderer, sprite->texture, 0, &sprite->size);
+	}
+	//Clear the render queue, make space for the next frame.
+	//Don't delete the sprites here. Rely on the code calling this function to destroy the sprites.
+	renderQueue.clear();
+}
+
+void TextureManager::ClearQueue()
+{
+	renderQueue.clear();
+}
+
+/*
+ONLY RUN THIS DURING APPLICATION DESTRUCTION
+*/
+void TextureManager::DestroyQueue()
+{
+	DEBUG_LOG << "RENDERQUEUE HAS " << renderQueue.size() << " SPRITE(S) LEFT";
+	for (Sprite* sprite : renderQueue)
+	{
+		if (sprite != nullptr)
+			delete sprite;
+	}
+	renderQueue.clear();
+	renderQueue.~vector();
 }

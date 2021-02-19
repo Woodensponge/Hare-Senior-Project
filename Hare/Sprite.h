@@ -32,6 +32,7 @@ struct Sprite
 
 	int w = 640;
 	int h = 480;
+	int layer = 0;
 
 	SDL_Rect sourceRect;
 	SDL_Rect size;

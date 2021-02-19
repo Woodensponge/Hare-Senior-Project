@@ -9,7 +9,8 @@ struct Layer
 	~Layer();
 
 	void AddSprite(Sprite* sprite);
-
+	
+	
 	int order = 0;
 };
 

@@ -6,6 +6,7 @@
 #include "Event.h"
 #include "Debug.h"
 #include "Timer.h"
+#include "TextureManager.h"
 
 #include <SDL_image.h>
 
@@ -37,6 +38,7 @@ Application::~Application()
     DEBUG_LOG << "DECONSTRUCT APPLICATION";
 
     Events::EventHandler::DestroyQueue();
+    TextureManager::DestroyQueue();
 
     state->~State();
     delete state;
@@ -46,6 +48,11 @@ Application::~Application()
 
     IMG_Quit();
     SDL_Quit();
+
+#ifdef _CONSOLE
+    std::cout << "Press \"Enter\" to exit..." << std::endl;
+    std::cin.get();
+#endif
 }
 
 //Initialization method. Handles SDL2 initialization.
@@ -75,7 +82,7 @@ int Application::Init()
     renderer = SDL_CreateRenderer(window, -1, 0);
 
     gameState = GameState::Running;
-    state = new States::PlayState("Assets/Levels/Level-TestComplex.json");
+    state = new States::PlayState("Assets/Levels/Level-Test.json");
     state->Init();
 
     return 0;
@@ -140,5 +147,6 @@ void Application::Update()
         state->Init();
     }
 
+    TextureManager::RenderQueue();
     SDL_RenderPresent(renderer);
 }

@@ -9,9 +9,12 @@ struct TextureManager
 	static SDL_Texture* LoadTexture(const char* imagePath);
 	static SDL_Texture* LoadTextureFromSurface(SDL_Surface* texture);
 	static void RenderSprite(Sprite* sprite);
+	static void RenderQueue();
+	static void ClearQueue();
+	static void DestroyQueue();
 
 private:
-	static std::vector<SDL_Texture*> textures;
+	static std::vector<Sprite*> renderQueue;
 };
 
 #endif
