@@ -375,3 +375,4 @@ FodyWeavers.xsd
 *.tlog
 *.lastbuildstate
 Hare/obj/Win32/Debug/Hare.tlog/Hare.lastbuildstate
+outputLog.txt

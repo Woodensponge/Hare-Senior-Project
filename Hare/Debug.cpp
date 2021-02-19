@@ -3,6 +3,7 @@
 
 #include <SDL.h>
 #include <iostream>
+#include <fstream>
 #include <string>
 
 using namespace Debug;
@@ -35,6 +36,10 @@ Log::~Log()
 {
 	if (canLog)
 	{
+		std::ofstream outputLog("outputLog.txt", std::ios_base::app);
+		outputLog << oss.str() << "\n";
+		outputLog.close();
+
 		std::cout << oss.str() << std::endl;
 	}
 }

@@ -65,8 +65,8 @@ void PlayState::Update()
 
     spriteCrosshair->SetPosition
     (
-        MOUSE_X() - (spriteCrosshair->w / 2),
-        MOUSE_Y() - (spriteCrosshair->h / 2)
+        MOUSE_X() - (spriteCrosshair->w / static_cast<double>(2)),
+        MOUSE_Y() - (spriteCrosshair->h / static_cast<double>(2))
     );
     TextureManager::RenderSprite(spriteCrosshair);
 }

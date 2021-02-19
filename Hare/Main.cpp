@@ -17,6 +17,13 @@ int main()
     DEBUG_LOG_DEBUGONLY << "(DEBUG BUILD)";
     DEBUG_LOG_RELEASEONLY << "(RELEASE BUILD)";
 
+    std::ofstream outputLog("outputLog.txt");
+    if (outputLog.good())
+    {
+        outputLog.clear();
+    }
+    outputLog.close();
+
     Application app = Application("Hare", WINDOW_WIDTH, WINDOW_HEIGHT, 0, 60, true);
 
     int initReturnCode = app.Init();
