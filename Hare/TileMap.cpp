@@ -20,9 +20,6 @@ TileMap::~TileMap()
 {
 	tileMapJson.~Value();
 
-	if (tileMapTexture != nullptr)
-		SDL_DestroyTexture(tileMapTexture);
-
 	//TODO: Research smart pointers
 	//Destroy every tile in the vector;
 	for (std::vector<Tile*> vector : tiles)		//For each loop for the 2D array "tiles"

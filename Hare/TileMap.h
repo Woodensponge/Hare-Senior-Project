@@ -14,7 +14,6 @@ struct TileMap
 	{
 		~Tile()
 		{
-			DEBUG_LOG << "DESTROYED";
 			delete sprite;
 		}
 
@@ -41,7 +40,6 @@ struct TileMap
 private:
 	Json::Value tileMapJson;
 	Json::Value tileSetJson;
-	SDL_Texture* tileMapTexture = nullptr;
 
 	std::string levelDevName;
 

@@ -23,7 +23,6 @@ PlayState::~PlayState()
     for (Sprite* i : sprites)
 		delete i;
 
-    level.~Level();
     sprites.~vector();
 }
 

@@ -26,7 +26,7 @@ Application::Application
     bool isCapped
 )
     :windowTitle(title), windowWidth(windowWidth), windowHeight(windowHeight), flags(flags),
-    isCapped(isCapped), state(new States::State())
+    isCapped(isCapped), state(nullptr)
 {
     Timer::fps = fps;
 }
@@ -35,7 +35,12 @@ Application::Application
 Application::~Application()
 {
     Events::EventHandler::DestroyQueue();
+
     state->~State();
+    delete state;
+
+    SDL_DestroyRenderer(renderer);
+    SDL_DestroyWindow(window);
 
     IMG_Quit();
     SDL_Quit();
@@ -120,7 +125,7 @@ void Application::Update()
     {
         //Keep the desired state to switch in this scope and deconstruct the state pointer
         States::StateID switchToState = state->switchToState;
-        state->~State();
+        delete state;
 
         Events::EventHandler::DestroyQueue();           //Destroy all events in event queue
 

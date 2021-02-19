@@ -12,6 +12,7 @@ Level::Level(const char* levelFile)
 
 Level::~Level()
 {
+	DEBUG_LOG << "Fuck";
 	delete tileMap;
 }
 
