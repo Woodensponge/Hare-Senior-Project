@@ -95,7 +95,6 @@ void Application::Update()
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 
     Mouse::UpdateMouse();
-    //DEBUG_LOG_DEBUGONLY << MOUSE_X() << " : " << MOUSE_Y();
 
     //Game state handling.
     switch (gameState)
@@ -113,6 +112,7 @@ void Application::Update()
     while (SDL_PollEvent(&event))
     {
         Events::EventHandler::UpdateEvents(&event);
+        //Events relevant to how the application works go here.
         switch (event.type)
         {
         case SDL_QUIT:

@@ -14,6 +14,15 @@ struct TextureManager
 	static void DestroyQueue();
 
 	static std::vector<Sprite*> renderQueue;
+
+private:
+	struct SortSpriteLayer_LessThan
+	{
+		inline bool operator() (const Sprite* spriteOne, const Sprite* spriteTwo)
+		{
+			return (spriteOne->layer < spriteTwo->layer);
+		}
+	};
 };
 
 #endif

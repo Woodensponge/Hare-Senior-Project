@@ -21,6 +21,7 @@ struct TileMap
 		int height = 0;
 		int x = 0;
 		int y = 0;
+		int layer = 0;
 		unsigned int tileID = 0;
 		std::string imageName = "None";
 		Sprite* sprite = new Sprite();

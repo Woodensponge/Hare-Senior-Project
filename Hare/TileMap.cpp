@@ -97,7 +97,9 @@ void TileMap::RenderMap(const char* tileSetFile)
 			if (tile->imageName == "None")
 			{
 				tile->sprite = new Sprite();
+				tile->sprite->layer = tile->layer;
 				tile->sprite->Update();
+
 				continue;
 			}
 
@@ -108,6 +110,7 @@ void TileMap::RenderMap(const char* tileSetFile)
 				(double)(tile->y * tile->height),
 				tile->width, tile->height
 			);
+			tile->sprite->layer = tile->layer;
 
 			tile->sprite->Update();
 		}

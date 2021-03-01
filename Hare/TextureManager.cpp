@@ -3,6 +3,7 @@
 #include "Debug.h"
 
 #include <SDL_image.h>
+#include <algorithm>
 
 std::vector<Sprite*> TextureManager::renderQueue;
 
@@ -29,6 +30,9 @@ void TextureManager::RenderSprite(Sprite* sprite)
 
 void TextureManager::RenderQueue()
 {
+	//Sort the vector
+	std::sort(renderQueue.begin(), renderQueue.end(), SortSpriteLayer_LessThan());
+
 	for (Sprite* sprite : renderQueue)
 	{
 		SDL_RenderCopy(Application::renderer, sprite->texture, 0, &sprite->size);

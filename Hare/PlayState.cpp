@@ -42,16 +42,16 @@ void PlayState::Init()
     sprites.back()->SetPosition(50, 50);
     */
 
+    this->AddEvent(new EventTypes::KeyboardEvent);
+    this->AddEvent(new EventTypes::KeyboardEvent);
+    DEBUG_LOG << "LEVEL WIDTH: " << level.width << " LEVEL HEIGHT: " << level.height;
+    level.tileMap->RenderMap(level.levelFileJson["tileset"].asCString());
+
     //Crosshair
     spriteCrosshair = new Sprite("Assets/Crosshairs/Crosshair-Simple.png", 0, 0, 20, 20);
     spriteCrosshair->layer = 99; //Crosshair is always on top, no matter what.
 
     SDL_ShowCursor(0);
-
-    this->AddEvent(new EventTypes::KeyboardEvent);
-    this->AddEvent(new EventTypes::KeyboardEvent);
-    DEBUG_LOG << "LEVEL WIDTH: " << level.width << " LEVEL HEIGHT: " << level.height;
-    level.tileMap->RenderMap(level.levelFileJson["tileset"].asCString());
 }
 
 void PlayState::Update()
