@@ -177,13 +177,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="Event.cpp" />
     <ClCompile Include="EventHandler.cpp" />
     <ClCompile Include="JsonManager.cpp" />
     <ClCompile Include="KeyboardEvent.cpp" />
-    <ClCompile Include="Layer.cpp" />
-    <ClCompile Include="LayerManager.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="Debug.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -203,13 +202,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h" />
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="Cell.h" />
     <ClInclude Include="Event.h" />
     <ClInclude Include="EventHandler.h" />
     <ClInclude Include="JsonManager.h" />
     <ClInclude Include="KeyboardEvent.h" />
-    <ClInclude Include="Layer.h" />
-    <ClInclude Include="LayerManager.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="Debug.h" />
     <ClInclude Include="Mouse.h" />

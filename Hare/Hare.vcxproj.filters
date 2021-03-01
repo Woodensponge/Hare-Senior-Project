@@ -67,10 +67,7 @@
     <ClCompile Include="TileMap.cpp">
       <Filter>Source files\World</Filter>
     </ClCompile>
-    <ClCompile Include="Layer.cpp">
-      <Filter>Source files\Rendering</Filter>
-    </ClCompile>
-    <ClCompile Include="LayerManager.cpp">
+    <ClCompile Include="Camera.cpp">
       <Filter>Source files\Rendering</Filter>
     </ClCompile>
   </ItemGroup>
@@ -138,10 +135,7 @@
     <ClInclude Include="TileMap.h">
       <Filter>Header files\World</Filter>
     </ClInclude>
-    <ClInclude Include="Layer.h">
-      <Filter>Header files\Rendering</Filter>
-    </ClInclude>
-    <ClInclude Include="LayerManager.h">
+    <ClInclude Include="Camera.h">
       <Filter>Header files\Rendering</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,6 +1,7 @@
 #ifndef PLAYSTATE_H_
 #define PLAYSTATE_H_
 
+#include "Camera.h"
 #include "State.h"
 #include "Sprite.h"
 #include "Level.h"
@@ -26,6 +27,7 @@ namespace States
 		Sprite* spriteCrosshair = nullptr;
 		SDL_Window* window;
 		Level level;
+		Camera* camera;
 	};
 }
 

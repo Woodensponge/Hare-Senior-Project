@@ -13,6 +13,7 @@ Level::Level(const char* levelFile)
 Level::~Level()
 {
 	delete tileMap;
+	levelFileJson.~Value();
 }
 
 void Level::Update()

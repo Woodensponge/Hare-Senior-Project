@@ -1,5 +1,6 @@
 #include "PlayState.h"
 #include "Application.h"
+#include "Camera.h"
 #include "Timer.h"
 #include "Level.h"
 #include "EventHandler.h"
@@ -28,6 +29,7 @@ PlayState::~PlayState()
 
     sprites.~vector();
 
+    delete camera;
     delete spriteCrosshair;
 }
 
@@ -51,6 +53,10 @@ void PlayState::Init()
     spriteCrosshair = new Sprite("Assets/Crosshairs/Crosshair-Simple.png", 0, 0, 20, 20);
     spriteCrosshair->layer = 2147483647; //Crosshair is always on top, no matter what.
 
+    camera = new Camera(480, 360);
+    camera->SetPosition(546, 384);
+    TextureManager::SetCamera(camera);
+
     SDL_ShowCursor(0);
 }
 
@@ -69,4 +75,10 @@ void PlayState::Update()
         MOUSE_Y() - (spriteCrosshair->h / static_cast<double>(2))
     );
     TextureManager::RenderSprite(spriteCrosshair);
+
+    camera->Update();
+    /*
+    DEBUG_LOG << camera->rect.w << " <-w : h-> " << camera->rect.h;
+    DEBUG_LOG << camera->rect.x << " <-x : y-> " << camera->rect.y;
+    */
 }

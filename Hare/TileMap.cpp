@@ -106,8 +106,8 @@ void TileMap::RenderMap(const char* tileSetFile)
 			tile->sprite = new Sprite
 			(
 				tile->imageName.c_str(),
-				(double)(tile->x * tile->width),
-				(double)(tile->y * tile->height),
+				(double)((double)tile->x * (double)tile->width),
+				(double)((double)tile->y * (double)tile->height),
 				tile->width, tile->height
 			);
 			tile->sprite->layer = tile->layer;

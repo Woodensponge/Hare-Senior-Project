@@ -6,6 +6,7 @@
 #include <algorithm>
 
 std::vector<Sprite*> TextureManager::renderQueue;
+Camera* TextureManager::mainCamera = nullptr;
 
 SDL_Texture* TextureManager::LoadTexture(const char* imagePath)
 {
