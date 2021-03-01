@@ -3,7 +3,7 @@
 #include "Debug.h"
 
 Camera::Camera()
-	:drect(SDL_Rect())
+	:drect(SDL_Rect()), size(SDL_Rect())
 {
 	SDL_GetWindowMaximumSize(Application::GetWindow(), &drect.w, &drect.h);
 	drect.x = 0;
@@ -13,7 +13,7 @@ Camera::Camera()
 }
 
 Camera::Camera(int width, int height)
-	:drect(SDL_Rect())
+	:drect(SDL_Rect()), size(SDL_Rect())
 {
 	drect.w = width;
 	drect.h = height;

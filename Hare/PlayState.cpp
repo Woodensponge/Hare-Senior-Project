@@ -54,7 +54,7 @@ void PlayState::Init()
     spriteCrosshair->layer = 2147483647; //Crosshair is always on top, no matter what.
 
     camera = new Camera(640, 480);
-    camera->SetPosition(100, 0);
+    camera->SetPosition(0, 0);
     TextureManager::SetCamera(camera);
 
     SDL_ShowCursor(0);

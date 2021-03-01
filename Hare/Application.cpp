@@ -79,7 +79,7 @@ int Application::Init()
         flags
     );
 
-    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_TARGETTEXTURE);
+    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_TARGETTEXTURE);
 
     gameState = GameState::Running;
     state = new States::PlayState("Assets/Levels/Level-Test.json");
@@ -91,7 +91,10 @@ int Application::Init()
 //Update method. Handles rendering, UI, and other things involving the window.
 void Application::Update()
 {
-    SDL_RenderClear(renderer);
+    //Don't run SDL_RenderClear when minimized.
+    if (SDL_GetWindowFlags(Application::GetWindow()) & SDL_WINDOW_MINIMIZED ? false : true)
+        SDL_RenderClear(renderer);
+
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 
     Mouse::UpdateMouse();
@@ -99,16 +102,13 @@ void Application::Update()
     //Game state handling.
     switch (gameState)
     {
-    case GameState::Minimized:
-        //TODO: Add minimize functionality.
-        break;
     case GameState::Closing:
         return;
     case GameState::None:
         //TODO: Throw an exception here when state == GameState::None.
         break;
     }
-    
+
     while (SDL_PollEvent(&event))
     {
         Events::EventHandler::UpdateEvents(&event);
@@ -147,6 +147,14 @@ void Application::Update()
         state->Init();
     }
 
-    TextureManager::RenderQueue();
+    if (SDL_GetWindowFlags(Application::GetWindow()) & SDL_WINDOW_MINIMIZED)
+    {
+        TextureManager::ClearQueue();
+    }
+    else
+    {
+        TextureManager::RenderQueue();
+    }
+
     SDL_RenderPresent(renderer);
 }

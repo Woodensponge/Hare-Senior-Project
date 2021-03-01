@@ -21,6 +21,7 @@ struct Camera
 	void SetSize(int width, int height);
 	void SetPosition(int x, int y);
 
+	SDL_Rect size;
 	SDL_Rect drect;
 	SDL_Texture* texture;
 
