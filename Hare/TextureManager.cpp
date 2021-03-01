@@ -31,13 +31,6 @@ void TextureManager::RenderSprite(Sprite* sprite)
 
 void TextureManager::RenderQueue()
 {
-	if (SDL_GetWindowFlags(Application::GetWindow()) & SDL_WINDOW_MINIMIZED)
-	{
-		//DO NOT RENDER ANYTHING TO AVOID A MEMORY LEAK!
-		renderQueue.clear();
-		return;
-	}
-
 	if (mainCamera != nullptr)
 	{
 		//Sort the vector
