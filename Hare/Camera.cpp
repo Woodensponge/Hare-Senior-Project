@@ -75,7 +75,7 @@ void Camera::RenderTexture()
 		}
 		SDL_RenderCopy(Application::renderer, sprite->texture, 0, &sprite->size);
 	}
-	SDL_SetRenderTarget(Application::renderer, NULL); //NULL SETS TO DEFAULT
+	SDL_SetRenderTarget(Application::renderer, NULL); //Reset the renderer to default (the window)
 
 	//Clear the render queue, make space for the next frame.
 	//Don't delete the sprites here. Rely on the code calling this function to destroy the sprites.
@@ -96,9 +96,6 @@ void Camera::SetPosition(int x, int y)
 
 void Camera::InitTexture()
 {
-	int width;
-	int height;
-	SDL_GetWindowMaximumSize(Application::GetWindow(), &width, &height);
 	texture = SDL_CreateTexture
 	(
 		Application::renderer, 
