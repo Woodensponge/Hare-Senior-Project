@@ -23,6 +23,20 @@ Camera::Camera(int width, int height)
 	InitTexture();
 }
 
+Camera::Camera(int width, int height, int viewportWidth, int viewportHeight)
+	:drect(SDL_Rect()), size(SDL_Rect())
+{
+	drect.w = width;
+	drect.h = height;
+	drect.x = 0;
+	drect.y = 0;
+
+	size.w = viewportWidth;
+	size.h = viewportHeight;
+
+	InitTexture();
+}
+
 Camera::~Camera()
 {
 	SDL_DestroyTexture(texture);
@@ -54,6 +68,11 @@ void Camera::RenderTexture()
 	SDL_SetRenderTarget(Application::renderer, texture);
 	for (Sprite* sprite : renderQueue)
 	{
+		if (!sprite->ignoreCamera)
+		{
+			sprite->size.x -= size.x;
+			sprite->size.y -= size.y;
+		}
 		SDL_RenderCopy(Application::renderer, sprite->texture, 0, &sprite->size);
 	}
 	SDL_SetRenderTarget(Application::renderer, NULL); //NULL SETS TO DEFAULT
@@ -71,12 +90,15 @@ void Camera::SetSize(int width, int height)
 
 void Camera::SetPosition(int x, int y)
 {
-	drect.x = x;
-	drect.y = y;
+	size.x = x;
+	size.y = y;
 }
 
 void Camera::InitTexture()
 {
+	int width;
+	int height;
+	SDL_GetWindowMaximumSize(Application::GetWindow(), &width, &height);
 	texture = SDL_CreateTexture
 	(
 		Application::renderer, 

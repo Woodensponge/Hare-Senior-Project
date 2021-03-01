@@ -82,7 +82,7 @@ int Application::Init()
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_TARGETTEXTURE);
 
     gameState = GameState::Running;
-    state = new States::PlayState("Assets/Levels/Level-Test.json");
+    state = new States::PlayState("Assets/Levels/Level-TestLong.json");
     state->Init();
 
     return 0;

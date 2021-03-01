@@ -51,15 +51,6 @@ void TextureManager::RenderQueue()
 		return;
 	}
 
-	//Sort the vector
-	std::sort(renderQueue.begin(), renderQueue.end(), SortSpriteLayer_LessThan());
-
-	for (Sprite* sprite : renderQueue)
-	{
-		SDL_RenderCopy(Application::renderer, sprite->texture, 0, &sprite->size);
-	}
-	//Clear the render queue, make space for the next frame.
-	//Don't delete the sprites here. Rely on the code calling this function to destroy the sprites.
 	renderQueue.clear();
 }
 

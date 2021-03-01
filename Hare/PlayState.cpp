@@ -52,10 +52,11 @@ void PlayState::Init()
     //Crosshair
     spriteCrosshair = new Sprite("Assets/Crosshairs/Crosshair-Simple.png", 0, 0, 20, 20);
     spriteCrosshair->layer = 2147483647; //Crosshair is always on top, no matter what.
+    spriteCrosshair->ignoreCamera = true;
 
-    camera = new Camera(640, 480);
-    camera->SetPosition(0, 0);
-    TextureManager::SetCamera(camera);
+    camera = new Camera(level.width * 20, level.height * 20, 640, 480);
+    camera->SetPosition(400, 0);
+    TextureManager::SetMainCamera(camera);
 
     SDL_ShowCursor(0);
 }

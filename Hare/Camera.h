@@ -10,6 +10,7 @@ struct Camera
 {
 	Camera();
 	Camera(int width, int height);
+	Camera(int width, int height, int viewportWidth, int viewportHeight);
 	~Camera();
 
 	inline void SetWidth(int width)		{ drect.w = width; };
