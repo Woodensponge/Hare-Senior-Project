@@ -13,7 +13,7 @@ using namespace States;
 using namespace Events;
 
 PlayState::PlayState(const char* levelJson)
-	: level(levelJson)
+	: level(levelJson), camera(nullptr)
 {
     window = Application::GetWindow();
 	SDL_GetWindowSize(window, &windowWidth, &windowHeight);
@@ -53,8 +53,8 @@ void PlayState::Init()
     spriteCrosshair = new Sprite("Assets/Crosshairs/Crosshair-Simple.png", 0, 0, 20, 20);
     spriteCrosshair->layer = 2147483647; //Crosshair is always on top, no matter what.
 
-    camera = new Camera(480, 360);
-    camera->SetPosition(546, 384);
+    camera = new Camera(640, 480);
+    camera->SetPosition(100, 0);
     TextureManager::SetCamera(camera);
 
     SDL_ShowCursor(0);
@@ -76,7 +76,6 @@ void PlayState::Update()
     );
     TextureManager::RenderSprite(spriteCrosshair);
 
-    camera->Update();
     /*
     DEBUG_LOG << camera->rect.w << " <-w : h-> " << camera->rect.h;
     DEBUG_LOG << camera->rect.x << " <-x : y-> " << camera->rect.y;

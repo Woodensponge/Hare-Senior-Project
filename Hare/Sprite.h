@@ -34,6 +34,8 @@ struct Sprite
 	int h = 480;
 	int layer = 0;
 
+	bool ignoreCamera = false;				//Don't move the sprite according to a camera.
+
 	SDL_Rect sourceRect;
 	SDL_Rect size;
 	SDL_Texture* texture;
