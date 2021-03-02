@@ -1,2 +1,10 @@
-﻿  Camera.cpp
+﻿  Application.cpp
+  Camera.cpp
+  Entity.cpp
+  PlayState.cpp
+  Player.cpp
+  Sprite.cpp
+  TextureManager.cpp
+  TileMap.cpp
+  Generating Code...
   Hare.vcxproj -> C:\Users\Woodensponge\Documents\GitHub\Hare\bin\Win32\Debug\Hare.exe

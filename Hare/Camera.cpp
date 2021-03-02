@@ -51,18 +51,29 @@ Camera::~Camera()
 	renderQueue.~vector();
 }
 
+/*
+Clear the cameras texture. This destroys the textures old data and creates a
+blank slate.
+*/
 void Camera::ClearTexture()
 {
 	SDL_DestroyTexture(texture);
 	InitTexture();
 }
 
+/*
+Add a sprite to the cameras queue.
+*/
 void Camera::AddToQueue(Sprite* sprite)
 {
 	sprite->Update();
 	renderQueue.push_back(sprite);
 }
 
+/*
+Render all the sprites onto the cameras texture.
+Use this method at least once per frame. It can get a bit slow switching render targets.
+*/
 void Camera::RenderTexture()
 {
 	SDL_SetRenderTarget(Application::renderer, texture);
@@ -82,13 +93,19 @@ void Camera::RenderTexture()
 	renderQueue.clear();
 }
 
+/*
+Sets the cameras size.
+*/
 void Camera::SetSize(int width, int height)
 {
 	drect.w = width;
 	drect.h = height;
 }
 
-void Camera::SetPosition(int x, int y)
+/*
+Set where the camera is looking at. Sprites with ignoreCamera on will not be affected.
+*/
+void Camera::SetViewPosition(int x, int y)
 {
 	size.x = x;
 	size.y = y;

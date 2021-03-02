@@ -1,8 +1,7 @@
 #ifndef LEVEL_H_
 #define LEVEL_H_
 
-#include "Cell.h"
-#include "Simulation.h"
+#include "Entity.h";
 #include "Sprite.h"
 #include "TileMap.h"
 
@@ -24,6 +23,9 @@ struct Level
 	Json::Value levelFileJson;
 
 	TileMap* tileMap;
+
+private:
+	std::vector<Hare::Entity*> entities;
 };
 
 

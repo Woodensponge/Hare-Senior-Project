@@ -20,7 +20,7 @@ struct Camera
 	void AddToQueue(Sprite* sprite);
 	void RenderTexture();
 	void SetSize(int width, int height);
-	void SetPosition(int x, int y);
+	void SetViewPosition(int x, int y);
 
 	SDL_Rect size;
 	SDL_Rect drect;

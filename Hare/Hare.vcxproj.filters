@@ -70,6 +70,12 @@
     <ClCompile Include="Camera.cpp">
       <Filter>Source files\Rendering</Filter>
     </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Source files\Game\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity.cpp">
+      <Filter>Source files\Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -138,6 +144,12 @@
     <ClInclude Include="Camera.h">
       <Filter>Header files\Rendering</Filter>
     </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Header files\Game\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity.h">
+      <Filter>Header files\Game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -202,6 +214,18 @@
     </Filter>
     <Filter Include="Header files\States\State Types">
       <UniqueIdentifier>{6e512368-ff88-4835-b7a6-f2bb5c7ec8d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Game">
+      <UniqueIdentifier>{72fcb9df-60cf-4ef0-a7c5-dcb201fe8638}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\Game">
+      <UniqueIdentifier>{7ede6dfc-5f5c-4edb-bfb6-51954ed9ba93}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\Game\Entities">
+      <UniqueIdentifier>{1dd02823-f789-4475-b361-ec3d9402f19c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Game\Entities">
+      <UniqueIdentifier>{0ee3ea6f-4759-4ec0-94e4-7ac7bb0cdce4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

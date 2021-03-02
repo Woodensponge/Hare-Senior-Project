@@ -1,6 +1,7 @@
 #include "PlayState.h"
 #include "Application.h"
 #include "Camera.h"
+#include "Player.h"
 #include "Timer.h"
 #include "Level.h"
 #include "EventHandler.h"
@@ -45,7 +46,6 @@ void PlayState::Init()
     */
 
     this->AddEvent(new EventTypes::KeyboardEvent);
-    this->AddEvent(new EventTypes::KeyboardEvent);
     DEBUG_LOG << "LEVEL WIDTH: " << level.width << " LEVEL HEIGHT: " << level.height;
     level.tileMap->RenderMap(level.levelFileJson["tileset"].asCString());
 
@@ -55,7 +55,7 @@ void PlayState::Init()
     spriteCrosshair->ignoreCamera = true;
 
     camera = new Camera(level.width * 20, level.height * 20, 640, 480);
-    camera->SetPosition(400, 0);
+    camera->SetViewPosition(400, 0);
     TextureManager::SetMainCamera(camera);
 
     SDL_ShowCursor(0);
