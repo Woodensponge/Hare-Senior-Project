@@ -3,9 +3,16 @@
 
 using namespace Hare;
 
+int Entity::nextEntityID = 0;
+
 Entity::Entity()
 {
 	this->AddFlags(ENTITYSTATE_ALIVE);
+
+	entityID = nextEntityID;
+	nextEntityID++;
+
+	DEBUG_LOG_DEBUGONLY << "ENTITY CREATED WITH ID " << entityID;
 }
 
 Entity::~Entity()
@@ -14,6 +21,13 @@ Entity::~Entity()
 	{
 		delete sprite;
 	}
+
+	DEBUG_LOG_DEBUGONLY 
+		<< "ENTITY DESTROYED WITH ID " 
+		<< entityID 
+		<< " (" 
+		<< entityTypeString
+		<< ")";
 }
 
 /*

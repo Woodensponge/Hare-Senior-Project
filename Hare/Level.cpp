@@ -1,6 +1,7 @@
 #include "Level.h"
 #include "Debug.h"
 #include "JsonManager.h"
+#include "Player.h"
 
 Level::Level(const char* levelFile)
 {
@@ -9,6 +10,9 @@ Level::Level(const char* levelFile)
 	tileMap = new TileMap(levelFileJson["tilemap"].asCString(), levelFileJson["devname"].asCString());
 	width = tileMap->GetGeneralWidth();
 	height = tileMap->GetGeneralHeight();
+
+	//Create entities.
+	entities.push_back(new Hare::Entities::Player(0, 0));
 }
 
 Level::~Level()

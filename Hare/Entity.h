@@ -42,6 +42,7 @@ namespace Hare
 
 	private:
 		Sprite* sprite = nullptr;
+		static int nextEntityID;
 	};
 }
 

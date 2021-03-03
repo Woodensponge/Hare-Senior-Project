@@ -1,7 +1,7 @@
 #ifndef LEVEL_H_
 #define LEVEL_H_
 
-#include "Entity.h";
+#include "Entity.h"
 #include "Sprite.h"
 #include "TileMap.h"
 
