@@ -5,6 +5,7 @@
 
 struct JsonManager
 {
+	/* Opens a JSON file. Returns a JSON Value. */
 	static Json::Value OpenJson(const char* arg);
 };
 

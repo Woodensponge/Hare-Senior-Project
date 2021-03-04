@@ -43,9 +43,6 @@ void Entity::Die()
 	this->RemoveFlags(ENTITYSTATE_ALIVE);
 }
 
-/*
-Updates the entity.
-*/
 void Entity::Update()
 {
 	if (entityFlags & ENTITYSTATE_DEAD)			//If the entity is dead...
@@ -55,20 +52,12 @@ void Entity::Update()
 		this->Die();							//Kill the entity.
 }
 
-/*
-Adds an entities flags.
-Will return current flags after execution.
-*/
 int Entity::AddFlags(int flags)
 {
 	this->entityFlags &= flags;
 	return this->entityFlags;
 }
 
-/*
-Removes an entities flags.
-Will return current flags after execution.
-*/
 int Entity::RemoveFlags(int flags)
 {
 	this->entityFlags &= ~flags;

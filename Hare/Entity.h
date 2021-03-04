@@ -25,9 +25,17 @@ namespace Hare
 		virtual ~Entity();
 
 		inline EntityType GetEntityType()	{ return entityType; };
+		
+		/* Kills the entity. Does not destroy the entity. */
 		virtual void Die();
+
+		/* Updates the entity. */
 		virtual void Update();
+
+		/* Adds an entities flags. Will return current flags after execution. */
 		int AddFlags(int flags);
+
+		/* Removes an entities flags. Will return current flags after execution. */
 		int RemoveFlags(int flags);
 
 		int health = 100;

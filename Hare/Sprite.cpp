@@ -7,7 +7,6 @@
 #include <SDL_image.h>
 #include <cassert>
 
-//Constructors and destructors
 Sprite::Sprite()
 	:x(0), y(0), w(0), h(0)
 {
@@ -165,8 +164,8 @@ Updates the sprite.
 */
 void Sprite::Update()
 {
-	assert(this != nullptr);		//The sprite hasn't even been created. Throw an error!
-
+	assert(this != nullptr);		//If the assert fails, that means the sprite hasn't even been created.
+									//Always make sure to define a sprite pointer.
 	this->size.x = lround(x);
 	this->size.y = lround(y);
 

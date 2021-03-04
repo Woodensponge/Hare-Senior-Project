@@ -7,8 +7,22 @@
 #include <SDL_video.h>
 
 //LOGGING MACROS
+/*
+Logs a message to the console as well as an output file.
+Works in any build.
+*/
 #define DEBUG_LOG Debug::Log()
+
+/*
+Logs a message to the console as well as an output file.
+Only works with debug builds.
+*/
 #define DEBUG_LOG_DEBUGONLY Debug::Log(Debug::LogEnum::DebugOnly)
+
+/*
+Logs a message to the console as well as an output file.
+Only works in release builds.
+*/
 #define DEBUG_LOG_RELEASEONLY Debug::Log(Debug::LogEnum::ReleaseOnly)	
 
 namespace Debug
@@ -41,6 +55,9 @@ namespace Debug
 
 	struct Error
 	{
+		/*
+		Output an error message through an SDL2 message box.
+		*/
 		static void ShowSDLMessageBox(const char* errorMessage);
 	};
 }
