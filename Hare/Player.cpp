@@ -1,4 +1,6 @@
 #include "Player.h"
+#include "Debug.h"
+#include "Timer.h"
 
 using namespace Hare;
 using namespace Hare::Entities;
@@ -60,6 +62,5 @@ Player::~Player()
 void Player::Update()
 {
 	Entity::Update();
-
-	this->hitbox.x++;
+	this->hitbox.x += lround(10 * Timer::GetDeltaTime());
 }

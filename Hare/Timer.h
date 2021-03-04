@@ -8,9 +8,8 @@ struct Timer
 	static void UpdateDeltaTime();
 
 	static int fps;
-
-private:
 	static double deltaTime;
+	static double unboundDt;
 };
 
 #endif

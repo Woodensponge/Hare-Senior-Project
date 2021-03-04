@@ -4,10 +4,11 @@
 #include <iostream> //For debugging purposes
 
 double Timer::deltaTime = 0;
+double Timer::unboundDt = 0;
 int Timer::fps = 60;
 
-Uint32 pastTicks = 0;
-Uint32 presentTicks = 0;
+Uint64 pastTicks = 0;
+Uint64 presentTicks = 0;
 
 double Timer::GetDeltaTime(bool isIndependentOnFramerate)
 {
@@ -19,7 +20,7 @@ double Timer::GetDeltaTime(bool isIndependentOnFramerate)
 
 void Timer::UpdateDeltaTime()
 {
-	presentTicks = SDL_GetTicks();					//Get the ticks for this call.
+	presentTicks = SDL_GetPerformanceCounter();					//Get the ticks for this call.
 
 	if (presentTicks == 0)							//Make sure we don't divide by zero
 	{
@@ -28,7 +29,9 @@ void Timer::UpdateDeltaTime()
 	}
 
 	//Calculate delta time.
-	deltaTime = (double)((presentTicks - pastTicks) / 1000.0f);
+	deltaTime = (double)((presentTicks - pastTicks) * 1000 / (double)SDL_GetPerformanceFrequency()) / 100;
+	unboundDt = deltaTime * fps;
+	
 	pastTicks = presentTicks;
 
 	//std::cout << deltaTime << std::endl;			//Print deltatime to the console.
