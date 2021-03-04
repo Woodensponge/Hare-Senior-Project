@@ -59,4 +59,7 @@ Player::~Player()
 
 void Player::Update()
 {
+	Entity::Update();
+
+	this->hitbox.x++;
 }

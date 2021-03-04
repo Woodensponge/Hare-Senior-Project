@@ -32,4 +32,8 @@ Level::~Level()
 void Level::Update()
 {
 	tileMap->Update();
+	for (Hare::Entity* entity : entities)
+	{
+		entity->Update();
+	}
 }
