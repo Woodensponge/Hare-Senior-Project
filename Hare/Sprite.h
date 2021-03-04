@@ -11,11 +11,13 @@ struct Sprite
 	Sprite(SDL_Texture* texture, double x, double y);
 	Sprite(SDL_Texture* texture, double x, double y, int w, int h);
 	Sprite(SDL_Texture* texture, double x, double y, SDL_Rect size);
+	Sprite(SDL_Texture* texture, SDL_Rect size);
 
 	Sprite(const char* imageName);
 	Sprite(const char* imageName, double x, double y);
 	Sprite(const char* imageName, double x, double y, int w, int h);
 	Sprite(const char* imageName, double x, double y, SDL_Rect size);
+	Sprite(const char* imageName, SDL_Rect size);
 
 	~Sprite();
 

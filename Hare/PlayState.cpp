@@ -79,6 +79,14 @@ void PlayState::Update()
 
     for (Hare::Entity* entity : level.GetEntities())
     {
+        entity->hitbox.x++;
+
+        entity->sprite->x = entity->hitbox.x;
+        entity->sprite->y = entity->hitbox.y;
+        entity->sprite->w = entity->hitbox.w;
+        entity->sprite->h = entity->hitbox.h;
+        entity->sprite->Update();
+
         TextureManager::RenderSprite(entity->sprite);
     }
 

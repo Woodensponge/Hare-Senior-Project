@@ -5,7 +5,7 @@
       <Filter>Source files</Filter>
     </ClCompile>
     <ClCompile Include="Cell.cpp">
-      <Filter>Source files\Cellular Automata</Filter>
+      <Filter>Source files\Cellular Automata %28Unused%29</Filter>
     </ClCompile>
     <ClCompile Include="Debug.cpp">
       <Filter>Source files\Core</Filter>
@@ -17,7 +17,7 @@
       <Filter>Source files</Filter>
     </ClCompile>
     <ClCompile Include="Simulation.cpp">
-      <Filter>Source files\Cellular Automata</Filter>
+      <Filter>Source files\Cellular Automata %28Unused%29</Filter>
     </ClCompile>
     <ClCompile Include="Sprite.cpp">
       <Filter>Source files\Rendering</Filter>
@@ -82,7 +82,7 @@
       <Filter>Header files</Filter>
     </ClInclude>
     <ClInclude Include="Cell.h">
-      <Filter>Header files\Cellular Automata</Filter>
+      <Filter>Header files\Cellular Automata %28Unused%29</Filter>
     </ClInclude>
     <ClInclude Include="Debug.h">
       <Filter>Header files\Core</Filter>
@@ -91,7 +91,7 @@
       <Filter>Header files\World</Filter>
     </ClInclude>
     <ClInclude Include="Simulation.h">
-      <Filter>Header files\Cellular Automata</Filter>
+      <Filter>Header files\Cellular Automata %28Unused%29</Filter>
     </ClInclude>
     <ClInclude Include="Sprite.h">
       <Filter>Header files\Rendering</Filter>
@@ -161,12 +161,6 @@
     <Filter Include="Header files">
       <UniqueIdentifier>{eb5fb455-5fdb-49bb-a03b-c5c8fb12bd62}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source files\Cellular Automata">
-      <UniqueIdentifier>{2e2c7917-8e53-4455-9c8c-66eef9069421}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header files\Cellular Automata">
-      <UniqueIdentifier>{c2002c0c-2689-4f70-acdc-b8d8cdabaa12}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header files\Core">
       <UniqueIdentifier>{75a820c7-5559-420a-abb9-71c679e399e8}</UniqueIdentifier>
     </Filter>
@@ -226,6 +220,12 @@
     </Filter>
     <Filter Include="Source files\Game\Entities">
       <UniqueIdentifier>{0ee3ea6f-4759-4ec0-94e4-7ac7bb0cdce4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Cellular Automata %28Unused%29">
+      <UniqueIdentifier>{2e2c7917-8e53-4455-9c8c-66eef9069421}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\Cellular Automata %28Unused%29">
+      <UniqueIdentifier>{c2002c0c-2689-4f70-acdc-b8d8cdabaa12}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

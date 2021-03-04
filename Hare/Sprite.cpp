@@ -57,6 +57,16 @@ Sprite::Sprite(SDL_Texture* texture, double x, double y, SDL_Rect size)
 	this->sourceRect = SDL_Rect();
 }
 
+Sprite::Sprite(SDL_Texture* texture, SDL_Rect size)
+{
+	this->texture = texture;
+	this->x = size.x;
+	this->y = size.y;
+
+	this->size = size;
+	this->sourceRect = SDL_Rect();
+}
+
 Sprite::Sprite(const char* imageName)
 {
 	this->texture = TextureManager::LoadTexture(imageName);
@@ -95,6 +105,17 @@ Sprite::Sprite(const char* imageName, double x, double y, SDL_Rect size)
 
 	this->x = x;
 	this->y = y;
+
+	this->size = size;
+	this->sourceRect = SDL_Rect();
+}
+
+Sprite::Sprite(const char* imageName, SDL_Rect size)
+{
+	this->texture = TextureManager::LoadTexture(imageName);
+
+	this->x = size.x;
+	this->y = size.y;
 
 	this->size = size;
 	this->sourceRect = SDL_Rect();
