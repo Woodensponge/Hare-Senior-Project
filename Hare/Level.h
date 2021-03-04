@@ -13,6 +13,7 @@ struct Level
 	Level(const char* levelJson);
 	~Level();
 
+	inline std::vector<Hare::Entity*> GetEntities() { return entities; };
 	void Update();
 
 	//Width of the level

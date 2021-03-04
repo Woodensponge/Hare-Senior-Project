@@ -1,4 +1,5 @@
 #include "Entity.h"
+#include "Application.h"
 #include "Debug.h"
 
 using namespace Hare;
@@ -6,6 +7,7 @@ using namespace Hare;
 int Entity::nextEntityID = 0;
 
 Entity::Entity()
+	:hitbox(SDL_Rect())
 {
 	this->AddFlags(ENTITYSTATE_ALIVE);
 

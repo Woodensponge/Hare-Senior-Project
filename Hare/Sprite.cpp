@@ -5,9 +5,11 @@
 
 #include <cmath>
 #include <SDL_image.h>
+#include <cassert>
 
 //Constructors and destructors
 Sprite::Sprite()
+	:x(0), y(0), w(0), h(0)
 {
 	this->texture = 0;
 
@@ -16,6 +18,7 @@ Sprite::Sprite()
 }
 
 Sprite::Sprite(SDL_Texture* texture)
+	:x(0), y(0), w(0), h(0)
 {
 	this->texture = texture;
 
@@ -162,6 +165,8 @@ Updates the sprite.
 */
 void Sprite::Update()
 {
+	assert(this != nullptr);		//The sprite hasn't even been created. Throw an error!
+
 	this->size.x = lround(x);
 	this->size.y = lround(y);
 

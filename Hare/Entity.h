@@ -32,16 +32,15 @@ namespace Hare
 
 		int health = 100;
 
-		double x = 0;
-		double y = 0;
-
 		unsigned int entityFlags = 0;
 		int entityID = 0;
 		EntityType entityType = EntityType::None;
 		std::string entityTypeString = "None";
 
-	private:
+		SDL_Rect hitbox;
 		Sprite* sprite = nullptr;
+
+	private:
 		static int nextEntityID;
 	};
 }

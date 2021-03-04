@@ -55,7 +55,7 @@ void PlayState::Init()
     spriteCrosshair->ignoreCamera = true;
 
     camera = new Camera(level.width * 20, level.height * 20, 640, 480);
-    camera->SetViewPosition(400, 0);
+    camera->SetViewPosition(0, 0);
     TextureManager::SetMainCamera(camera);
 
     SDL_ShowCursor(0);
@@ -76,6 +76,11 @@ void PlayState::Update()
         MOUSE_Y() - (spriteCrosshair->h / static_cast<double>(2))
     );
     TextureManager::RenderSprite(spriteCrosshair);
+
+    for (Hare::Entity* entity : level.GetEntities())
+    {
+        TextureManager::RenderSprite(entity->sprite);
+    }
 
     /*
     DEBUG_LOG << camera->rect.w << " <-w : h-> " << camera->rect.h;

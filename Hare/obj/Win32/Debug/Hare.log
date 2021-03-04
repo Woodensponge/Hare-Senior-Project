@@ -1,2 +1,8 @@
-﻿  Entity.cpp
+﻿  Application.cpp
+  Entity.cpp
+  Level.cpp
+  PlayState.cpp
+  Player.cpp
+  Sprite.cpp
+  Generating Code...
   Hare.vcxproj -> C:\Users\Woodensponge\Documents\GitHub\Hare\bin\Win32\Debug\Hare.exe
