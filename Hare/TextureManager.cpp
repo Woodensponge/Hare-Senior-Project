@@ -41,9 +41,6 @@ void TextureManager::RenderQueue()
 			mainCamera->AddToQueue(sprite);
 		}
 		mainCamera->RenderTexture();
-		//Clear the render queue, make space for the next frame.
-		//Don't delete the sprites here. Rely on the code calling this function to destroy the sprites.
-		renderQueue.clear();
 
 		SDL_RenderCopy(Application::renderer, mainCamera->texture, NULL, &mainCamera->drect);
 		mainCamera->ClearTexture();

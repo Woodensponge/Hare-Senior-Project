@@ -50,6 +50,7 @@ struct Application
 	static SDL_Renderer* renderer;
 	static SDL_Event event;
 
+	static Uint64 ticks;
 private:
 	static SDL_Window* window;
 	std::vector<Sprite*> sprites;

@@ -91,32 +91,43 @@ int main()
     //Setup variables to calculate Delta Time for framerate
     float elapsedMS = 0;
 
+    Uint32 ticksPerFrame = 20;
+
     app.Render();
+
+    Uint64 startTicks = SDL_GetTicks();
+    Uint64 endTicks = 0;
+
+    Timer::UpdateDeltaTime();
+    Timer::UpdateFixedDeltaTime();
 
     while (app.gameState != GameState::Closing)
     {
+        Timer::UpdateFixedDeltaTime();
         Timer::UpdateDeltaTime();
 
 #ifdef _DEBUG
-        SDL_SetWindowTitle(app.GetWindow(), std::to_string(Timer::GetDeltaTime()).c_str());
+        SDL_SetWindowTitle(app.GetWindow(), (std::to_string(Timer::deltaTime) + " : " + std::to_string(Timer::fixedDt)).c_str());
 #endif 
 
+        DEBUG_LOG << (std::to_string(Timer::deltaTime) + " : " + std::to_string(Timer::fixedDt)).c_str();
+
         //Get ticks right now to calculate Delta Time for framerate
+        Uint64 currentTicks = SDL_GetTicks();
         Uint64 start = SDL_GetPerformanceCounter();
 
-        app.Update();
-        app.Render();
+        if ((currentTicks - startTicks) >= ticksPerFrame)
+        {
+            app.ticks++;
+            app.Update();
+            
+            startTicks = currentTicks;
+        }
 
         Uint64 end = SDL_GetPerformanceCounter();
-
-        //Calculate Delta Time for framerate
         elapsedMS = (end - start) / (float)SDL_GetPerformanceFrequency() * 1000.0f;
 
-        if (app.isCapped)
-            if ((1000 / Timer::fps) > elapsedMS)
-            {
-                SDL_Delay((1000 / Timer::fps) - elapsedMS);
-            }
+        app.Render();
     }
 
     return 0;

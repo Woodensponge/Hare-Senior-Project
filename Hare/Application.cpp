@@ -15,6 +15,7 @@ SDL_Event Application::event;
 SDL_Renderer* Application::renderer = nullptr;
 SDL_Window* Application::window = nullptr;
 GameState Application::gameState = GameState::None;
+Uint64 Application::ticks = 0;
 
 //Constructor for Application. Sets members from parameters.
 Application::Application
@@ -116,6 +117,8 @@ void Application::Render()
 //Update method. Handles rendering, UI, and other things involving the window.
 void Application::Update()
 {
+    TextureManager::ClearQueue();
+
     Mouse::UpdateMouse();
 
     //Game state handling.

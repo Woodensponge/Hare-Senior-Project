@@ -62,5 +62,5 @@ Player::~Player()
 void Player::Update()
 {
 	Entity::Update();
-	this->hitbox.x += lround(10 * Timer::GetDeltaTime());
+	this->hitbox.x += 1;
 }
