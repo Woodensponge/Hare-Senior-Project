@@ -88,15 +88,34 @@ int Application::Init()
     return 0;
 }
 
-//Update method. Handles rendering, UI, and other things involving the window.
-void Application::Update()
+void Application::Input()
+{
+}
+
+void Application::Render()
 {
     //Don't run SDL_RenderClear when minimized.
     if (SDL_GetWindowFlags(Application::GetWindow()) & SDL_WINDOW_MINIMIZED ? false : true)
         SDL_RenderClear(renderer);
 
+
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 
+    if (SDL_GetWindowFlags(Application::GetWindow()) & SDL_WINDOW_MINIMIZED)
+    {
+        TextureManager::ClearQueue();
+    }
+    else
+    {
+        TextureManager::RenderQueue();
+    }
+
+    SDL_RenderPresent(renderer);
+}
+
+//Update method. Handles rendering, UI, and other things involving the window.
+void Application::Update()
+{
     Mouse::UpdateMouse();
 
     //Game state handling.
@@ -146,15 +165,4 @@ void Application::Update()
         }
         state->Init();
     }
-
-    if (SDL_GetWindowFlags(Application::GetWindow()) & SDL_WINDOW_MINIMIZED)
-    {
-        TextureManager::ClearQueue();
-    }
-    else
-    {
-        TextureManager::RenderQueue();
-    }
-
-    SDL_RenderPresent(renderer);
 }

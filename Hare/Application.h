@@ -31,9 +31,11 @@ struct Application
 	);
 	~Application();
 
-	int Init();
-	void Update();
 	inline static SDL_Window* GetWindow() { return window; };
+	int Init();
+	void Input();
+	void Render();
+	void Update();
 
 	const char* windowTitle;
 	Uint32 flags;
