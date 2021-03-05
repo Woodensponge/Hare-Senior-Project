@@ -62,5 +62,5 @@ Player::~Player()
 void Player::Update()
 {
 	Entity::Update();
-	this->hitbox.x += 1;
+	this->hitbox.x += 3;
 }

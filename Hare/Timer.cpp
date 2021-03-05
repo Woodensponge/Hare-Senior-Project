@@ -32,7 +32,7 @@ void Timer::UpdateDeltaTime()
 	}
 
 	//Calculate delta time.
-	deltaTime = (double)((presentTicks - pastTicks) * 1000 / (double)SDL_GetPerformanceFrequency()) / 100;
+	deltaTime = (double)((presentTicks - pastTicks) / (double)SDL_GetPerformanceFrequency());
 	
 	pastTicks = presentTicks;
 
@@ -50,7 +50,7 @@ void Timer::UpdateFixedDeltaTime()
 	}
 
 	//Calculate delta time.
-	fixedDt = (double)((fixedPresentTicks - fixedPastTicks) * 1000 / (double)SDL_GetPerformanceFrequency()) / 100;
+	fixedDt = (double)((fixedPresentTicks - fixedPastTicks) / (double)SDL_GetPerformanceFrequency());
 
 	fixedPastTicks = fixedPresentTicks;
 

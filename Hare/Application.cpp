@@ -119,8 +119,6 @@ void Application::Update()
 {
     TextureManager::ClearQueue();
 
-    Mouse::UpdateMouse();
-
     //Game state handling.
     switch (gameState)
     {
