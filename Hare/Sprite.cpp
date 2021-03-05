@@ -137,6 +137,12 @@ void Sprite::SetPosition(double x, double y)
 	this->y = y;
 }
 
+void Sprite::SetPosition(SDL_Rect rect)
+{
+	this->x = rect.x;
+	this->y = rect.y;
+}
+
 /*
 Sets the size of the sprites SDL_Rect member.
 */
@@ -152,6 +158,22 @@ void Sprite::SetSize(int w, int h)
 {
 	this->w = w;
 	this->h = h;
+}
+
+void Sprite::SetPosAndSize(int x, int y, int w, int h)
+{
+	this->x = x;
+	this->y = y;
+	this->w = w;
+	this->h = h;
+}
+
+void Sprite::SetPosAndSize(SDL_Rect rect)
+{
+	this->x = rect.x;
+	this->y = rect.y;
+	this->w = rect.w;
+	this->h = rect.h;
 }
 
 /*

@@ -22,8 +22,11 @@ struct Sprite
 	~Sprite();
 
 	void SetPosition(double x, double y);
+	void SetPosition(SDL_Rect rect);
 	void SetSize(SDL_Rect size);
 	void SetSize(int w, int h);
+	void SetPosAndSize(int x, int y, int w, int h);
+	void SetPosAndSize(SDL_Rect rect);
 	void SetSourceRectangle(SDL_Rect sourceRect);
 	void SetTexture(SDL_Texture* texture);
 	void SetTextureFromSurface(SDL_Surface* surface);
