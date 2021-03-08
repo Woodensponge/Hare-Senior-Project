@@ -54,7 +54,7 @@ void PlayState::Init()
     SDL_ShowCursor(0);
 }
 
-void PlayState::Update()
+void PlayState::UpdateFixed()
 {
     if (isFirstUpdate)
     {
@@ -69,13 +69,6 @@ void PlayState::Update()
 
     level.Update();
 
-    spriteCrosshair->SetPosition
-    (
-        MOUSE_X() - (spriteCrosshair->w / static_cast<double>(2)),
-        MOUSE_Y() - (spriteCrosshair->h / static_cast<double>(2))
-    );
-    TextureManager::RenderSprite(spriteCrosshair);
-
     for (Hare::Entity* entity : level.GetEntities())
     {
         entity->sprite->SetPosAndSize(entity->hitbox);
@@ -83,4 +76,15 @@ void PlayState::Update()
 
         TextureManager::RenderSprite(entity->sprite);
     }
+}
+
+void PlayState::Update()
+{
+    spriteCrosshair->SetPosition
+    (
+        MOUSE_X() - (spriteCrosshair->w / static_cast<double>(2)),
+        MOUSE_Y() - (spriteCrosshair->h / static_cast<double>(2))
+    );
+
+    TextureManager::RenderSprite(spriteCrosshair);
 }

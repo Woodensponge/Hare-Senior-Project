@@ -122,5 +122,5 @@ void Camera::InitTexture()
 		drect.h
 	);
 
-	SDL_SetTextureBlendMode(texture, SDL_BLENDMODE_BLEND);
+	SDL_SetTextureBlendMode(texture, SDL_BLENDMODE_ADD);
 }

@@ -35,6 +35,7 @@ struct Application
 	int Init();
 	void Input();
 	void Render();
+	void UpdateFixed();
 	void Update();
 
 	const char* windowTitle;

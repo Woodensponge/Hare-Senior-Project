@@ -25,7 +25,7 @@ int main()
     }
     outputLog.close();
 
-    Application app = Application("Hare", WINDOW_WIDTH, WINDOW_HEIGHT, 0, 60, true);
+    Application app = Application("Hare", WINDOW_WIDTH, WINDOW_HEIGHT, 0, 60, false);
 
     int initReturnCode = app.Init();
 
@@ -62,7 +62,7 @@ int main()
         if (currentTicks > startTicks + ticksPerFrame)
         {
             app.ticks++;
-            app.Update();
+            app.UpdateFixed();
             
             startTicks = currentTicks;
         }
@@ -72,18 +72,23 @@ int main()
 #endif 
         timeTillNextRender += Timer::fixedDt;
         
-        if (!app.isCapped)
+        if (!app.isCapped || Timer::fps == 0)
         {
             Timer::UpdateDeltaTime();
             timeTillNextRender = 0;
+            app.Update();
             app.Render();
         }
 
-        else if (timeTillNextRender >= (double)((double)(1000 / Timer::fps) / 1000))
+        else if (app.isCapped && Timer::fps != 0)
         {
-            Timer::UpdateDeltaTime();
-            timeTillNextRender = 0;
-            app.Render();
+            if (timeTillNextRender >= (double)((double)(1000 / Timer::fps) / 1000))
+            {
+                Timer::UpdateDeltaTime();
+                timeTillNextRender = 0;
+                app.Update();
+                app.Render();
+            }
         }
     }
 

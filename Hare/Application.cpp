@@ -80,7 +80,7 @@ int Application::Init()
         flags
     );
 
-    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_TARGETTEXTURE);
+    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_TARGETTEXTURE);
 
     gameState = GameState::Running;
     state = new States::PlayState("Assets/Levels/Level-TestLong.json");
@@ -115,7 +115,7 @@ void Application::Render()
 }
 
 //Update method. Handles rendering, UI, and other things involving the window.
-void Application::Update()
+void Application::UpdateFixed()
 {
     TextureManager::ClearQueue();
 
@@ -141,7 +141,7 @@ void Application::Update()
         }
     }
 
-    state->Update();
+    state->UpdateFixed();
     
     for (Events::Event* event : Events::EventHandler::GetQueue())
     {
@@ -166,4 +166,19 @@ void Application::Update()
         }
         state->Init();
     }
+}
+
+void Application::Update()
+{
+    //Game state handling.
+    switch (gameState)
+    {
+    case GameState::Closing:
+        return;
+    case GameState::None:
+        //TODO: Throw an exception here when state == GameState::None.
+        break;
+    }
+
+    state->Update();
 }

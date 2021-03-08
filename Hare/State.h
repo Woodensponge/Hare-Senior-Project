@@ -26,6 +26,7 @@ namespace States
 		virtual ~State();
 
 		virtual void Init();
+		virtual void UpdateFixed();
 		virtual void Update();
 		
 		void AddEvent(Events::Event* event);

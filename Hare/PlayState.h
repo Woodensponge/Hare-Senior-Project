@@ -17,6 +17,7 @@ namespace States
 		~PlayState();
 
 		void Init();
+		void UpdateFixed();
 		void Update();
 
 	private:

@@ -14,6 +14,10 @@ void State::Init()		//Leave the method definition empty since we don't need to a
 {
 }
 
+void State::UpdateFixed()	//Leave the method definition empty since we don't need to add anything here.
+{
+}
+
 void State::Update()	//Leave the method definition empty since we don't need to add anything here.
 {
 }
