@@ -35,8 +35,8 @@ struct Application
 	int Init();
 	void Input();
 	void Render();
-	void UpdateFixed();
-	void Update();
+	void UpdateFixed();			//Updates based on ticks
+	void Update();				//Updates based on framerate
 
 	const char* windowTitle;
 	Uint32 flags;
