@@ -51,8 +51,10 @@ Application::~Application()
     SDL_Quit();
 
 #ifdef _CONSOLE
+#ifdef _DEBUG
     std::cout << "Press \"Enter\" to exit..." << std::endl;
     std::cin.get();
+#endif
 #endif
 }
 

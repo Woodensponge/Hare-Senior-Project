@@ -25,7 +25,7 @@ int main()
     }
     outputLog.close();
 
-    Application app = Application("Hare", WINDOW_WIDTH, WINDOW_HEIGHT, 0, 60, false);
+    Application app = Application("Hare", WINDOW_WIDTH, WINDOW_HEIGHT, 0, 60, true);
 
     int initReturnCode = app.Init();
 
