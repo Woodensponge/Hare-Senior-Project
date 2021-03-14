@@ -43,6 +43,11 @@ void TextureManager::RenderQueue()
 		mainCamera->RenderTexture();
 
 		SDL_RenderCopy(Application::renderer, mainCamera->texture, NULL, &mainCamera->drect);
+
+		SDL_SetRenderTarget(Application::renderer, mainCamera->texture);
+		SDL_RenderClear(Application::renderer);
+		SDL_SetRenderTarget(Application::renderer, NULL);
+
 		mainCamera->ClearTexture();
 
 		return;

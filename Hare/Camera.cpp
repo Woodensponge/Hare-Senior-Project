@@ -89,7 +89,7 @@ void Camera::RenderTexture()
 	SDL_SetRenderTarget(Application::renderer, NULL); //Reset the renderer to default (the window)
 
 	//Clear the render queue, make space for the next frame.
-	//Don't delete the sprites here. Rely on the code calling this function to destroy the sprites.
+
 	renderQueue.clear();
 }
 
@@ -122,5 +122,5 @@ void Camera::InitTexture()
 		drect.h
 	);
 
-	SDL_SetTextureBlendMode(texture, SDL_BLENDMODE_ADD);
+	SDL_SetTextureBlendMode(texture, SDL_BLENDMODE_BLEND);
 }
