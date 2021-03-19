@@ -48,8 +48,6 @@ void TextureManager::RenderQueue()
 		SDL_RenderClear(Application::renderer);
 		SDL_SetRenderTarget(Application::renderer, NULL);
 
-		mainCamera->ClearTexture();
-
 		return;
 	}
 
