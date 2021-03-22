@@ -12,7 +12,12 @@
 #define WINDOW_WIDTH 640
 #define WINDOW_HEIGHT 480
 
+#ifdef _CONSOLE
 int main()
+#endif
+#ifdef _WINDOWS
+int WinMain()
+#endif
 {
     DEBUG_LOG << "Program starting up.";
     DEBUG_LOG_DEBUGONLY << "(DEBUG BUILD)";
@@ -68,7 +73,17 @@ int main()
         }
 
 #ifdef _DEBUG
-        SDL_SetWindowTitle(app.GetWindow(), (std::to_string(Timer::deltaTime) + " : " + std::to_string(Timer::fixedDt)).c_str());
+        SDL_SetWindowTitle
+        (
+            app.GetWindow(), 
+            (
+                std::to_string(Timer::deltaTime) 
+                + " : " 
+                + std::to_string(Timer::fixedDt) 
+                + " : " 
+                + std::to_string(app.ticks)
+            ).c_str()
+        );
 #endif 
         timeTillNextRender += Timer::fixedDt;
         

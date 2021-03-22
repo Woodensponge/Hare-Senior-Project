@@ -1,4 +1,3 @@
-﻿  Player.cpp
-  PlayerController.cpp
-  Generating Code...
+﻿  Main.cpp
+C:\Users\Woodensponge\Documents\GitHub\Hare\Hare\Main.cpp(88,45): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
   Hare.vcxproj -> C:\Users\Woodensponge\Documents\GitHub\Hare\bin\x64\Debug\Hare.exe
