@@ -9,6 +9,8 @@ int Entity::nextEntityID = 0;
 Entity::Entity()
 	:hitbox(SDL_Rect())
 {
+	pos = Vector2();
+
 	this->AddFlags(ENTITYSTATE_ALIVE);
 
 	entityID = nextEntityID;
@@ -45,6 +47,9 @@ void Entity::Die()
 
 void Entity::Update()
 {
+	hitbox.x = pos.ToRect().x;
+	hitbox.y = pos.ToRect().y;
+
 	if (entityFlags & ENTITYSTATE_DEAD)			//If the entity is dead...
 		return;									//Don't run the rest of the method.
 

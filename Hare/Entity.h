@@ -2,6 +2,7 @@
 #define ENTITY_H_
 
 #include "Sprite.h"
+#include "Vector2.h"
 
 #include <string>
 
@@ -33,10 +34,10 @@ namespace Hare
 		virtual void Update();
 
 		/* Adds an entities flags. Will return current flags after execution. */
-		int AddFlags(int flags);
+		inline int AddFlags(int flags);
 
 		/* Removes an entities flags. Will return current flags after execution. */
-		int RemoveFlags(int flags);
+		inline int RemoveFlags(int flags);
 
 		int health = 100;
 
@@ -46,6 +47,7 @@ namespace Hare
 		std::string entityTypeString = "None";
 
 		SDL_Rect hitbox;
+		Vector2 pos;
 		Sprite* sprite = nullptr;
 
 	private:

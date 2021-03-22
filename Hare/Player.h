@@ -10,9 +10,9 @@ namespace Hare
 		struct Player : Entity
 		{
 			Player();
-			Player(int x, int y);
+			Player(float x, float y);
 			Player(int flags);
-			Player(int x, int y, int flags);
+			Player(float x, float y, int flags);
 			~Player();
 
 			void Update();
