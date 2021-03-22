@@ -2,6 +2,7 @@
 #define PLAYER_H_
 
 #include "Entity.h"
+#include "Event.h"
 
 namespace Hare
 {
@@ -16,6 +17,7 @@ namespace Hare
 			~Player();
 
 			void Update();
+			Events::Event* pc;
 		};
 	}
 }

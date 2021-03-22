@@ -12,8 +12,10 @@ namespace Events
 		inline static std::vector<Event*> GetQueue() { return eventQueue; };
 
 		static void UpdateEvents(SDL_Event* event);
-		static void AddEventToQueue(Event* event);
-		static void DestroyEvent(Event* event);
+		/*Adds an event to the queue. Returns address on success. Returns nullptr on failure.*/
+		static Event* AddEventToQueue(Event* event);
+		/*Destroys an event from the queue. Returns 0 on success. Returns 1 on failure.*/
+		static int DestroyEvent(Event* event);
 		static void DestroyQueue();
 
 	private:

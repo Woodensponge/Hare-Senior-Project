@@ -1,45 +1,23 @@
 #include "Player.h"
 #include "Debug.h"
 #include "Timer.h"
+#include "EventHandler.h"
+#include "PlayerController.h"
 
 using namespace Hare;
 using namespace Hare::Entities;
+using namespace Events;
 
-Player::Player()
+Player::Player() : Player::Player(0, 0, 0)
 {
-	this->entityType = EntityType::Player;
-	this->entityTypeString = "Player";
-	pos.x = 0;
-	pos.y = 0;
-	hitbox.w = 20;
-	hitbox.h = 20;
-	this->sprite = new Sprite("Assets/Player-Simple.png", hitbox);
-	this->sprite->layer = 5;
 }
 
-Player::Player(float x, float y)
+Player::Player(float x, float y) : Player::Player(x, y, 0)
 {
-	this->entityType = EntityType::Player;
-	this->entityTypeString = "Player";
-	pos.x = x;
-	pos.y = y;
-	hitbox.w = 20;
-	hitbox.h = 20;
-	this->sprite = new Sprite("Assets/Player-Simple.png", hitbox);
-	this->sprite->layer = 5;
 }
 
-Player::Player(int flags)
+Player::Player(int flags) : Player::Player(0, 0, flags)
 {
-	this->entityType = EntityType::Player;
-	this->entityTypeString = "Player";
-	pos.x = 0;
-	pos.y = 0;
-	hitbox.w = 20;
-	hitbox.h = 20;
-	this->sprite = new Sprite("Assets/Player-Simple.png", hitbox);
-	this->sprite->layer = 5;
-	this->entityFlags = flags;
 }
 
 Player::Player(float x, float y, int flags)
@@ -53,10 +31,14 @@ Player::Player(float x, float y, int flags)
 	this->sprite = new Sprite("Assets/Player-Simple.png", hitbox);
 	this->sprite->layer = 5;
 	this->entityFlags = flags;
+
+	pc = EventHandler::AddEventToQueue(new EventTypes::PlayerController());
+	DEBUG_LOG << pc->EventIDToChar();
 }
 
 Player::~Player()
 {
+	DEBUG_LOG << EventHandler::DestroyEvent(pc);
 }
 
 void Player::Update()

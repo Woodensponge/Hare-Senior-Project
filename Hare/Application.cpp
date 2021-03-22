@@ -38,11 +38,11 @@ Application::~Application()
 {
     DEBUG_LOG << "DECONSTRUCT APPLICATION";
 
-    Events::EventHandler::DestroyQueue();
-    TextureManager::DestroyQueue();
-
     state->~State();
     delete state;
+
+    Events::EventHandler::DestroyQueue();
+    TextureManager::DestroyQueue();
 
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);

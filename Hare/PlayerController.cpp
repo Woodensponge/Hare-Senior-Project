@@ -5,7 +5,8 @@ using namespace Events::EventTypes;
 
 PlayerController::PlayerController()
 {
-
+	this->eventID = EventID::PlayerController;
+	this->isSingleOnly = true;
 }
 
 PlayerController::~PlayerController()

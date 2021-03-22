@@ -25,6 +25,8 @@ const char* Event::EventIDToChar()
 		return "None";
 	case EventID::KeyboardEvent:
 		return "KeyboardEvent";
+	case EventID::PlayerController:
+		return "PlayerController";
 	}
 
 	return "EventID not specifed in EventIDToChar()";

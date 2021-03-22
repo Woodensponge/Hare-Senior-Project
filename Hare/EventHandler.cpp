@@ -11,7 +11,7 @@ void EventHandler::UpdateEvents(SDL_Event* SDLEvent)
 		event->Update(SDLEvent);
 }
 
-void EventHandler::AddEventToQueue(Event* event)
+Event* EventHandler::AddEventToQueue(Event* event)
 {
 	if (event->isSingleOnly == true)			//If only one event can exist at a time...
 	{
@@ -21,24 +21,28 @@ void EventHandler::AddEventToQueue(Event* event)
 			if (event->eventID == _event->eventID)
 			{
 				delete event;					//Delete the event assigned.
-				return;							//Stop the method.
+				return nullptr;					//Stop the method.
 			}
 		}
 	}
 	eventQueue.push_back(event);
+	return event;
 }
 
-void Events::EventHandler::DestroyEvent(Event* event)
+int Events::EventHandler::DestroyEvent(Event* event)
 {
+	DEBUG_LOG << "ATTEMPTING TO DESTROY EVENT WITH EVENTID " << event->EventIDToChar();
 	for (unsigned int i = 0; i < eventQueue.size(); i++)
 	{
 		if (eventQueue[i] == event)
 		{
-			std::cout << "DESTROYING EVENT WITH EVENTID " << event->EventIDToChar() << std::endl;
+			DEBUG_LOG << "DESTROYING EVENT WITH EVENTID " << event->EventIDToChar();
 			delete eventQueue[i];
 			eventQueue.erase(eventQueue.begin() + i);
+			return 0;
 		}
 	}
+	return 1;
 }
 
 void EventHandler::DestroyQueue()
