@@ -38,7 +38,6 @@ PlayState::~PlayState()
 
 void PlayState::Init()
 {
-    this->AddEvent(new EventTypes::KeyboardEvent);
     DEBUG_LOG << "LEVEL WIDTH: " << level.width << " LEVEL HEIGHT: " << level.height;
     level.tileMap->RenderMap(level.levelFileJson["tileset"].asCString());
 

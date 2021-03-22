@@ -59,7 +59,7 @@ void Entity::Update()
 
 int Entity::AddFlags(int flags)
 {
-	this->entityFlags &= flags;
+	this->entityFlags |= flags;
 	return this->entityFlags;
 }
 

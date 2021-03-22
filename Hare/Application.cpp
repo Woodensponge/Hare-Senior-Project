@@ -7,6 +7,7 @@
 #include "Debug.h"
 #include "Timer.h"
 #include "TextureManager.h"
+#include "Keyboard.h"
 
 #include <SDL_image.h>
 
@@ -133,7 +134,8 @@ void Application::UpdateFixed()
 
     while (SDL_PollEvent(&event))
     {
-        Events::EventHandler::UpdateEvents(&event);
+        Keyboard::UpdateKeyboard(&event);
+        Events::EventHandler::UpdatePollableEvents(&event);
         //Events relevant to how the application works go here.
         switch (event.type)
         {
@@ -142,6 +144,8 @@ void Application::UpdateFixed()
             return;                     //Stop the update method and begin closing.
         }
     }
+
+    Events::EventHandler::UpdateEvents(&event);
 
     state->UpdateFixed();
     

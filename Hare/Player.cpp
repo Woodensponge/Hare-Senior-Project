@@ -31,8 +31,9 @@ Player::Player(float x, float y, int flags)
 	this->sprite = new Sprite("Assets/Player-Simple.png", hitbox);
 	this->sprite->layer = 5;
 	this->entityFlags = flags;
+	this->speed = 5;
 
-	pc = EventHandler::AddEventToQueue(new EventTypes::PlayerController());
+	pc = EventHandler::AddEventToQueue(new EventTypes::PlayerController(this));
 	DEBUG_LOG << pc->EventIDToChar();
 }
 
@@ -44,5 +45,4 @@ Player::~Player()
 void Player::Update()
 {
 	Entity::Update();
-	this->pos.x += 3;
 }

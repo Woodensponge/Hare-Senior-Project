@@ -23,6 +23,8 @@ namespace Events
 		EventID eventID = EventID::None;
 		bool isSingleOnly = false;				//Dictates whether or not multiple events of the same type
 												//can exist at the same time.
+		bool isPollable = false;				//Dictates whether or not the event should be polled next
+												//update.
 	};
 }
 

@@ -79,6 +79,9 @@
     <ClCompile Include="Vector2.cpp">
       <Filter>Source files\Core</Filter>
     </ClCompile>
+    <ClCompile Include="Keyboard.cpp">
+      <Filter>Source files\Core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -154,6 +157,9 @@
       <Filter>Header files\Game</Filter>
     </ClInclude>
     <ClInclude Include="Vector2.h">
+      <Filter>Header files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Keyboard.h">
       <Filter>Header files\Core</Filter>
     </ClInclude>
   </ItemGroup>

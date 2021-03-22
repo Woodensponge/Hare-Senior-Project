@@ -8,7 +8,21 @@ std::vector<Event*> EventHandler::eventQueue;
 void EventHandler::UpdateEvents(SDL_Event* SDLEvent)
 {
 	for (Event* event : eventQueue)
+	{
+		if (event->isPollable)
+			continue;
 		event->Update(SDLEvent);
+	}
+}
+
+void Events::EventHandler::UpdatePollableEvents(SDL_Event* SDLEvent)
+{
+	for (Event* event : eventQueue)
+	{
+		if (!event->isPollable)
+			continue;
+		event->Update(SDLEvent);
+	}
 }
 
 Event* EventHandler::AddEventToQueue(Event* event)
