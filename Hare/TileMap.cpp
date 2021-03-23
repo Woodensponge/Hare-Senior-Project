@@ -162,7 +162,7 @@ Core::Vector2 TileMap::GetEntityTilePos(Hare::Entity* entity)
 
 Core::Vector2 TileMap::GetEntityTileSize(Hare::Entity* entity)
 {
-	return Core::Vector2((entity->hitbox.w / 20), (entity->hitbox.y / 20));
+	return Core::Vector2((entity->hitbox.w / 20), (entity->hitbox.h / 20));
 }
 
 int TileMap::GetGeneralWidth()
