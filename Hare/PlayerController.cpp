@@ -19,6 +19,12 @@ PlayerController::~PlayerController()
 
 void PlayerController::Update(SDL_Event* event)
 {
+    //Don't do anything if the player is dead.
+    if (player->entityFlags & Hare::ENTITYSTATE_DEAD)
+    {
+        return;
+    }
+
     //Input for moving left
     if (Keyboard::IsKeyPressed(SDLK_a))
         currentMovement |= MOVE_LEFT;

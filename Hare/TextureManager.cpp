@@ -33,7 +33,6 @@ void TextureManager::RenderQueue()
 {
 	if (mainCamera != nullptr)
 	{
-
 		//Don't run method when minimized.
 		if (SDL_GetWindowFlags(Application::GetWindow()) & SDL_WINDOW_MINIMIZED)
 			return;

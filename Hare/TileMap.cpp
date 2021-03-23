@@ -57,8 +57,8 @@ void TileMap::LoadMap(const char* file)
 			if (tile->tileID != 0)
 				tile->tileID -= 1;
 
-			tile->x = x;
-			tile->y = y;
+			tile->pos.x = x;
+			tile->pos.y = y;
 
 			tiles[y].push_back(tile);
 		}
@@ -106,8 +106,8 @@ void TileMap::RenderMap(const char* tileSetFile)
 			tile->sprite = new Sprite
 			(
 				tile->imageName.c_str(),
-				(double)((double)tile->x * (double)tile->width),
-				(double)((double)tile->y * (double)tile->height),
+				(double)((double)tile->pos.x * (double)tile->width),
+				(double)((double)tile->pos.y * (double)tile->height),
 				tile->width, tile->height
 			);
 			tile->sprite->layer = tile->layer;
@@ -136,12 +136,49 @@ void TileMap::Update()
 	}
 }
 
+std::vector<TileMap::Tile*> TileMap::GetTiles()
+{
+	std::vector<Tile*> tiles;
+	for (std::vector<Tile*> vector : this->tiles)	//For each loop for the 2D array "tiles" (object)
+	{
+		for (Tile* tile : vector)					//Continuation of 2D for each loop
+		{
+			tiles.push_back(tile);
+		}
+	}
+
+	return tiles;
+}
+
 int TileMap::GetGeneralHeight()
 {
 	return tileMapJson["height"].asInt();
 }
 
+Core::Vector2 TileMap::GetEntityTilePos(Hare::Entity* entity)
+{
+	return Core::Vector2((entity->pos.x / 20), (entity->pos.y / 20));
+}
+
+Core::Vector2 TileMap::GetEntityTileSize(Hare::Entity* entity)
+{
+	return Core::Vector2((entity->hitbox.w / 20), (entity->hitbox.y / 20));
+}
+
 int TileMap::GetGeneralWidth()
 {
 	return tileMapJson["width"].asInt();
+}
+
+//TILE STRUCT
+
+SDL_Rect TileMap::Tile::ToRect()
+{
+	SDL_Rect rect = SDL_Rect();
+	rect.x = this->pos.x * 20;
+	rect.y = this->pos.y * 20;
+	rect.w = this->width;
+	rect.h = this->height;
+
+	return rect;
 }

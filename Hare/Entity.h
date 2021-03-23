@@ -33,6 +33,9 @@ namespace Hare
 		/* Updates the entity. */
 		virtual void Update();
 
+		/* Updates the entitys hitbox. */
+		virtual void UpdateHitbox();
+
 		/* Adds an entities flags. Will return current flags after execution. */
 		inline int AddFlags(int flags);
 
@@ -48,7 +51,7 @@ namespace Hare
 		std::string entityTypeString = "None";
 
 		SDL_Rect hitbox;
-		Vector2 pos;
+		Core::Vector2 pos;
 		Sprite* sprite = nullptr;
 
 	private:
