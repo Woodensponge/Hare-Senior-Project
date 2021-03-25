@@ -52,6 +52,18 @@ void Entity::Die()
 
 void Entity::Update()
 {
+	if (speed > desiredSpeed)
+		speed = desiredSpeed;
+	else if (speed < desiredSpeed - (desiredSpeed * 2))
+		speed = desiredSpeed - (desiredSpeed * 2);
+
+	if (speed > 0)
+		speed -= 0.5;
+	else if (speed < 0)
+		speed += 0.5;
+
+	pos.x += speed;
+
 	UpdateHitbox();
 
 	if (entityFlags & ENTITYSTATE_DEAD)			//If the entity is dead...

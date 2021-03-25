@@ -86,14 +86,14 @@ void PlayState::UpdateFixed()
                 camera->size.w
             );
 
-            int heightLimit;
-            SDL_GetWindowSize(Application::GetWindow(), 0, &heightLimit);
+            int windowHeight;
+            SDL_GetWindowSize(Application::GetWindow(), 0, &windowHeight);
 
             int y = std::clamp
             (
                 (int)entity->pos.y - camera->size.h / 2,
                 0,
-                0                                           //0 until I make bigger levels vertically
+                (int)(level.height * 20) - windowHeight
             );
 
             camera->SetViewPosition(x, y);

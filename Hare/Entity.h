@@ -43,7 +43,9 @@ namespace Hare
 		inline int RemoveFlags(int flags);
 
 		int health = 100;
-		float speed = 1;
+		float desiredSpeed = 1;
+		float speed = 0;
+		float acceleration = 1;
 
 		unsigned int entityFlags = 0;
 		int entityID = 0;

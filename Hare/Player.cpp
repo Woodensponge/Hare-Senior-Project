@@ -32,7 +32,8 @@ Player::Player(float x, float y, int flags)
 	this->sprite = new Sprite("Assets/Player-Simple.png", hitbox);
 	this->sprite->layer = 5;
 	this->entityFlags = flags;
-	this->speed = 5;
+	this->desiredSpeed = 5;
+	this->acceleration = 2;
 
 	pc = EventHandler::AddEventToQueue(new EventTypes::PlayerController(this));
 	DEBUG_LOG << pc->EventIDToChar();

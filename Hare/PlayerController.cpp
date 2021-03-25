@@ -52,18 +52,18 @@ void PlayerController::Update(SDL_Event* event)
     //Handling input
     if (currentMovement & MOVE_LEFT)
     {
-        player->pos.x -= player->speed;
+        player->speed -= player->acceleration;
     }
     if (currentMovement & MOVE_RIGHT)
     {
-        player->pos.x += player->speed;
+        player->speed += player->acceleration;
     }
     if (currentMovement & MOVE_UP)
     {
-        player->pos.y -= player->speed;
+        player->pos.y -= player->desiredSpeed;
     }
     if (currentMovement & MOVE_DOWN)
     {
-        player->pos.y += player->speed;
+        player->pos.y += player->desiredSpeed;
     }
 }
