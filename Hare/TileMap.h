@@ -48,6 +48,9 @@ struct TileMap
 
 	std::vector<std::vector<Tile*>> tiles;
 private:
+	static int tileWidth;
+	static int tileHeight;
+
 	Json::Value tileMapJson;
 	Json::Value tileSetJson;
 

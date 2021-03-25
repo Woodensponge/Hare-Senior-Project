@@ -3,6 +3,8 @@
 #include "JsonManager.h"
 #include "Player.h"
 
+#include <algorithm>
+
 Level::Level(const char* levelFile)
 {
 	//Create the level.
@@ -38,8 +40,42 @@ void Level::Update()
 	{
 		entity->Update();
 
-		std::vector<TileMap::Tile*> tiles;
+		int entityTilePosX = (int)TileMap::GetEntityTilePos(entity).x;
+		int entityTilePosY = (int)TileMap::GetEntityTilePos(entity).y;
 
+		for (int x = entityTilePosX - 1; x <= entityTilePosX + 1; x++)		//Horizontal check of 5 tiles
+		{			
+			for (int y = entityTilePosY - 1; y <= entityTilePosY + 1; y++)	//Vertical check of 5 tiles
+			{
+				int safeY = std::clamp(y, 0, (int)tileMap->tiles.size() - 1);
+				int safeX = std::clamp(x, 0, (int)tileMap->tiles[0].size() - 1);
+
+				SDL_Rect tileRect = tileMap->tiles[safeY][safeX]->ToRect();
+
+				if (SDL_HasIntersection(&entity->hitbox, &tileRect)
+					&& tileMap->tiles[safeY][safeX]->imageName != "None")
+				{
+					SDL_SetTextureColorMod
+					(
+						tileMap->tiles[safeY][safeX]->sprite->texture,
+						255,
+						0,
+						0
+					);
+				}
+				else
+				{
+					SDL_SetTextureColorMod
+					(
+						tileMap->tiles[safeY][safeX]->sprite->texture,
+						255,
+						255,
+						255
+					);
+				}
+			}
+		}
+			
 		/*
 		for (TileMap::Tile* tile : tileMap->GetTiles())
 		{

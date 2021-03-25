@@ -4,6 +4,9 @@
 #include "TextureManager.h"
 #include "Application.h"
 
+int TileMap::tileWidth = 0;
+int TileMap::tileHeight = 0;
+
 //Constuctors and destructors
 TileMap::TileMap()
 {
@@ -57,12 +60,16 @@ void TileMap::LoadMap(const char* file)
 			if (tile->tileID != 0)
 				tile->tileID -= 1;
 
-			tile->pos.x = x;
-			tile->pos.y = y;
+			tile->pos.x = (float)x;
+			tile->pos.y = (float)y;
 
 			tiles[y].push_back(tile);
 		}
 	}
+
+	//FIRST TILE WILL DEFINE THE STANDARD FOR ALL TILES!
+	TileMap::tileWidth = tiles[0][0]->width;
+	TileMap::tileHeight = tiles[0][0]->height;
 
 	DEBUG_LOG << "FINISHED LOADING";
 }
@@ -116,17 +123,11 @@ void TileMap::RenderMap(const char* tileSetFile)
 		}
 	}
 
-	//Append sprite to texture
-
-	//TODO: Append sprites to a single texture
 	DEBUG_LOG << "FINISHED RENDERING";
 }
 
 void TileMap::Update()
 {
-	//TODO: DON'T DO THIS. Append all sprites to a single texture so the program can save
-	//framerate! This is just for testing stuff!
-
 	for (std::vector<Tile*> vector : tiles)		//For each loop for the 2D array "tiles"
 	{
 		for (Tile* tile : vector)				//Continuation of 2D for each loop
@@ -157,12 +158,12 @@ int TileMap::GetGeneralHeight()
 
 Core::Vector2 TileMap::GetEntityTilePos(Hare::Entity* entity)
 {
-	return Core::Vector2((entity->pos.x / 20), (entity->pos.y / 20));
+	return Core::Vector2((float)((int)entity->pos.x / tileWidth), (float)((int)entity->pos.y / tileHeight));
 }
 
 Core::Vector2 TileMap::GetEntityTileSize(Hare::Entity* entity)
 {
-	return Core::Vector2((entity->hitbox.w / 20), (entity->hitbox.h / 20));
+	return Core::Vector2((float)((int)entity->hitbox.w / tileWidth), (float)((int)entity->hitbox.h / tileHeight));
 }
 
 int TileMap::GetGeneralWidth()
@@ -175,8 +176,8 @@ int TileMap::GetGeneralWidth()
 SDL_Rect TileMap::Tile::ToRect()
 {
 	SDL_Rect rect = SDL_Rect();
-	rect.x = this->pos.x * 20;
-	rect.y = this->pos.y * 20;
+	rect.x = (int)(this->pos.x * 20);
+	rect.y = (int)(this->pos.y * 20);
 	rect.w = this->width;
 	rect.h = this->height;
 

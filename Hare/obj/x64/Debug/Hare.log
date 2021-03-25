@@ -1,15 +1,2 @@
-﻿  Application.cpp
-  Entity.cpp
-  Level.cpp
-  PlayState.cpp
-  Player.cpp
-  PlayerController.cpp
-  TileMap.cpp
-C:\Users\Woodensponge\Documents\GitHub\Hare\Hare\TileMap.cpp(60,18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Woodensponge\Documents\GitHub\Hare\Hare\TileMap.cpp(61,18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Woodensponge\Documents\GitHub\Hare\Hare\TileMap.cpp(165,66): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Woodensponge\Documents\GitHub\Hare\Hare\TileMap.cpp(165,41): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Woodensponge\Documents\GitHub\Hare\Hare\TileMap.cpp(178,23): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\Woodensponge\Documents\GitHub\Hare\Hare\TileMap.cpp(179,23): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-  Generating Code...
+﻿  Level.cpp
   Hare.vcxproj -> C:\Users\Woodensponge\Documents\GitHub\Hare\bin\x64\Debug\Hare.exe
