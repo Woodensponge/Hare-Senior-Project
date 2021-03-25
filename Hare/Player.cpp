@@ -1,5 +1,6 @@
 #include "Player.h"
 #include "Debug.h"
+#include "TextureManager.h"
 #include "Timer.h"
 #include "EventHandler.h"
 #include "PlayerController.h"

@@ -10,6 +10,8 @@
 #include "Mouse.h"
 #include "Debug.h"
 
+#include <algorithm>
+
 using namespace States;
 using namespace Events;
 
@@ -74,6 +76,28 @@ void PlayState::UpdateFixed()
         entity->sprite->Update();
 
         TextureManager::RenderSprite(entity->sprite);
+
+        if (entity->entityType == Hare::EntityType::Player)
+        {
+            int x = std::clamp
+            (
+                (int)entity->pos.x - camera->size.w / 2,
+                0,
+                camera->size.w
+            );
+
+            int heightLimit;
+            SDL_GetWindowSize(Application::GetWindow(), 0, &heightLimit);
+
+            int y = std::clamp
+            (
+                (int)entity->pos.y - camera->size.h / 2,
+                0,
+                0                                           //0 until I make bigger levels vertically
+            );
+
+            camera->SetViewPosition(x, y);
+        }
     }
 }
 
