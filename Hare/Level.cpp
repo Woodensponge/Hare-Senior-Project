@@ -1,4 +1,6 @@
 #include "Level.h"
+#include "Application.h"
+#include "RectStuff.h"
 #include "Debug.h"
 #include "JsonManager.h"
 #include "Player.h"
@@ -38,23 +40,77 @@ void Level::Update()
 	tileMap->Update();
 	for (Hare::Entity* entity : entities)
 	{
+		float oldSpeed = entity->speed;
+		float oldGravity = entity->gravity;
+		
+		Core::Vector2 oldPosition = entity->pos;
+		SDL_Rect oldHitbox = entity->hitbox;
+
 		entity->Update();
+		entity->isGrounded = false;
 
 		int entityTilePosX = (int)TileMap::GetEntityTilePos(entity).x;
 		int entityTilePosY = (int)TileMap::GetEntityTilePos(entity).y;
 
-		for (int x = entityTilePosX - 2; x <= entityTilePosX + 2; x++)		//Horizontal check of 5 tiles
+		for (int x = entityTilePosX - 3; x <= entityTilePosX + 3; x++)		//Horizontal check of 5 tiles
 		{			
-			for (int y = entityTilePosY - 2; y <= entityTilePosY + 2; y++)	//Vertical check of 5 tiles
+			for (int y = entityTilePosY - 3; y <= entityTilePosY + 3; y++)	//Vertical check of 5 tiles
 			{
 				int safeY = std::clamp(y, 0, (int)tileMap->tiles.size() - 1);
 				int safeX = std::clamp(x, 0, (int)tileMap->tiles[0].size() - 1);
 
 				SDL_Rect tileRect = tileMap->tiles[safeY][safeX]->ToRect();
+				SDL_Rect entityRect = entity->hitbox;
 
-				if (SDL_HasIntersection(&entity->hitbox, &tileRect)
+				entityRect.y = oldHitbox.y;
+
+				//If intersecting...
+				if (SDL_HasIntersection(&entityRect, &tileRect)
 					&& tileMap->tiles[safeY][safeX]->imageName != "None")
 				{
+					entity->pos.x = oldPosition.x;
+					entity->speed = 0;
+					entity->UpdateHitbox();
+
+					SDL_SetTextureColorMod
+					(
+						tileMap->tiles[safeY][safeX]->sprite->texture,
+						255,
+						0,
+						0
+					);
+				}
+
+				entityRect.y = entity->hitbox.y;
+				entityRect.x = oldHitbox.x;
+
+				//If still intersecting...
+				if (SDL_HasIntersection(&entityRect, &tileRect)
+					&& tileMap->tiles[safeY][safeX]->imageName != "None")
+				{
+					SDL_SetRenderDrawColor(Application::renderer, 255, 0, 0, 255);
+					SDL_RenderDrawLine
+					(
+						Application::renderer,
+						entity->pos.x,
+						entity->pos.y,
+						tileMap->tiles[safeY][safeX]->pos.x * 20,
+						tileMap->tiles[safeY][safeX]->pos.y * 20
+					);
+
+					SDL_RenderPresent(Application::renderer);
+
+					DEBUG_LOG << Core::RectStuff::RectPenetration(entityRect, tileRect);
+
+					float oldGravity = entity->gravity;
+
+					entity->pos.y -= entity->gravity;
+					entity->UpdateHitbox();
+					entity->gravity = 0;
+					
+					if (oldGravity > 0)
+						entity->isGrounded = true;
+
 					SDL_SetTextureColorMod
 					(
 						tileMap->tiles[safeY][safeX]->sprite->texture,
@@ -75,50 +131,5 @@ void Level::Update()
 				}
 			}
 		}
-			
-		/*
-		for (TileMap::Tile* tile : tileMap->GetTiles())
-		{
-			SDL_Rect tileRect = tile->ToRect();
-			if (SDL_HasIntersection(&entity->hitbox, &tileRect)
-				&& tile->imageName != "None")
-			{
-				float entityRight = entity->pos.x + entity->hitbox.w;
-				float entityLeft = entity->pos.x;
-				float entityBottom = entity->pos.y + entity->hitbox.h;
-				float entityTop = entity->pos.y;
-
-				float tileRectRight = tileRect.x + tileRect.w;
-				float tileRectLeft = tileRect.x;
-				float tileRectBottom = tileRect.y + tileRect.h;
-				float tileRectTop = tileRect.y;
-
-				if (entityLeft < tileRectRight)
-				{
-					entity->pos.x = tileRectRight;
-					DEBUG_LOG << "X1";
-				}
-
-				if (entityRight > tileRectLeft)
-				{
-					entity->pos.x = tileRectLeft - tileRect.w;
-					DEBUG_LOG << "X2";
-				}
-
-				if (entityTop < tileRectBottom)
-				{
-					entity->pos.y = tileRectBottom;
-					DEBUG_LOG << "Y1";
-				}
-
-				if (entityBottom > tileRectTop)
-				{
-					entity->pos.y = tileRectTop - tileRect.h;
-					DEBUG_LOG << "Y2";
-				}
-
-				entity->UpdateHitbox();
-			}
-		}*/
 	}
 }

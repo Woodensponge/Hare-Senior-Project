@@ -79,22 +79,29 @@ void PlayState::UpdateFixed()
 
         if (entity->entityType == Hare::EntityType::Player)
         {
+            //Clamp code
+            /*
             int x = std::clamp
             (
-                (int)entity->pos.x - camera->size.w / 2,
+                (entity->hitbox.x - camera->size.w / 2) + (MOUSE_X() - (windowWidth / 2)),
                 0,
                 camera->size.w
             );
 
-            int windowHeight;
-            SDL_GetWindowSize(Application::GetWindow(), 0, &windowHeight);
-
             int y = std::clamp
             (
-                (int)entity->pos.y - camera->size.h / 2,
+                (entity->hitbox.y - camera->size.h / 2) + (MOUSE_Y() - (windowHeight / 2)),
                 0,
                 (int)(level.height * 20) - windowHeight
             );
+            */
+
+            Core::Vector2 spritePos = Core::Vector2(entity->sprite->x, entity->sprite->y);
+
+            int x = entity->hitbox.x - camera->size.w / 2;
+            int y = entity->hitbox.y - camera->size.h / 2;
+            y += (MOUSE_Y() - (windowHeight / 2));
+            x += (MOUSE_X() - (windowWidth / 2));
 
             camera->SetViewPosition(x, y);
         }

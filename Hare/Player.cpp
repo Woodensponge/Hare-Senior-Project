@@ -33,7 +33,7 @@ Player::Player(float x, float y, int flags)
 	this->sprite->layer = 5;
 	this->entityFlags = flags;
 	this->desiredSpeed = 5;
-	this->acceleration = 2;
+	this->acceleration = 1;
 
 	pc = EventHandler::AddEventToQueue(new EventTypes::PlayerController(this));
 	DEBUG_LOG << pc->EventIDToChar();
@@ -46,5 +46,12 @@ Player::~Player()
 
 void Player::Update()
 {
+	if (isGrounded == true)
+		isSlamming = false;
+
+	if (isSlamming)
+	{
+		speed = 0;
+	}
 	Entity::Update();
 }

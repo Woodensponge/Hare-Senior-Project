@@ -2,6 +2,8 @@
 #include "Application.h"
 #include "Debug.h"
 
+#include <math.h>
+
 using namespace Hare;
 
 int Entity::nextEntityID = 0;
@@ -52,17 +54,39 @@ void Entity::Die()
 
 void Entity::Update()
 {
+	//Speed calculations and conditions
+
 	if (speed > desiredSpeed)
 		speed = desiredSpeed;
 	else if (speed < desiredSpeed - (desiredSpeed * 2))
 		speed = desiredSpeed - (desiredSpeed * 2);
 
-	if (speed > 0)
-		speed -= 0.5;
-	else if (speed < 0)
-		speed += 0.5;
+	if (isGrounded)
+	{
+		if (speed > 0)
+			speed -= abs(speed / 8);
+		else if (speed < 0)
+			speed += abs(speed / 8);
+	}
+
+	if (!isGrounded)
+	{
+		if (speed > 0)
+			speed -= abs(speed / 16);
+		else if (speed < 0)
+			speed += abs(speed / 16);
+	}
+
+	//Gravity calculations and conditions
+	gravity += 1;
+
+	if (gravity > 100)
+		gravity = 100;
+	else if (gravity < -100)
+		gravity = -100;
 
 	pos.x += speed;
+	pos.y += gravity;
 
 	UpdateHitbox();
 

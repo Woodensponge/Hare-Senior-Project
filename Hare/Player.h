@@ -17,6 +17,9 @@ namespace Hare
 			~Player();
 
 			void Update();
+
+			bool isSlamming = false;
+
 			Events::Event* pc;
 		};
 	}

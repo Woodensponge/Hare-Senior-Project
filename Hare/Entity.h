@@ -45,7 +45,10 @@ namespace Hare
 		int health = 100;
 		float desiredSpeed = 1;
 		float speed = 0;
+		float gravity = 0;
 		float acceleration = 1;
+
+		bool isGrounded = false;
 
 		unsigned int entityFlags = 0;
 		int entityID = 0;

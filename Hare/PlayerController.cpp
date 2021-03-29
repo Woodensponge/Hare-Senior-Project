@@ -58,12 +58,15 @@ void PlayerController::Update(SDL_Event* event)
     {
         player->speed += player->acceleration;
     }
-    if (currentMovement & MOVE_UP)
+    if (currentMovement & MOVE_UP && player->isGrounded == true)
     {
-        player->pos.y -= player->desiredSpeed;
+        player->gravity -= 15;
     }
-    if (currentMovement & MOVE_DOWN)
+    if (currentMovement & MOVE_DOWN 
+        && player->isGrounded == false
+        && player->isSlamming == false)
     {
-        player->pos.y += player->desiredSpeed;
+        player->gravity = 30;
+        player->isSlamming = true;
     }
 }
