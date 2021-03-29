@@ -88,20 +88,6 @@ void Level::Update()
 				if (SDL_HasIntersection(&entityRect, &tileRect)
 					&& tileMap->tiles[safeY][safeX]->imageName != "None")
 				{
-					SDL_SetRenderDrawColor(Application::renderer, 255, 0, 0, 255);
-					SDL_RenderDrawLine
-					(
-						Application::renderer,
-						entity->pos.x,
-						entity->pos.y,
-						tileMap->tiles[safeY][safeX]->pos.x * 20,
-						tileMap->tiles[safeY][safeX]->pos.y * 20
-					);
-
-					SDL_RenderPresent(Application::renderer);
-
-					DEBUG_LOG << Core::RectStuff::RectPenetration(entityRect, tileRect);
-
 					float oldGravity = entity->gravity;
 
 					entity->pos.y -= entity->gravity;

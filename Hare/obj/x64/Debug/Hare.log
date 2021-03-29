@@ -1,6 +1,1 @@
-﻿  Level.cpp
-C:\Users\Woodensponge\Documents\GitHub\Hare\Hare\Level.cpp(98,43): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Woodensponge\Documents\GitHub\Hare\Hare\Level.cpp(97,43): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Woodensponge\Documents\GitHub\Hare\Hare\Level.cpp(96,18): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Woodensponge\Documents\GitHub\Hare\Hare\Level.cpp(95,18): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-  Hare.vcxproj -> C:\Users\Woodensponge\Documents\GitHub\Hare\bin\x64\Debug\Hare.exe
+﻿  Hare.vcxproj -> C:\Users\Dreammoods\Documents\GitHub\Hare\bin\x64\Debug\Hare.exe
