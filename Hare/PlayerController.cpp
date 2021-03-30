@@ -19,7 +19,21 @@ PlayerController::~PlayerController()
 
 void PlayerController::Update(SDL_Event* event)
 {
-    //Don't do anything if the player is dead.
+    //Input for restarting
+    if (Keyboard::IsKeyPressed(SDLK_r))
+    {
+        //Remove any death flags and add flags accordingly
+        player->RemoveFlags(Hare::ENTITYSTATE_DEAD);
+        player->AddFlags(Hare::ENTITYSTATE_ALIVE);
+
+        //Reset movement
+        player->speed = 0;
+        player->gravity = 0;
+        player->pos.x = 50;
+        player->pos.y = 50;
+    }
+
+    //Don't do anything bloew if the player is dead.
     if (player->entityFlags & Hare::ENTITYSTATE_DEAD)
     {
         return;
@@ -49,19 +63,30 @@ void PlayerController::Update(SDL_Event* event)
     else
         currentMovement &= ~MOVE_DOWN;
 
+    //Input for instant death
+#ifdef _DEBUG
+    if (Keyboard::IsKeyPressed(SDLK_p))
+    {
+        player->Die();
+    }
+#endif
+
     //Handling input
     if (currentMovement & MOVE_LEFT)
     {
         player->speed -= player->acceleration;
     }
+
     if (currentMovement & MOVE_RIGHT)
     {
         player->speed += player->acceleration;
     }
+
     if (currentMovement & MOVE_UP && player->isGrounded == true)
     {
         player->gravity -= 15;
     }
+
     if (currentMovement & MOVE_DOWN 
         && player->isGrounded == false
         && player->isSlamming == false)

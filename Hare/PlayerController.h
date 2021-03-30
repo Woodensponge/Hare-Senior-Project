@@ -16,6 +16,7 @@ namespace Events
 				MOVE_RIGHT = 1 << 1,
 				MOVE_UP = 1 << 3,
 				MOVE_DOWN = 1 << 4,
+				DASH = 1 << 5,
 			};
 
 			PlayerController(Hare::Entities::Player* player);

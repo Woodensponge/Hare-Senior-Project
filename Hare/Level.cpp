@@ -72,8 +72,6 @@ void Level::Update()
 				{
 					Core::Vector2 nearestCorner = Core::RectStuff::FindNearestCornerInOrigin(entityRect, tileRect);
 
-					DEBUG_LOG << entity->speed;
-
 					if (entity->speed < 0)
 						entity->pos.x += abs(nearestCorner.x - (tileMap->tiles[safeY][safeX]->pos * 20).x - entity->hitbox.w);
 					else if (entity->speed > 0)
@@ -111,12 +109,20 @@ void Level::Update()
 
 					//DEBUG_LOG << (tileMap->tiles[safeY][safeX]->pos * 20).y - nearestCorner.y;
 					if (entity->gravity < 0)
+					{
 						entity->pos.y += abs((nearestCorner.y - (tileMap->tiles[safeY][safeX]->pos * 20).y) - entity->hitbox.h);
+						entity->UpdateHitbox();
+						if (entity->gravity <= 0)
+						{
+							entity->gravity -= entity->gravity / 4;
+						}
+					}
 					else if (entity->gravity >= 0)
+					{
 						entity->pos.y -= abs(nearestCorner.y - (tileMap->tiles[safeY][safeX]->pos * 20).y);
-
-					entity->UpdateHitbox();
-					entity->gravity = 0;
+						entity->UpdateHitbox();
+						entity->gravity = 0;
+					}
 					
 					if (oldGravity > 0)
 						entity->isGrounded = true;

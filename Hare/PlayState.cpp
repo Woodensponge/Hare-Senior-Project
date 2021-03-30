@@ -103,6 +103,8 @@ void PlayState::UpdateFixed()
             y += (MOUSE_Y() - (windowHeight / 2));
             x += (MOUSE_X() - (windowWidth / 2));
 
+            y += entity->gravity * 0.5;
+
             camera->SetViewPosition(x, y);
         }
     }
