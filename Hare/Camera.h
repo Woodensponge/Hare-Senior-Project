@@ -1,6 +1,7 @@
 #ifndef CAMERA_H_
 #define CAMERA_H_
 
+#include "Line.h"
 #include "Sprite.h"
 
 #include <SDL.h>
@@ -17,6 +18,7 @@ struct Camera
 	inline void SetHeight(int height)	{ drect.h = height; };
 	inline void SetRect(SDL_Rect drect)	{ drect = drect; };
 	void ClearTexture();
+	void AddToQueue(Line line);
 	void AddToQueue(Sprite* sprite);
 	void RenderTexture();
 	void SetSize(int width, int height);
@@ -30,6 +32,7 @@ private:
 	void InitTexture();
 
 	std::vector<Sprite*> renderQueue;
+	std::vector<Line> lineQueue;
 };
 
 #endif

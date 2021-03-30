@@ -66,7 +66,7 @@ void PlayerController::Update(SDL_Event* event)
         && player->isGrounded == false
         && player->isSlamming == false)
     {
-        player->gravity = 30;
+        player->gravity = 20;
         player->isSlamming = true;
     }
 }

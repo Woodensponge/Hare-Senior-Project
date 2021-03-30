@@ -61,6 +61,11 @@ void Camera::ClearTexture()
 	InitTexture();
 }
 
+void Camera::AddToQueue(Line line)
+{
+	lineQueue.push_back(line);
+}
+
 /*
 Add a sprite to the cameras queue.
 */
@@ -84,13 +89,38 @@ void Camera::RenderTexture()
 			sprite->size.x -= size.x;
 			sprite->size.y -= size.y;
 		}
+
+		if (sprite->size.x > drect.w					//If the sprite is outside the windows
+			|| sprite->size.x + sprite->size.w < 0		//size...
+			|| sprite->size.y + sprite->size.h < 0
+			|| sprite->size.y > drect.h)
+		{
+			continue;									//...do not render it.
+		}
+
 		SDL_RenderCopy(Application::renderer, sprite->texture, 0, &sprite->size);
 	}
-	SDL_SetRenderTarget(Application::renderer, NULL); //Reset the renderer to default (the window)
 
-	//Clear the render queue, make space for the next frame.
+	for (Line line : lineQueue)
+	{
+		SDL_SetRenderDrawColor(Application::renderer, line.r, line.g, line.b, line.a);
+		SDL_RenderDrawLine
+		(
+			Application::renderer,
+			line.vectorOne.x - size.x,
+			line.vectorOne.y - size.y,
+			line.vectorTwo.x - size.x,
+			line.vectorTwo.y - size.y
+		);
+		SDL_SetRenderDrawColor(Application::renderer, 0, 0, 0, 255);
+	}
+
+	SDL_SetRenderTarget(Application::renderer, NULL);	//Reset the renderer to default (the window)
+
+	//Clear the render and line queue, make space for the next frame.
 
 	renderQueue.clear();
+	lineQueue.clear();
 }
 
 /*

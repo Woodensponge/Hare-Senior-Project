@@ -1,9 +1,11 @@
 #include "Level.h"
 #include "Application.h"
-#include "RectStuff.h"
 #include "Debug.h"
 #include "JsonManager.h"
+#include "Line.h"
 #include "Player.h"
+#include "RectStuff.h"
+#include "TextureManager.h"
 
 #include <algorithm>
 
@@ -68,10 +70,18 @@ void Level::Update()
 				if (SDL_HasIntersection(&entityRect, &tileRect)
 					&& tileMap->tiles[safeY][safeX]->imageName != "None")
 				{
-					entity->pos.x = oldPosition.x;
-					entity->speed = 0;
-					entity->UpdateHitbox();
+					Core::Vector2 nearestCorner = Core::RectStuff::FindNearestCornerInOrigin(entityRect, tileRect);
 
+					DEBUG_LOG << entity->speed;
+
+					if (entity->speed < 0)
+						entity->pos.x += abs(nearestCorner.x - (tileMap->tiles[safeY][safeX]->pos * 20).x - entity->hitbox.w);
+					else if (entity->speed > 0)
+						entity->pos.x -= abs(nearestCorner.x - (tileMap->tiles[safeY][safeX]->pos * 20).x);
+
+					entity->UpdateHitbox();
+					entity->speed = 0;
+					
 					SDL_SetTextureColorMod
 					(
 						tileMap->tiles[safeY][safeX]->sprite->texture,
@@ -90,7 +100,21 @@ void Level::Update()
 				{
 					float oldGravity = entity->gravity;
 
-					entity->pos.y -= entity->gravity;
+					Core::Vector2 nearestCorner = Core::RectStuff::FindNearestCornerInOrigin(entityRect, tileRect);
+
+					Line line = Line
+					(
+						tileMap->tiles[safeY][safeX]->pos * 20,
+						nearestCorner
+					);
+					TextureManager::RenderLine(line);
+
+					//DEBUG_LOG << (tileMap->tiles[safeY][safeX]->pos * 20).y - nearestCorner.y;
+					if (entity->gravity < 0)
+						entity->pos.y += abs((nearestCorner.y - (tileMap->tiles[safeY][safeX]->pos * 20).y) - entity->hitbox.h);
+					else if (entity->gravity >= 0)
+						entity->pos.y -= abs(nearestCorner.y - (tileMap->tiles[safeY][safeX]->pos * 20).y);
+
 					entity->UpdateHitbox();
 					entity->gravity = 0;
 					

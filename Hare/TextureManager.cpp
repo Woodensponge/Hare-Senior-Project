@@ -5,7 +5,8 @@
 #include <SDL_image.h>
 #include <algorithm>
 
-std::vector<Sprite*> TextureManager::renderQueue;
+std::vector<Sprite*> TextureManager::spriteQueue;
+std::vector<Line> TextureManager::lineQueue;
 Camera* TextureManager::mainCamera = nullptr;
 
 SDL_Texture* TextureManager::LoadTexture(const char* imagePath)
@@ -23,10 +24,25 @@ SDL_Texture* TextureManager::LoadTextureFromSurface(SDL_Surface* surface)
 	return texture;
 }
 
+void TextureManager::RenderLine(float x1, float y1, float x2, float y2)
+{
+	lineQueue.push_back(Line(x1, y2, x1, y1));
+}
+
+void TextureManager::RenderLine(Core::Vector2 vectorOne, Core::Vector2 vectorTwo)
+{
+	lineQueue.push_back(Line(vectorOne, vectorTwo));
+}
+
+void TextureManager::RenderLine(Line line)
+{
+	lineQueue.push_back(line);
+}
+
 void TextureManager::RenderSprite(Sprite* sprite)
 {
 	sprite->Update();
-	renderQueue.push_back(sprite);
+	spriteQueue.push_back(sprite);
 }
 
 void TextureManager::RenderQueue()
@@ -38,12 +54,17 @@ void TextureManager::RenderQueue()
 			return;
 
 		//Sort the vector
-		std::sort(renderQueue.begin(), renderQueue.end(), SortSpriteLayer_LessThan());
+		std::sort(spriteQueue.begin(), spriteQueue.end(), SortSpriteLayer_LessThan());
 
-		for (Sprite* sprite : renderQueue)
+		for (Sprite* sprite : spriteQueue)
 		{
 			mainCamera->AddToQueue(sprite);
 		}
+		for (Line line : lineQueue)
+		{
+			mainCamera->AddToQueue(line);
+		}
+
 		mainCamera->RenderTexture();
 
 		SDL_RenderCopy(Application::renderer, mainCamera->texture, NULL, &mainCamera->drect);
@@ -55,12 +76,13 @@ void TextureManager::RenderQueue()
 		return;
 	}
 
-	renderQueue.clear();
+	spriteQueue.clear();
 }
 
 void TextureManager::ClearQueue()
 {
-	renderQueue.clear();
+	spriteQueue.clear();
+	lineQueue.clear();
 }
 
 /*
@@ -68,12 +90,12 @@ ONLY RUN THIS DURING APPLICATION DESTRUCTION
 */
 void TextureManager::DestroyQueue()
 {
-	DEBUG_LOG << "RENDERQUEUE HAS " << renderQueue.size() << " SPRITE(S) LEFT";
-	for (Sprite* sprite : renderQueue)
+	DEBUG_LOG << "RENDERQUEUE HAS " << spriteQueue.size() << " SPRITE(S) LEFT";
+	for (Sprite* sprite : spriteQueue)
 	{
 		if (sprite != nullptr)
 			delete sprite;
 	}
-	renderQueue.clear();
-	renderQueue.~vector();
+	spriteQueue.clear();
+	spriteQueue.~vector();
 }

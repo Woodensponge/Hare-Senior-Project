@@ -13,7 +13,9 @@ namespace Core
 		Returns the value of Rect penetration between two rects. Uses the farthest point inside either Rect.
 		Returns -1 on failure.
 		*/
-		static int RectPenetration(SDL_Rect rectOne, SDL_Rect rectTwo);
+		static int OriginPenetration(SDL_Rect rect, SDL_Rect target);
+		static int Penetration(SDL_Rect rect, SDL_Rect target);
+		static Core::Vector2 FindNearestCornerInOrigin(SDL_Rect rect, SDL_Rect target);
 	};
 }
 

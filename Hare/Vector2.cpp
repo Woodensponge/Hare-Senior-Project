@@ -40,8 +40,8 @@ float Vector2::CalculateDistance(Vector2 vector)
 SDL_Rect Vector2::ToRect()
 {
 	SDL_Rect rect = SDL_Rect();
-	rect.x = static_cast<int>(this->x);
-	rect.y = static_cast<int>(this->y);
+	rect.x = lround(this->x);
+	rect.y = lround(this->y);
 	return rect;
 }
 

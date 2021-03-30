@@ -203,6 +203,7 @@
     <ClCompile Include="KeyboardEvent.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="Debug.cpp" />
+    <ClCompile Include="Line.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Mouse.cpp" />
     <ClCompile Include="Music.cpp" />
@@ -233,6 +234,7 @@
     <ClInclude Include="KeyboardEvent.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="Debug.h" />
+    <ClInclude Include="Line.h" />
     <ClInclude Include="Mouse.h" />
     <ClInclude Include="Music.h" />
     <ClInclude Include="MusicManager.h" />
