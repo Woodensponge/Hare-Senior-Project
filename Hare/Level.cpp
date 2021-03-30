@@ -79,7 +79,19 @@ void Level::Update()
 
 					entity->UpdateHitbox();
 					entity->speed = 0;
-					
+
+					if (entity->hitbox.x == tileRect.x)
+					{
+						//Entity is stuck! 
+						if (oldSpeed < 0)
+							entity->pos.x += entity->hitbox.w;
+						else if (oldSpeed >= 0)
+							entity->pos.x -= entity->hitbox.w;
+
+						entity->UpdateHitbox();
+					}
+
+#ifdef _DEBUG
 					SDL_SetTextureColorMod
 					(
 						tileMap->tiles[safeY][safeX]->sprite->texture,
@@ -87,6 +99,7 @@ void Level::Update()
 						0,
 						0
 					);
+#endif
 				}
 
 				entityRect.y = entity->hitbox.y;
@@ -99,13 +112,14 @@ void Level::Update()
 					float oldGravity = entity->gravity;
 
 					Core::Vector2 nearestCorner = Core::RectStuff::FindNearestCornerInOrigin(entityRect, tileRect);
-
+#ifdef _DEBUG
 					Line line = Line
 					(
 						tileMap->tiles[safeY][safeX]->pos * 20,
 						nearestCorner
 					);
 					TextureManager::RenderLine(line);
+#endif
 
 					//DEBUG_LOG << (tileMap->tiles[safeY][safeX]->pos * 20).y - nearestCorner.y;
 					if (entity->gravity < 0)
@@ -123,10 +137,21 @@ void Level::Update()
 						entity->UpdateHitbox();
 						entity->gravity = 0;
 					}
-					
+
 					if (oldGravity > 0)
 						entity->isGrounded = true;
 
+					if (entity->hitbox.y == tileRect.y)
+					{
+						//Entity is stuck! 
+						if (oldGravity < 0)
+							entity->pos.y += entity->hitbox.h;
+						else if (oldGravity >= 0)
+							entity->pos.y -= entity->hitbox.h;
+
+						entity->UpdateHitbox();
+					}
+#ifdef _DEBUG
 					SDL_SetTextureColorMod
 					(
 						tileMap->tiles[safeY][safeX]->sprite->texture,
@@ -134,9 +159,11 @@ void Level::Update()
 						0,
 						0
 					);
+#endif
 				}
 				else
 				{
+#ifdef _DEBUG
 					SDL_SetTextureColorMod
 					(
 						tileMap->tiles[safeY][safeX]->sprite->texture,
@@ -144,6 +171,7 @@ void Level::Update()
 						255,
 						255
 					);
+#endif
 				}
 			}
 		}

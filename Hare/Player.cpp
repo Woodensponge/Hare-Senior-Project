@@ -47,7 +47,10 @@ Player::~Player()
 void Player::Update()
 {
 	if (isGrounded == true)
+	{
+		hasDashed = false;
 		isSlamming = false;
+	}
 
 	if (isSlamming)
 	{

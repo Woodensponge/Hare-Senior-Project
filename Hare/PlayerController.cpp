@@ -33,7 +33,7 @@ void PlayerController::Update(SDL_Event* event)
         player->pos.y = 50;
     }
 
-    //Don't do anything bloew if the player is dead.
+    //Don't do anything below if the player is dead.
     if (player->entityFlags & Hare::ENTITYSTATE_DEAD)
     {
         return;
@@ -63,6 +63,12 @@ void PlayerController::Update(SDL_Event* event)
     else
         currentMovement &= ~MOVE_DOWN;
 
+    //Input for dashing
+    if (Keyboard::IsKeyPressed(SDLK_LSHIFT) && !player->hasDashed)
+        currentMovement |= MOVE_DASH;
+    else
+        currentMovement &= ~MOVE_DASH;
+
     //Input for instant death
 #ifdef _DEBUG
     if (Keyboard::IsKeyPressed(SDLK_p))
@@ -74,17 +80,35 @@ void PlayerController::Update(SDL_Event* event)
     //Handling input
     if (currentMovement & MOVE_LEFT)
     {
-        player->speed -= player->acceleration;
+        if (currentMovement & MOVE_DASH && !player->hasDashed)
+        {
+            player->hasDashed = true;
+            player->speed = -30;
+        }
+        else
+            player->speed -= player->acceleration;
     }
 
     if (currentMovement & MOVE_RIGHT)
     {
-        player->speed += player->acceleration;
+        if (currentMovement & MOVE_DASH && !player->hasDashed)
+        {
+            player->hasDashed = true;
+            player->speed = 30;
+        }
+        else
+            player->speed += player->acceleration;
     }
 
-    if (currentMovement & MOVE_UP && player->isGrounded == true)
+    if (currentMovement & MOVE_UP)
     {
-        player->gravity -= 15;
+        if (currentMovement & MOVE_DASH)
+        {
+            player->hasDashed = true;
+            player->gravity = -25;
+        }
+        else if (player->isGrounded == true)
+            player->gravity -= 15;
     }
 
     if (currentMovement & MOVE_DOWN 

@@ -100,8 +100,11 @@ void PlayState::UpdateFixed()
 
             int x = entity->hitbox.x - camera->size.w / 2;
             int y = entity->hitbox.y - camera->size.h / 2;
-            y += (MOUSE_Y() - (windowHeight / 2));
-            x += (MOUSE_X() - (windowWidth / 2));
+            if (!(entity->entityFlags & Hare::ENTITYSTATE_DEAD))
+            {
+                y += (MOUSE_Y() - (windowHeight / 2));
+                x += (MOUSE_X() - (windowWidth / 2));
+            }
 
             y += entity->gravity * 0.5;
 

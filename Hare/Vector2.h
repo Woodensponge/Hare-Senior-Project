@@ -30,6 +30,17 @@ namespace Core
 			return result;
 		}
 
+		bool operator==(const Vector2& vector)
+		{
+			if (this->x == vector.x
+				&& this->y == vector.y)
+			{
+				return true;
+			}
+
+			return false;
+		}
+
 		static float CalculateDistance(Vector2 vectorOne, Vector2 vectorTwo);
 		static Vector2 SubstractVectors(Vector2 vectorOne, Vector2 vectorTwo);
 

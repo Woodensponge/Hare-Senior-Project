@@ -19,6 +19,7 @@ namespace Hare
 			void Update();
 
 			bool isSlamming = false;
+			bool hasDashed = false;
 
 			Events::Event* pc;
 		};
