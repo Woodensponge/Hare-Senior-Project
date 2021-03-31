@@ -1,5 +1,2 @@
-﻿  PlayState.cpp
-C:\Users\Woodensponge\Documents\GitHub\Hare\Hare\PlayState.cpp(99,86): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\Woodensponge\Documents\GitHub\Hare\Hare\PlayState.cpp(99,67): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\Woodensponge\Documents\GitHub\Hare\Hare\PlayState.cpp(109,39): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+﻿  Player.cpp
   Hare.vcxproj -> C:\Users\Woodensponge\Documents\GitHub\Hare\bin\x64\Debug\Hare.exe

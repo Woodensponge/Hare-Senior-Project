@@ -32,11 +32,6 @@ float Vector2::CalculateDistance(Vector2 vectorOne, Vector2 vectorTwo)	//static
 	return sqrtf((sum.x * sum.x) + (sum.y * sum.y));
 }
 
-float Vector2::CalculateDistance(Vector2 vector)
-{	
-	return 0.0f;
-}
-
 SDL_Rect Vector2::ToRect()
 {
 	SDL_Rect rect = SDL_Rect();

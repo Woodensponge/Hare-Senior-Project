@@ -48,12 +48,15 @@ void Player::Update()
 {
 	if (isGrounded == true)
 	{
+		storedGravity = 0;
+
 		hasDashed = false;
 		isSlamming = false;
 	}
 
 	if (isSlamming)
 	{
+		storedGravity++;
 		speed = 0;
 	}
 	Entity::Update();

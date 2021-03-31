@@ -22,6 +22,9 @@ namespace Hare
 			bool hasDashed = false;
 
 			Events::Event* pc;
+
+			uint16_t storedGravity = 0;	//When slamming, this will increment. This will also add energy to
+										//a jump. When grounded, this will decrement.
 		};
 	}
 }

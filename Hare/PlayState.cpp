@@ -48,7 +48,7 @@ void PlayState::Init()
     spriteCrosshair->layer = 2147483647; //Crosshair is always on top, no matter what.
     spriteCrosshair->ignoreCamera = true;
 
-    camera = new Camera(level.width * 20, level.height * 20, 640, 480);
+    camera = new Camera(windowWidth, windowHeight, 320, 240);
     camera->SetViewPosition(0, 0);
     TextureManager::SetMainCamera(camera);
 
@@ -98,15 +98,17 @@ void PlayState::UpdateFixed()
 
             Core::Vector2 spritePos = Core::Vector2(entity->sprite->x, entity->sprite->y);
 
-            int x = entity->hitbox.x - camera->size.w / 2;
-            int y = entity->hitbox.y - camera->size.h / 2;
+            int x = entity->hitbox.x - camera->drect.w / 2;
+            int y = entity->hitbox.y - camera->drect.h / 2;
+
             if (!(entity->entityFlags & Hare::ENTITYSTATE_DEAD))
             {
-                y += (MOUSE_Y() - (windowHeight / 2));
                 x += (MOUSE_X() - (windowWidth / 2));
+                y += (MOUSE_Y() - (windowHeight / 2));
             }
 
             y += entity->gravity * 0.5;
+            x += entity->speed * 0.5;
 
             camera->SetViewPosition(x, y);
         }

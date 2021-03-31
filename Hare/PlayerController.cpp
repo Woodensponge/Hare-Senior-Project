@@ -29,6 +29,7 @@ void PlayerController::Update(SDL_Event* event)
         //Reset movement
         player->speed = 0;
         player->gravity = 0;
+        player->storedGravity = 0;
         player->pos.x = 50;
         player->pos.y = 50;
     }
@@ -80,7 +81,9 @@ void PlayerController::Update(SDL_Event* event)
     //Handling input
     if (currentMovement & MOVE_LEFT)
     {
-        if (currentMovement & MOVE_DASH && !player->hasDashed)
+        if (currentMovement & MOVE_DASH 
+            && !player->hasDashed
+            && !player->isGrounded)
         {
             player->hasDashed = true;
             player->speed = -30;
@@ -91,7 +94,9 @@ void PlayerController::Update(SDL_Event* event)
 
     if (currentMovement & MOVE_RIGHT)
     {
-        if (currentMovement & MOVE_DASH && !player->hasDashed)
+        if (currentMovement & MOVE_DASH 
+            && !player->hasDashed
+            && !player->isGrounded)
         {
             player->hasDashed = true;
             player->speed = 30;
@@ -102,20 +107,25 @@ void PlayerController::Update(SDL_Event* event)
 
     if (currentMovement & MOVE_UP)
     {
-        if (currentMovement & MOVE_DASH)
+        DEBUG_LOG << player->storedGravity;
+
+        if (currentMovement & MOVE_DASH
+            && !player->isGrounded)
         {
             player->hasDashed = true;
             player->gravity = -25;
         }
         else if (player->isGrounded == true)
-            player->gravity -= 15;
+        {
+            player->gravity -= 15 + player->storedGravity;
+        }
     }
 
     if (currentMovement & MOVE_DOWN 
         && player->isGrounded == false
         && player->isSlamming == false)
     {
-        player->gravity = 20;
+        player->gravity = 30;
         player->isSlamming = true;
     }
 }

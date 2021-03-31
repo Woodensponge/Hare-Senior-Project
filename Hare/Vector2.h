@@ -44,7 +44,6 @@ namespace Core
 		static float CalculateDistance(Vector2 vectorOne, Vector2 vectorTwo);
 		static Vector2 SubstractVectors(Vector2 vectorOne, Vector2 vectorTwo);
 
-		float CalculateDistance(Vector2 vector);
 		SDL_Rect ToRect();
 		SDL_Rect ToRect(int w, int h);
 
