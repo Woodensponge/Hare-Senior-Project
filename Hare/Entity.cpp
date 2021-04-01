@@ -58,8 +58,8 @@ void Entity::Update()
 
 	if (speed > desiredSpeed)
 		speed - speed * 0.5;
-	else if (speed < desiredSpeed - (desiredSpeed * 2))
-		speed - (desiredSpeed - (desiredSpeed * 2)) * 0.5;
+	else if (speed < desiredSpeed * -1.0f)
+		speed - (desiredSpeed * -1.0f) * 0.5f;
 
 	if (isGrounded)
 	{

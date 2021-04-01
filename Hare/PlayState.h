@@ -17,8 +17,9 @@ namespace States
 		~PlayState();
 
 		void Init();
-		void UpdateFixed();
 		void Update();
+		void UpdateFixed();
+		void UpdatePhysics();
 
 	private:
 		int windowWidth;

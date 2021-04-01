@@ -26,8 +26,9 @@ namespace States
 		virtual ~State();
 
 		virtual void Init();
-		virtual void UpdateFixed();
 		virtual void Update();
+		virtual void UpdateFixed();
+		virtual void UpdatePhysics();
 		
 		void AddEvent(Events::Event* event);
 		void RemoveEvents(Events::EventID eventID);
@@ -36,6 +37,8 @@ namespace States
 		StateID stateID	= StateID::NotSpecified;
 		StateID switchToState = StateID::NotSpecified;
 		SubStateID subStateID = SubStateID::NoSubstate;
+
+		bool hasPhysics = false;
 	};
 }
 

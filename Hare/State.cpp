@@ -6,11 +6,11 @@
 using namespace States;
 using namespace Events;
 
-State::~State()			//Leave the destructor definition empty since we don't need to add anything here
-{						//at the moment.
+State::~State()				//Leave the destructor definition empty since we don't need to add anything here
+{							//at the moment.
 }
 
-void State::Init()		//Leave the method definition empty since we don't need to add anything here.
+void State::Init()			//Leave the method definition empty since we don't need to add anything here.
 {
 }
 
@@ -18,7 +18,11 @@ void State::UpdateFixed()	//Leave the method definition empty since we don't nee
 {
 }
 
-void State::Update()	//Leave the method definition empty since we don't need to add anything here.
+void State::UpdatePhysics()	//Leave the method definition empty since we don't need to add anything here.
+{
+}
+
+void State::Update()		//Leave the method definition empty since we don't need to add anything here.
 {
 }
 

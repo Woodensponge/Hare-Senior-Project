@@ -33,10 +33,10 @@ struct Application
 
 	inline static SDL_Window* GetWindow() { return window; };
 	int Init();
-	void Input();
 	void Render();
-	void UpdateFixed();			//Updates based on ticks
 	void Update();				//Updates based on framerate
+	void UpdateFixed();			//Updates based on ticks
+	void UpdatePhysics();
 
 	const char* windowTitle;
 	Uint32 flags;

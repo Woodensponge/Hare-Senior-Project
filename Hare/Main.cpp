@@ -64,6 +64,8 @@ int WinMain()
 
         //SDL_SetWindowTitle(app.GetWindow(), (std::to_string((currentTicks > startTicks + ticksPerFrame))).c_str());
 
+        app.UpdatePhysics();
+
         if (currentTicks > startTicks + ticksPerFrame)
         {
             app.ticks++;

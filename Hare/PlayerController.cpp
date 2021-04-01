@@ -105,10 +105,8 @@ void PlayerController::Update(SDL_Event* event)
             player->speed += player->acceleration;
     }
 
-    if (currentMovement & MOVE_UP)
+    if (Keyboard::IsKeyPressed(SDLK_w))
     {
-        DEBUG_LOG << player->storedGravity;
-
         if (currentMovement & MOVE_DASH
             && !player->isGrounded)
         {

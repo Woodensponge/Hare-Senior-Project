@@ -7,6 +7,7 @@
 #include "EventHandler.h"
 #include "KeyboardEvent.h"
 #include "TextureManager.h"
+#include "RectStuff.h"
 #include "Mouse.h"
 #include "Debug.h"
 
@@ -22,7 +23,8 @@ PlayState::PlayState(const char* levelJson)
 {
     window = Application::GetWindow();
 	SDL_GetWindowSize(window, &windowWidth, &windowHeight);
-    stateID = StateID::PlayState;
+    this->stateID = StateID::PlayState;
+    this->hasPhysics = true;
 }
 
 PlayState::~PlayState()
@@ -79,23 +81,6 @@ void PlayState::UpdateFixed()
 
         if (entity->entityType == Hare::EntityType::Player)
         {
-            //Clamp code
-            /*
-            int x = std::clamp
-            (
-                (entity->hitbox.x - camera->size.w / 2) + (MOUSE_X() - (windowWidth / 2)),
-                0,
-                camera->size.w
-            );
-
-            int y = std::clamp
-            (
-                (entity->hitbox.y - camera->size.h / 2) + (MOUSE_Y() - (windowHeight / 2)),
-                0,
-                (int)(level.height * 20) - windowHeight
-            );
-            */
-
             Core::Vector2 spritePos = Core::Vector2(entity->sprite->x, entity->sprite->y);
 
             int x = entity->hitbox.x - camera->drect.w / 2;
@@ -113,6 +98,11 @@ void PlayState::UpdateFixed()
             camera->SetViewPosition(x, y);
         }
     }
+}
+
+void PlayState::UpdatePhysics()
+{
+
 }
 
 void PlayState::Update()

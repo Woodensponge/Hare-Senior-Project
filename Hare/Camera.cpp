@@ -103,14 +103,14 @@ void Camera::RenderTexture()
 
 	for (Line line : lineQueue)
 	{
-		SDL_SetRenderDrawColor(Application::renderer, line.r, line.g, line.b, line.a);
+		SDL_SetRenderDrawColor(Application::renderer, (Uint8)line.r, (Uint8)line.g, (Uint8)line.b, (Uint8)line.a);
 		SDL_RenderDrawLine
 		(
 			Application::renderer,
-			line.vectorOne.x - size.x,
-			line.vectorOne.y - size.y,
-			line.vectorTwo.x - size.x,
-			line.vectorTwo.y - size.y
+			line.vectorOne.x - (float)size.x,
+			line.vectorOne.y - (float)size.y,
+			line.vectorTwo.x - (float)size.x,
+			line.vectorTwo.y - (float)size.y
 		);
 		SDL_SetRenderDrawColor(Application::renderer, 0, 0, 0, 255);
 	}

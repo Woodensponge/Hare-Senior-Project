@@ -92,16 +92,11 @@ int Application::Init()
     return 0;
 }
 
-void Application::Input()
-{
-}
-
 void Application::Render()
 {
     //Don't run SDL_RenderClear when minimized.
     if (SDL_GetWindowFlags(Application::GetWindow()) & SDL_WINDOW_MINIMIZED ? false : true)
         SDL_RenderClear(renderer);
-
 
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 
@@ -132,6 +127,8 @@ void Application::UpdateFixed()
         break;
     }
 
+    Events::EventHandler::UpdateEvents(&event);
+
     while (SDL_PollEvent(&event))
     {
         Keyboard::UpdateKeyboard(&event);
@@ -144,8 +141,6 @@ void Application::UpdateFixed()
             return;                     //Stop the update method and begin closing.
         }
     }
-
-    Events::EventHandler::UpdateEvents(&event);
 
     state->UpdateFixed();
     
@@ -171,6 +166,14 @@ void Application::UpdateFixed()
             state = new States::PlayState("Assets/Levels/Level-Test.json");
         }
         state->Init();
+    }
+}
+
+void Application::UpdatePhysics()
+{
+    if (state->hasPhysics)
+    {
+        state->UpdatePhysics();
     }
 }
 
