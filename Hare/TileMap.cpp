@@ -1,8 +1,11 @@
 #include "TileMap.h"
-#include "JsonManager.h"
-#include "Debug.h"
-#include "TextureManager.h"
 #include "Application.h"
+#include "Debug.h"
+#include "Entity.h"
+#include "JsonManager.h"
+#include "Level.h"
+#include "Player.h"
+#include "TextureManager.h"
 
 int TileMap::tileWidth = 0;
 int TileMap::tileHeight = 0;
@@ -11,11 +14,13 @@ int TileMap::tileHeight = 0;
 TileMap::TileMap()
 {
 	tileMapJson = Json::Value();
+	level = nullptr;
 }
 
-TileMap::TileMap(const char* file, const char* levelDevName)
+TileMap::TileMap(const char* file, const char* levelDevName, Level* level)
 	:levelDevName(levelDevName)
 {
+	this->level = level;
 	LoadMap(file);
 }
 
@@ -28,6 +33,60 @@ TileMap::~TileMap()
 			delete tile;
 
 	tiles.~vector();
+}
+
+void TileMap::LoadEntities()
+{
+	DEBUG_LOG << "LOADING ENTITIES";
+
+	int iterator = 0;
+
+	//Find entities within the tilemap (SECOND LAYER)
+	for (int y = 0; y < GetGeneralHeight(); y++)
+	{
+		for (int x = 0; x < GetGeneralWidth(); x++)
+		{
+			Json::Value entityTileSetJson = JsonManager::OpenJson("Assets/Levels/Props & Entities/ENTITY-Tileset.json");
+
+			iterator++;
+
+			Tile* tile = new Tile;
+			delete tile->sprite;
+
+			tile->width = 20;
+			tile->height = 20;
+
+			tile->tileID = tileMapJson["layers"][1]["data"][iterator - 1].asInt();
+
+			int tileIDOffset = 0;
+
+			for (unsigned int i = 0; i < tileMapJson["tilesets"].size(); i++)
+			{
+				if (tileMapJson["tilesets"][i]["source"].asString().find("ENTITY-Tileset") != std::string::npos)
+				{
+					tileIDOffset = tileMapJson["tilesets"][i]["firstgid"].asInt();
+				}
+			}
+
+			tile->pos.x = (float)x;
+			tile->pos.y = (float)y;
+
+			//Get the image for the sprite
+			for (unsigned int i = 0; i < entityTileSetJson["tiles"].size(); i++)
+			{
+				if (tile->tileID == entityTileSetJson["tiles"][i]["id"].asInt() + tileIDOffset)
+				{
+					if (entityTileSetJson["tiles"][i]["properties"][1]["value"].asBool())	//isEntity custom property (value)
+					{
+						DEBUG_LOG << "SPAWNING ENTITY";
+						std::string entityName = entityTileSetJson["tiles"][i]["properties"][0]["value"].asString();
+						level->entities.push_back(new Hare::Entities::Player(40, 40));
+					}
+				}
+			}
+		}
+	}
+	DEBUG_LOG << "FINISHED LOADING ENTITY";
 }
 
 void TileMap::LoadMap(const char* file)
@@ -62,10 +121,23 @@ void TileMap::LoadMap(const char* file)
 
 			tile->pos.x = (float)x;
 			tile->pos.y = (float)y;
+			/*
+			if (tile->imageName.find("Entity"))
+			{
+				level->entities.push_back(new Hare::Entities::Player(50, 50));
+				DEBUG_LOG << "Im stuff";
+				tile->~Tile();
+			}
+			else
+			{
+				tiles[y].push_back(tile);
+			}*/
 
 			tiles[y].push_back(tile);
 		}
 	}
+
+	iterator = 0;
 
 	//FIRST TILE WILL DEFINE THE STANDARD FOR ALL TILES!
 	TileMap::tileWidth = tiles[0][0]->width;
@@ -94,7 +166,7 @@ void TileMap::RenderMap(const char* tileSetFile)
 				if (tile->tileID == tileSetJson["tiles"][i]["id"].asInt())
 				{
 					tile->imageName = 
-						"Assets/Tilemaps/" 
+						"Assets/Levels/" 
 						+ levelDevName 
 						+ "/" 
 						+ tileSetJson["tiles"][i]["image"].asString();

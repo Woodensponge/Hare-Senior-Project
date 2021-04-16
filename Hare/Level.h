@@ -25,7 +25,6 @@ struct Level
 
 	TileMap* tileMap;
 
-private:
 	std::vector<Hare::Entity*> entities;
 };
 

@@ -56,11 +56,6 @@ void Entity::Update()
 {
 	//Speed calculations and conditions
 
-	if (speed > desiredSpeed)
-		speed - speed * 0.5;
-	else if (speed < desiredSpeed * -1.0f)
-		speed - (desiredSpeed * -1.0f) * 0.5f;
-
 	if (isGrounded)
 	{
 		if (speed > 0)

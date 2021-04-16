@@ -123,7 +123,7 @@ Sprite::Sprite(const char* imageName, SDL_Rect size)
 
 Sprite::~Sprite()
 {
-	if (texture != nullptr)
+	if (texture != nullptr && this != nullptr)
 		SDL_DestroyTexture(texture);
 }
 

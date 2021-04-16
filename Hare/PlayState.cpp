@@ -81,7 +81,7 @@ void PlayState::UpdateFixed()
 
         if (entity->entityType == Hare::EntityType::Player)
         {
-            Core::Vector2 spritePos = Core::Vector2(entity->sprite->x, entity->sprite->y);
+            Core::Vector2 spritePos = Core::Vector2(static_cast<float>(entity->sprite->x), static_cast<float>(entity->sprite->y));
 
             int x = entity->hitbox.x - camera->drect.w / 2;
             int y = entity->hitbox.y - camera->drect.h / 2;
@@ -92,11 +92,16 @@ void PlayState::UpdateFixed()
                 y += (MOUSE_Y() - (windowHeight / 2));
             }
 
-            y += entity->gravity * 0.5;
-            x += entity->speed * 0.5;
+            y += static_cast<int>(entity->gravity * 0.5);
+            x += static_cast<int>(entity->speed * 0.5);
 
             camera->SetViewPosition(x, y);
         }
+    }
+
+    if (level.entities.size() == 0)
+    {
+        camera->SetViewPosition(0, 0);
     }
 }
 

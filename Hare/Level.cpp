@@ -13,14 +13,18 @@ Level::Level(const char* levelFile)
 {
 	//Create the level.
 	levelFileJson = JsonManager::OpenJson(levelFile);
-	tileMap = new TileMap(levelFileJson["tilemap"].asCString(), levelFileJson["devname"].asCString());
+	tileMap = new TileMap(levelFileJson["tilemap"].asCString(), levelFileJson["devname"].asCString(), this);
 	width = tileMap->GetGeneralWidth();
 	height = tileMap->GetGeneralHeight();
 
+	tileMap->LoadEntities();
+
 	//Create entities.
+	/*
 	entities.push_back(new Hare::Entities::Player(50, 50));
 	DEBUG_LOG << TileMap::GetEntityTileSize(entities[0]).x;
 	DEBUG_LOG << TileMap::GetEntityTileSize(entities[0]).y;
+	*/
 }
 
 Level::~Level()
@@ -78,18 +82,19 @@ void Level::Update()
 						entity->pos.x -= abs(nearestCorner.x - (tileMap->tiles[safeY][safeX]->pos * 20).x);
 
 					entity->UpdateHitbox();
-					entity->speed = 0;
 
 					if (entity->hitbox.x == tileRect.x)
 					{
 						//Entity is stuck! 
-						if (oldSpeed < 0)
+						if (entity->speed < 0)
 							entity->pos.x += entity->hitbox.w;
-						else if (oldSpeed >= 0)
+						else if (entity->speed >= 0)
 							entity->pos.x -= entity->hitbox.w;
 
 						entity->UpdateHitbox();
 					}
+
+					entity->speed = 0;
 
 #ifdef _DEBUG
 					SDL_SetTextureColorMod
@@ -109,7 +114,7 @@ void Level::Update()
 				if (SDL_HasIntersection(&entityRect, &tileRect)
 					&& tileMap->tiles[safeY][safeX]->imageName != "None")
 				{
-					float oldGravity = entity->gravity;
+					float currentGravity = entity->gravity;
 
 					Core::Vector2 nearestCorner = Core::RectStuff::FindNearestCornerInOrigin(entityRect, tileRect);
 #ifdef _DEBUG
@@ -138,7 +143,7 @@ void Level::Update()
 						entity->gravity = 0;
 					}
 
-					if (oldGravity > 0)
+					if (oldGravity == 0)
 						entity->isGrounded = true;
 
 					if (entity->hitbox.y == tileRect.y)

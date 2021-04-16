@@ -8,7 +8,6 @@ using namespace Events::EventTypes;
 PlayerController::PlayerController(Hare::Entities::Player * player)
 {
 	this->eventID = EventID::PlayerController;
-	this->isSingleOnly = true;
 
 	this->player = player;
 }

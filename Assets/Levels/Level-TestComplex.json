@@ -1,6 +1,6 @@
 {
     "levelname": "Test",
     "devname": "Level-TestComplex",
-    "tilemap": "Assets/Tilemaps/Level-TestComplex/Level-Test-Tilemap.json",
-    "tileset": "Assets/Tilemaps/Level-TestComplex/Level-Test-Tileset.json"
+    "tilemap": "Assets/Levels/Level-TestComplex/Level-Test-Tilemap.json",
+    "tileset": "Assets/Levels/Level-TestComplex/Level-Test-Tileset.json"
 }

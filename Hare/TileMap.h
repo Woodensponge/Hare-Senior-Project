@@ -10,13 +10,16 @@
 #include <SDL.h>
 #include <vector>
 
+struct Level;
+
 struct TileMap
 {
 	struct Tile
 	{
 		~Tile()
 		{
-			delete sprite;
+			if (sprite != nullptr)
+				delete sprite;
 		}
 
 		SDL_Rect ToRect();
@@ -27,11 +30,11 @@ struct TileMap
 		int layer = 0;
 		unsigned int tileID = 0;
 		std::string imageName = "None";
-		Sprite* sprite = new Sprite();
+		Sprite* sprite = nullptr;
 	};
 
 	TileMap();
-	TileMap(const char* file, const char* levelDevName);
+	TileMap(const char* file, const char* levelDevName, Level* level);
 	~TileMap();
 
 	static Core::Vector2 GetEntityTilePos(Hare::Entity* entity);
@@ -39,6 +42,7 @@ struct TileMap
 	static Core::Vector2 GetEntityTileSize(Hare::Entity* entity);
 
 	std::vector<Tile*> GetTiles();
+	void LoadEntities();
 	void LoadMap(const char* file);
 	void RenderMap(const char* tileSetFile);
 	void Update();
@@ -55,6 +59,8 @@ private:
 	Json::Value tileSetJson;
 
 	std::string levelDevName;
+
+	Level* level;
 };
 
 #endif

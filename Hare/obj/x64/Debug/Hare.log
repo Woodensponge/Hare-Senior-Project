@@ -1,2 +1,6 @@
-﻿  Level.cpp
+﻿  Camera.cpp
+C:\Users\Woodensponge\Documents\GitHub\Hare\Hare\Camera.cpp(114,21): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Woodensponge\Documents\GitHub\Hare\Hare\Camera.cpp(113,21): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Woodensponge\Documents\GitHub\Hare\Hare\Camera.cpp(112,21): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Woodensponge\Documents\GitHub\Hare\Hare\Camera.cpp(111,21): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
   Hare.vcxproj -> C:\Users\Woodensponge\Documents\GitHub\Hare\bin\x64\Debug\Hare.exe
