@@ -17,7 +17,8 @@ namespace Hare
 	enum class EntityType
 	{
 		None,
-		Player
+		Player,
+		BasicEnemy
 	};
 
 	struct Entity

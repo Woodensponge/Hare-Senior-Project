@@ -70,9 +70,6 @@
     <ClCompile Include="Camera.cpp">
       <Filter>Source files\Rendering</Filter>
     </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Source files\Game\Entities</Filter>
-    </ClCompile>
     <ClCompile Include="Entity.cpp">
       <Filter>Source files\Game</Filter>
     </ClCompile>
@@ -87,6 +84,15 @@
     </ClCompile>
     <ClCompile Include="Line.cpp">
       <Filter>Source files\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="BasicEnemy.cpp">
+      <Filter>Source files\Game\Entities\BasicEnemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Source files\Game\Entities\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="BasicEnemyAI.cpp">
+      <Filter>Source files\Game\Entities\BasicEnemy</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -156,9 +162,6 @@
     <ClInclude Include="Camera.h">
       <Filter>Header files\Rendering</Filter>
     </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>Header files\Game\Entities</Filter>
-    </ClInclude>
     <ClInclude Include="Entity.h">
       <Filter>Header files\Game</Filter>
     </ClInclude>
@@ -173,6 +176,15 @@
     </ClInclude>
     <ClInclude Include="Line.h">
       <Filter>Header files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="BasicEnemy.h">
+      <Filter>Header files\Game\Entities\BasicEnemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Header files\Game\Entities\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="BasicEnemyAI.h">
+      <Filter>Header files\Game\Entities\BasicEnemy</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -250,6 +262,18 @@
     </Filter>
     <Filter Include="Header files\Cellular Automata %28Unused%29">
       <UniqueIdentifier>{c2002c0c-2689-4f70-acdc-b8d8cdabaa12}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\Game\Entities\BasicEnemy">
+      <UniqueIdentifier>{ba58ae9f-dadf-4246-a9ad-ed3f20f1ad7f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\Game\Entities\Player">
+      <UniqueIdentifier>{689a1f82-232a-4812-9873-424344599476}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Game\Entities\BasicEnemy">
+      <UniqueIdentifier>{3da5c594-b48b-429d-b89c-cf3a4e367454}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Game\Entities\Player">
+      <UniqueIdentifier>{2fc33866-d1c8-4442-95f0-1de14bc0929d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

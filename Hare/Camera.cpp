@@ -49,6 +49,9 @@ Camera::~Camera()
 	}
 	renderQueue.clear();
 	renderQueue.~vector();
+
+	lineQueue.clear();
+	lineQueue.~vector();
 }
 
 /*
@@ -104,7 +107,7 @@ void Camera::RenderTexture()
 	for (Line line : lineQueue)
 	{
 		SDL_SetRenderDrawColor(Application::renderer, (Uint8)line.r, (Uint8)line.g, (Uint8)line.b, (Uint8)line.a);
-		
+
 		SDL_RenderDrawLine
 		(
 			Application::renderer,
