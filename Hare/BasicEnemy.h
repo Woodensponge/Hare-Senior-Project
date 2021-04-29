@@ -2,6 +2,7 @@
 #define BASIC_ENEMY_H_
 
 #include "Entity.h"
+#include "BasicEnemyAI.h"
 
 namespace Hare
 {
@@ -16,6 +17,9 @@ namespace Hare
 			~BasicEnemy();
 
 			void Update();
+
+		private:
+			EntityAI::BasicEnemyAI* ai;
 		};
 	}
 }

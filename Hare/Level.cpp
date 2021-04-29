@@ -19,10 +19,8 @@ Level::Level(const char* levelFile)
 	height = tileMap->GetGeneralHeight();
 
 	tileMap->LoadEntities();
-
-	/*
-	entities.push_back(new Hare::Entities::BasicEnemy(100, 50));
-	*/
+	
+	entities.push_back(new Hare::Entities::BasicEnemy(60, 50));
 }
 
 Level::~Level()
@@ -42,6 +40,12 @@ Level::~Level()
 void Level::Update()
 {
 	tileMap->Update();
+	/*
+	TODO: REWORK THE ENTIRE COLLISION SYSTEM. MAKE THE COLLISION NOT FIXED. ADD INTERPOLATION.
+	MAKE COLLISION THAT'S NOT BIASED.
+
+	(I might not even get to this. I love deadlines.)
+	*/
 	for (Hare::Entity* entity : entities)
 	{
 		float oldSpeed = entity->speed;

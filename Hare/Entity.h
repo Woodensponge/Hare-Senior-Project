@@ -6,6 +6,8 @@
 
 #include <string>
 
+struct Level;
+
 namespace Hare
 {
 	enum EntityFlags
@@ -24,6 +26,7 @@ namespace Hare
 	struct Entity
 	{
 		Entity();
+		Entity(Level* level);
 		virtual ~Entity();
 
 		inline EntityType GetEntityType()	{ return entityType; };
@@ -59,6 +62,8 @@ namespace Hare
 		SDL_Rect hitbox;
 		Core::Vector2 pos;
 		Sprite* sprite = nullptr;
+
+		Level* level;
 
 	private:
 		static int nextEntityID;

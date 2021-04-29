@@ -1,6 +1,7 @@
 #include "Entity.h"
 #include "Application.h"
 #include "Debug.h"
+#include "Level.h"
 
 #include <math.h>
 
@@ -9,7 +10,13 @@ using namespace Hare;
 int Entity::nextEntityID = 0;
 
 Entity::Entity()
-	:hitbox(SDL_Rect())
+	: Entity::Entity(nullptr)
+{
+	
+}
+
+Entity::Entity(Level* level)
+	: hitbox(SDL_Rect()), level(level)
 {
 	pos = Core::Vector2();
 

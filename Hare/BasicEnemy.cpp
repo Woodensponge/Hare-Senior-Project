@@ -1,27 +1,30 @@
 #include "BasicEnemy.h"
+#include "BasicEnemyAI.h"
 
 using namespace Hare::Entities;
 
-BasicEnemy::BasicEnemy() : BasicEnemy::BasicEnemy(0, 0, 0)
+Hare::Entities::BasicEnemy::BasicEnemy()
+{
+	this->ai = new EntityAI::BasicEnemyAI(this);
+}
+
+Hare::Entities::BasicEnemy::BasicEnemy(float x, float y)
 {
 }
 
-BasicEnemy::BasicEnemy(float x, float y) : BasicEnemy::BasicEnemy(x, y, 0)
+Hare::Entities::BasicEnemy::BasicEnemy(int flags)
 {
 }
 
-BasicEnemy::BasicEnemy(int flags) : BasicEnemy::BasicEnemy(0, 0, flags)
+Hare::Entities::BasicEnemy::BasicEnemy(float x, float y, int flags)
+{
+
+}
+
+Hare::Entities::BasicEnemy::~BasicEnemy()
 {
 }
 
-BasicEnemy::BasicEnemy(float x, float y, int flags)
-{
-}
-
-BasicEnemy::~BasicEnemy()
-{
-}
-
-void BasicEnemy::Update()
+void Hare::Entities::BasicEnemy::Update()
 {
 }
