@@ -2,6 +2,7 @@
 #include "Application.h"
 #include "Debug.h"
 #include "Entity.h"
+#include "EntityManager.h"
 #include "JsonManager.h"
 #include "Level.h"
 #include "Player.h"
@@ -79,14 +80,20 @@ void TileMap::LoadEntities()
 					if (entityTileSetJson["tiles"][i]["properties"][1]["value"].asBool())	//isEntity custom property (value)
 					{
 						DEBUG_LOG << "SPAWNING ENTITY";
+
 						std::string entityName = entityTileSetJson["tiles"][i]["properties"][0]["value"].asString();
-						level->entities.push_back(new Hare::Entities::Player(40, 40));
+						Hare::Entity* entity = Hare::EntityManager::GetEntityFromString(entityName);
+
+						entity->pos.x = tile->pos.x * 20;
+						entity->pos.y = tile->pos.y * 20;
+
+						level->entities.push_back(entity);
 					}
 				}
 			}
 		}
 	}
-	DEBUG_LOG << "FINISHED LOADING ENTITY";
+	DEBUG_LOG << "FINISHED LOADING ENTITIES";
 }
 
 void TileMap::LoadMap(const char* file)
