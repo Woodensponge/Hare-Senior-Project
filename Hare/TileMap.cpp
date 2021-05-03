@@ -59,6 +59,9 @@ void TileMap::LoadEntities()
 
 			tile->tileID = tileMapJson["layers"][1]["data"][iterator - 1].asInt();
 
+			if (tile->tileID == 0)
+				continue;
+
 			int tileIDOffset = 0;
 
 			for (unsigned int i = 0; i < tileMapJson["tilesets"].size(); i++)
@@ -84,6 +87,7 @@ void TileMap::LoadEntities()
 						std::string entityName = entityTileSetJson["tiles"][i]["properties"][0]["value"].asString();
 						Hare::Entity* entity = Hare::EntityManager::GetEntityFromString(entityName);
 
+						entity->level = level;
 						entity->pos.x = tile->pos.x * 20;
 						entity->pos.y = tile->pos.y * 20;
 

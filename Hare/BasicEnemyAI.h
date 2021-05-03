@@ -9,6 +9,7 @@ namespace Hare
 	{
 		struct BasicEnemyAI
 		{
+			BasicEnemyAI();
 			BasicEnemyAI(Entity* basicEnemy);
 			~BasicEnemyAI();
 

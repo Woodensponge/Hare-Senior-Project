@@ -14,6 +14,7 @@ struct Level
 	~Level();
 
 	inline std::vector<Hare::Entity*> GetEntities() { return entities; };
+	void Restart();
 	void Update();
 
 	//Width of the level

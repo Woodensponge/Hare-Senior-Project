@@ -12,6 +12,7 @@
 
 Level::Level(const char* levelFile)
 {
+	entities = std::vector<Hare::Entity*>();
 	//Create the level.
 	levelFileJson = JsonManager::OpenJson(levelFile);
 	tileMap = new TileMap(levelFileJson["tilemap"].asCString(), levelFileJson["devname"].asCString(), this);
@@ -20,7 +21,7 @@ Level::Level(const char* levelFile)
 
 	tileMap->LoadEntities();
 	
-	entities.push_back(new Hare::Entities::BasicEnemy(60, 50));
+	entities.push_back(new Hare::Entities::BasicEnemy(60, 50, 0, this));
 }
 
 Level::~Level()
@@ -35,6 +36,18 @@ Level::~Level()
 
 	entities.clear();
 	entities.~vector();
+}
+
+void Level::Restart()
+{
+	for (Hare::Entity* entity : entities)
+	{
+		delete entity;
+	}
+	entities = std::vector<Hare::Entity*>();
+
+	tileMap = new TileMap(levelFileJson["tilemap"].asCString(), levelFileJson["devname"].asCString(), this);
+	tileMap->LoadEntities();
 }
 
 void Level::Update()
@@ -85,6 +98,8 @@ void Level::Update()
 
 					entity->UpdateHitbox();
 
+					//This screws with the npcs.
+					/*
 					if (entity->hitbox.x == tileRect.x)
 					{
 						//Entity is stuck! 
@@ -95,6 +110,7 @@ void Level::Update()
 
 						entity->UpdateHitbox();
 					}
+					*/
 
 					entity->speed = 0;
 

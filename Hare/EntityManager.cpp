@@ -1,6 +1,9 @@
 #include "EntityManager.h"
 #include "Debug.h"
 #include "Player.h"
+#include "Vector2.h"
+
+#include <vector>
 
 using namespace Hare;
 
@@ -10,6 +13,24 @@ std::map<int, std::string> entityTypeToStringMap =
 	{(int)EntityType::Player, "Player"}
 };
 
+Entity* EntityManager::GetClosestEntity(Entity* entity, std::vector<Hare::Entity*> entities)
+{
+	Entity* closestEntity = nullptr;
+	int previousTargetDistance = 0;
+
+	for (Entity* target : entities)
+	{
+		int targetDistance = entity->pos.CalculateDistance(entity->pos, target->pos);
+		if (previousTargetDistance < targetDistance)
+		{
+			previousTargetDistance = targetDistance;
+			closestEntity = target;
+		}
+	}
+
+	return closestEntity;
+}
+
 Entity* EntityManager::GetEntityFromEnum(EntityType entityType)
 {
 	switch (entityType)
@@ -17,7 +38,7 @@ Entity* EntityManager::GetEntityFromEnum(EntityType entityType)
 	case EntityType::None:
 		return new Entity();
 	case EntityType::Player:
-		return new Entities::Player();
+		return new Entities::Player(nullptr);
 	}
 	return nullptr;
 }

@@ -1,6 +1,7 @@
 #include "Debug.h"
 #include "PlayerController.h"
 #include "Keyboard.h"
+#include "Level.h"
 
 using namespace Events;
 using namespace Events::EventTypes;
@@ -21,16 +22,7 @@ void PlayerController::Update(SDL_Event* event)
     //Input for restarting
     if (Keyboard::IsKeyPressed(SDLK_r))
     {
-        //Remove any death flags and add flags accordingly
-        player->RemoveFlags(Hare::ENTITYSTATE_DEAD);
-        player->AddFlags(Hare::ENTITYSTATE_ALIVE);
-
-        //Reset movement
-        player->speed = 0;
-        player->gravity = 0;
-        player->storedGravity = 0;
-        player->pos.x = 50;
-        player->pos.y = 50;
+        player->level->Restart();
     }
 
     //Don't do anything below if the player is dead.

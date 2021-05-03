@@ -41,9 +41,21 @@ namespace Core
 			return false;
 		}
 
+		bool operator!=(const Vector2& vector)
+		{
+			if (this->x == vector.x
+				&& this->y == vector.y)
+			{
+				return false;
+			}
+
+			return true;
+		}
+
 		static float CalculateDistance(Vector2 vectorOne, Vector2 vectorTwo);
 		static Vector2 SubstractVectors(Vector2 vectorOne, Vector2 vectorTwo);
 
+		std::string ToString();
 		SDL_Rect ToRect();
 		SDL_Rect ToRect(int w, int h);
 

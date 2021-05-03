@@ -10,10 +10,10 @@ namespace Hare
 	{
 		struct Player : Entity
 		{
-			Player();
-			Player(float x, float y);
-			Player(int flags);
-			Player(float x, float y, int flags);
+			Player(Level* level);
+			Player(float x, float y, Level* level);
+			Player(int flags, Level* level);
+			Player(float x, float y, int flags, Level* level);
 			~Player();
 
 			void Update();

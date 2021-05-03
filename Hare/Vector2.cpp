@@ -32,6 +32,13 @@ float Vector2::CalculateDistance(Vector2 vectorOne, Vector2 vectorTwo)	//static
 	return sqrtf((sum.x * sum.x) + (sum.y * sum.y));
 }
 
+std::string Core::Vector2::ToString()
+{
+	std::ostringstream oss;
+	oss << this->x << " : " << this->y;
+	return oss.str();
+}
+
 SDL_Rect Vector2::ToRect()
 {
 	SDL_Rect rect = SDL_Rect();

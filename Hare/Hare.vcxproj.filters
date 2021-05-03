@@ -94,6 +94,9 @@
     <ClCompile Include="BasicEnemyAI.cpp">
       <Filter>Source files\Game\Entities\BasicEnemy</Filter>
     </ClCompile>
+    <ClCompile Include="EntityManager.cpp">
+      <Filter>Source files\Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -185,6 +188,9 @@
     </ClInclude>
     <ClInclude Include="BasicEnemyAI.h">
       <Filter>Header files\Game\Entities\BasicEnemy</Filter>
+    </ClInclude>
+    <ClInclude Include="EntityManager.h">
+      <Filter>Header files\Game</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
