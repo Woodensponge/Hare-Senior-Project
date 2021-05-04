@@ -44,9 +44,8 @@ void Level::Restart()
 	{
 		delete entity;
 	}
-	entities = std::vector<Hare::Entity*>();
+	entities.clear();
 
-	tileMap = new TileMap(levelFileJson["tilemap"].asCString(), levelFileJson["devname"].asCString(), this);
 	tileMap->LoadEntities();
 }
 

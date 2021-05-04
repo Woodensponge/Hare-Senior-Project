@@ -51,15 +51,15 @@ void TileMap::LoadEntities()
 
 			iterator++;
 
-			Tile* tile = new Tile;
-			delete tile->sprite;
+			Tile tile = Tile();
+			delete tile.sprite;
 
-			tile->width = 20;
-			tile->height = 20;
+			tile.width = 20;
+			tile.height = 20;
 
-			tile->tileID = tileMapJson["layers"][1]["data"][iterator - 1].asInt();
+			tile.tileID = tileMapJson["layers"][1]["data"][iterator - 1].asInt();
 
-			if (tile->tileID == 0)
+			if (tile.tileID == 0)
 				continue;
 
 			int tileIDOffset = 0;
@@ -72,13 +72,13 @@ void TileMap::LoadEntities()
 				}
 			}
 
-			tile->pos.x = (float)x;
-			tile->pos.y = (float)y;
+			tile.pos.x = (float)x;
+			tile.pos.y = (float)y;
 
 			//Get the image for the sprite
 			for (unsigned int i = 0; i < entityTileSetJson["tiles"].size(); i++)
 			{
-				if (tile->tileID == entityTileSetJson["tiles"][i]["id"].asInt() + tileIDOffset)
+				if (tile.tileID == entityTileSetJson["tiles"][i]["id"].asInt() + tileIDOffset)
 				{
 					if (entityTileSetJson["tiles"][i]["properties"][1]["value"].asBool())	//isEntity custom property (value)
 					{
@@ -88,13 +88,15 @@ void TileMap::LoadEntities()
 						Hare::Entity* entity = Hare::EntityManager::GetEntityFromString(entityName);
 
 						entity->level = level;
-						entity->pos.x = tile->pos.x * 20;
-						entity->pos.y = tile->pos.y * 20;
+						entity->pos.x = tile.pos.x * 20;
+						entity->pos.y = tile.pos.y * 20;
 
 						level->entities.push_back(entity);
 					}
 				}
 			}
+
+			tile.~Tile();
 		}
 	}
 	DEBUG_LOG << "FINISHED LOADING ENTITIES";

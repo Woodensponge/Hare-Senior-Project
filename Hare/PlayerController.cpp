@@ -9,7 +9,6 @@ using namespace Events::EventTypes;
 PlayerController::PlayerController(Hare::Entities::Player * player)
 {
 	this->eventID = EventID::PlayerController;
-
 	this->player = player;
 }
 
@@ -23,6 +22,7 @@ void PlayerController::Update(SDL_Event* event)
     if (Keyboard::IsKeyPressed(SDLK_r))
     {
         player->level->Restart();
+        return;
     }
 
     //Don't do anything below if the player is dead.

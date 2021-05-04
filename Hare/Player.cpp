@@ -23,6 +23,8 @@ Player::Player(int flags, Level* level) : Player::Player(0, 0, flags, level)
 
 Player::Player(float x, float y, int flags, Level* level)
 {
+	DEBUG_LOG << this;
+
 	this->level = level;
 	this->entityType = EntityType::Player;
 	this->entityTypeString = "Player";
@@ -41,6 +43,7 @@ Player::Player(float x, float y, int flags, Level* level)
 
 Player::~Player()
 {
+	this->entityFlags = 0;
 	DEBUG_LOG << "DESTROYED EVENT WITH CODE" << EventHandler::DestroyEvent(pc);
 }
 
