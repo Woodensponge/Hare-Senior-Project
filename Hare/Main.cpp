@@ -41,7 +41,7 @@ int WinMain()
     }
 
     //Setup variables to calculate Delta Time for framerate
-    float timeTillNextRender = 0;
+    double timeTillNextRender = 0;
 
     Uint32 ticksPerFrame = 20;
 

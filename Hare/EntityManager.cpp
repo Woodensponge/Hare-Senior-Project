@@ -16,11 +16,11 @@ std::map<int, std::string> entityTypeToStringMap =
 Entity* EntityManager::GetClosestEntity(Entity* entity, std::vector<Hare::Entity*> entities)
 {
 	Entity* closestEntity = nullptr;
-	int previousTargetDistance = 0;
+	float previousTargetDistance = 0;
 
 	for (Entity* target : entities)
 	{
-		int targetDistance = entity->pos.CalculateDistance(entity->pos, target->pos);
+		float targetDistance = entity->pos.CalculateDistance(entity->pos, target->pos);
 		if (previousTargetDistance < targetDistance)
 		{
 			previousTargetDistance = targetDistance;

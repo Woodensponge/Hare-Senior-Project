@@ -7,10 +7,10 @@ int RectStuff::OriginPenetration(SDL_Rect rect, SDL_Rect target)
 {
 	SDL_assert(SDL_HasIntersection(&rect, &target));
 
-	const Core::Vector2 targetOrigin = Core::Vector2(static_cast<float>(target.x), static_cast<float>(target.y));
-	const Core::Vector2 rectOrigin = Core::Vector2(static_cast<float>(rect.x), static_cast<float>(rect.y));
+	const Core::Vector2 targetOrigin = Core::Vector2(target.x, target.y);
+	const Core::Vector2 rectOrigin = Core::Vector2(rect.x, rect.y);
 
-	return Core::Vector2::CalculateDistance(rectOrigin, targetOrigin);
+	return static_cast<int>(Core::Vector2::CalculateDistance(rectOrigin, targetOrigin));
 }
 
 int RectStuff::Penetration(SDL_Rect rect, SDL_Rect target)
@@ -24,7 +24,7 @@ int RectStuff::Penetration(SDL_Rect rect, SDL_Rect target)
 	const Core::Vector2 rectLowerLeft = Core::Vector2(rect.x, rect.y + rect.h);
 	const Core::Vector2 rectLowerRight = Core::Vector2(rect.x + rect.w, rect.y + rect.h);
 
-	return std::min
+	return static_cast<int>(std::min
 	(
 		std::min
 		(
@@ -36,7 +36,7 @@ int RectStuff::Penetration(SDL_Rect rect, SDL_Rect target)
 			Core::Vector2::CalculateDistance(rectLowerLeft, targetOrigin),
 			Core::Vector2::CalculateDistance(rectLowerRight, targetOrigin)
 		)
-	);
+	));
 }
 
 Core::Vector2 Core::RectStuff::FindNearestCornerInOrigin(SDL_Rect rect, SDL_Rect target)

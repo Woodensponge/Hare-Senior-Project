@@ -111,10 +111,10 @@ void Camera::RenderTexture()
 		SDL_RenderDrawLine
 		(
 			Application::renderer,
-			line.vectorOne.x - (float)size.x,
-			line.vectorOne.y - (float)size.y,
-			line.vectorTwo.x - (float)size.x,
-			line.vectorTwo.y - (float)size.y
+			static_cast<int>(line.vectorOne.x) - size.x,
+			static_cast<int>(line.vectorOne.y) - size.y,
+			static_cast<int>(line.vectorTwo.x) - size.x,
+			static_cast<int>(line.vectorTwo.y) - size.y
 		);
 
 		SDL_SetRenderDrawColor(Application::renderer, 0, 0, 0, 255);

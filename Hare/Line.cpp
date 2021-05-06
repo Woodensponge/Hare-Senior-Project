@@ -40,8 +40,8 @@ Sprite* Line::ToSprite()
 		Application::renderer,
 		SDL_PIXELFORMAT_RGBA8888,
 		SDL_TEXTUREACCESS_TARGET,
-		abs((vectorOne - vectorTwo).x),
-		abs((vectorOne - vectorTwo).y)
+		static_cast<int>(abs((vectorOne - vectorTwo).x)),
+		static_cast<int>(abs((vectorOne - vectorTwo).y))
 	);
 
 	SDL_SetTextureBlendMode(texture, SDL_BLENDMODE_BLEND);
@@ -50,10 +50,10 @@ Sprite* Line::ToSprite()
 	SDL_RenderDrawLine
 	(
 		Application::renderer,
-		vectorOne.x,
-		vectorOne.y,
-		vectorTwo.x,
-		vectorTwo.y
+		static_cast<int>(vectorOne.x),
+		static_cast<int>(vectorOne.y),
+		static_cast<int>(vectorTwo.x),
+		static_cast<int>(vectorTwo.y)
 	);
 	SDL_SetRenderTarget(Application::renderer, NULL);		//Reset the renderer to default (the window)
 
@@ -62,7 +62,7 @@ Sprite* Line::ToSprite()
 		texture,
 		vectorOne.x,
 		vectorOne.y,
-		abs((vectorOne - vectorTwo).x),
-		abs((vectorOne - vectorTwo).y)
+		static_cast<int>(abs((vectorOne - vectorTwo).x)),
+		static_cast<int>(abs((vectorOne - vectorTwo).y))
 	);
 }
