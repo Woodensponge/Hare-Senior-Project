@@ -70,15 +70,8 @@ void PlayState::UpdateFixed()
         TextureManager::RenderSprite(sprite);
     }
 
-    level.Update();
-
     for (Hare::Entity* entity : level.GetEntities())
     {
-        entity->sprite->SetPosAndSize(entity->hitbox);
-        entity->sprite->Update();
-
-        TextureManager::RenderSprite(entity->sprite);
-
         if (entity->entityType == Hare::EntityType::Player)
         {
             Core::Vector2 spritePos = Core::Vector2(static_cast<float>(entity->sprite->x), static_cast<float>(entity->sprite->y));
@@ -97,7 +90,14 @@ void PlayState::UpdateFixed()
 
             camera->SetViewPosition(x, y);
         }
+
+        entity->sprite->SetPosAndSize(entity->hitbox);
+        entity->sprite->Update();
+
+        TextureManager::RenderSprite(entity->sprite);
     }
+
+    level.Update();
 
     if (level.entities.size() == 0)
     {

@@ -1,9 +1,10 @@
 #include "Player.h"
 #include "Debug.h"
+#include "EventHandler.h"
+#include "Mouse.h"
+#include "PlayerController.h"
 #include "TextureManager.h"
 #include "Timer.h"
-#include "EventHandler.h"
-#include "PlayerController.h"
 
 using namespace Hare;
 using namespace Hare::Entities;
@@ -49,6 +50,19 @@ Player::~Player()
 
 void Player::Update()
 {
+	Core::Vector2 camPos = Core::Vector2
+	(
+		TextureManager::GetMainCamera()->size.x,
+		TextureManager::GetMainCamera()->size.y
+	);
+
+	Core::Vector2 playerCenterPos = Core::Vector2
+	(
+		this->pos.x + (this->hitbox.w / 2),
+		this->pos.y + (this->hitbox.h / 2)
+	);
+	Core::Vector2 aimPos = Core::Vector2(camPos.x + MOUSE_X(), camPos.y + MOUSE_Y());
+
 	if (isGrounded == true)
 	{
 		storedGravity = 0;
@@ -62,5 +76,9 @@ void Player::Update()
 		storedGravity++;
 		speed = 0;
 	}
+
+	Line line = Line(playerCenterPos, aimPos);
+	TextureManager::RenderLine(line);
+
 	Entity::Update();
 }
