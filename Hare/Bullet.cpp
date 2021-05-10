@@ -26,7 +26,7 @@ Bullet::Bullet(float x, float y, int flags, Level* level)
 	pos.y = y;
 	hitbox.w = 20;
 	hitbox.h = 20;
-	this->sprite = new Sprite("Assets/Player-Simple.png", hitbox);
+	this->sprite = new Sprite("Assets/Entities/Player/Player-Simple.png", hitbox);
 	this->sprite->layer = 5;
 	this->entityFlags = ENTITYSTATE_ALIVE | flags;
 	this->desiredSpeed = 5;

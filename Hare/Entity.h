@@ -68,6 +68,7 @@ namespace Hare
 
 	private:
 		static int nextEntityID;
+		bool isAffectedByGravity = true;
 	};
 }
 

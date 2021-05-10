@@ -14,6 +14,7 @@ namespace Hare
 		static Hare::Entity* GetEntityFromEnum(Hare::EntityType entityType);
 		static Hare::EntityType GetEntityTypeFromString(std::string arg);
 		static Hare::Entity* GetEntityFromString(std::string arg);
+		static std::string GetStringFromEntityType(Hare::EntityType entityType);
 	};
 }
 

@@ -16,6 +16,10 @@ namespace Hare
 			~Bullet();
 
 			void Update();
+
+		private:
+			int angle = 0;
+			
 		};
 	}
 }

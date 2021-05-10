@@ -1,4 +1,5 @@
 #include "Entity.h"
+#include "EntityManager.h"
 #include "Application.h"
 #include "Debug.h"
 #include "Level.h"
@@ -53,7 +54,8 @@ void Entity::Die()
 		return;									//Don't need to die again.
 	}
 
-	DEBUG_LOG << "Die! " << entityTypeString;	//Obligatory Rain World debug message
+	//Obligatory Rain World debug message
+	DEBUG_LOG << "Die! " << EntityManager::GetStringFromEntityType(this->entityType);
 
 	this->AddFlags(ENTITYSTATE_DEAD);
 	this->RemoveFlags(ENTITYSTATE_ALIVE);
@@ -61,8 +63,10 @@ void Entity::Die()
 
 void Entity::Update()
 {
-	//Speed calculations and conditions
+	if (health < 0)								//If the entities health is 0...
+		this->Die();							//Kill the entity.
 
+	//Speed calculations and conditions
 	if (isGrounded)
 	{
 		if (speed > 0)
@@ -79,14 +83,17 @@ void Entity::Update()
 			speed += abs(speed / 16);
 	}
 
-	//Gravity calculations and conditions
-	gravity += 1;
+	if (this->isAffectedByGravity)
+	{
+		//Gravity calculations and conditions
+		gravity += 1;
 
-	if (gravity > 100)
-		gravity = 100;
-	else if (gravity < -100)
-		gravity = -100;
-
+		if (gravity > 100)
+			gravity = 100;
+		else if (gravity < -100)
+			gravity = -100;
+	}
+	
 	pos.x += speed;
 	pos.y += gravity;
 
@@ -94,9 +101,6 @@ void Entity::Update()
 
 	if (entityFlags & ENTITYSTATE_DEAD)			//If the entity is dead...
 		return;									//Don't run the rest of the method.
-
-	if (health < 0)								//If the entities health is 0...
-		this->Die();							//Kill the entity.
 }
 
 void Entity::UpdateHitbox()

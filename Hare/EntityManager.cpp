@@ -61,3 +61,15 @@ Entity* EntityManager::GetEntityFromString(std::string arg)
 {
 	return GetEntityFromEnum(GetEntityTypeFromString(arg));
 }
+
+std::string EntityManager::GetStringFromEntityType(Hare::EntityType entityType)
+{
+	for (auto& item : entityTypeToStringMap)
+	{
+		if (item.first == static_cast<int>(entityType))
+		{
+			return item.second;
+		}
+	}
+	return "Unknown";
+}

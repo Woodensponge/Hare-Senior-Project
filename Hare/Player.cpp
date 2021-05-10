@@ -31,7 +31,7 @@ Player::Player(float x, float y, int flags, Level* level)
 	pos.y = y;
 	hitbox.w = 20;
 	hitbox.h = 20;
-	this->sprite = new Sprite("Assets/Player-Simple.png", hitbox);
+	this->sprite = new Sprite("Assets/Entities/Player/Player-Simple.png", hitbox);
 	this->sprite->layer = 5;
 	this->entityFlags = ENTITYSTATE_ALIVE | flags;
 	this->desiredSpeed = 5;
@@ -48,6 +48,8 @@ Player::~Player()
 
 void Player::Update()
 {
+	//Aiming code.
+
 	Core::Vector2 camPos = Core::Vector2
 	(
 		TextureManager::GetMainCamera()->size.x,
@@ -60,6 +62,12 @@ void Player::Update()
 		this->pos.y + (this->hitbox.h / 2)
 	);
 	Core::Vector2 aimPos = Core::Vector2(camPos.x + MOUSE_X(), camPos.y + MOUSE_Y());
+
+	//Finding the angle here
+	//std::cos(Core::Vector2::CalculateDistance());
+
+	Line line = Line(playerCenterPos, aimPos);
+	TextureManager::RenderLine(line);
 
 	if (isGrounded == true)
 	{
@@ -74,9 +82,6 @@ void Player::Update()
 		storedGravity++;
 		speed = 0;
 	}
-
-	Line line = Line(playerCenterPos, aimPos);
-	TextureManager::RenderLine(line);
 
 	Entity::Update();
 }
