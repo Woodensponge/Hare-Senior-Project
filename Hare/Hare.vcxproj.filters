@@ -97,6 +97,9 @@
     <ClCompile Include="EntityManager.cpp">
       <Filter>Source files\Game</Filter>
     </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>Source files\Game\Entities\Bullet</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -192,6 +195,9 @@
     <ClInclude Include="EntityManager.h">
       <Filter>Header files\Game</Filter>
     </ClInclude>
+    <ClInclude Include="Bullet.h">
+      <Filter>Header files\Game\Entities\Bullet</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -280,6 +286,12 @@
     </Filter>
     <Filter Include="Source files\Game\Entities\Player">
       <UniqueIdentifier>{2fc33866-d1c8-4442-95f0-1de14bc0929d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Game\Entities\Bullet">
+      <UniqueIdentifier>{f377e3c9-9ce8-41b3-889a-7d883e02fb0c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\Game\Entities\Bullet">
+      <UniqueIdentifier>{ea55f1b2-f921-46ed-b139-085ddf607c44}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

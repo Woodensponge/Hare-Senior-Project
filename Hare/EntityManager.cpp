@@ -10,7 +10,9 @@ using namespace Hare;
 std::map<int, std::string> entityTypeToStringMap =
 {
 	{(int)EntityType::None, "None"},
-	{(int)EntityType::Player, "Player"}
+	{(int)EntityType::Player, "Player"},
+	{(int)EntityType::BasicEnemy, "BasicEnemy"},
+	{(int)EntityType::Bullet, "Bullet"}
 };
 
 Entity* EntityManager::GetClosestEntity(Entity* entity, std::vector<Hare::Entity*> entities)

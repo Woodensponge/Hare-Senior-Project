@@ -20,7 +20,8 @@ namespace Hare
 	{
 		None,
 		Player,
-		BasicEnemy
+		BasicEnemy,
+		Bullet
 	};
 
 	struct Entity
