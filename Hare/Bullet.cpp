@@ -39,4 +39,5 @@ Bullet::~Bullet()
 
 void Bullet::Update()
 {
+
 }

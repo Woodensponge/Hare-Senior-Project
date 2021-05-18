@@ -19,7 +19,6 @@ namespace Hare
 
 		private:
 			int angle = 0;
-			
 		};
 	}
 }

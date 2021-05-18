@@ -47,6 +47,7 @@ void Level::Restart()
 	entities.clear();
 
 	tileMap->LoadEntities();
+	entities.push_back(new Hare::Entities::BasicEnemy(60, 50, 0, this));
 }
 
 void Level::Update()
