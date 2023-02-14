@@ -5,6 +5,6 @@
 * [General Info](#general-info)
 
 ## General Info
- This is being made for my senior project and is still a work in progress.
+ This is being made for my senior project and is ~~still a work in progress~~ absolutely dead.
  This project is built with [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) and uses C++ 17.
  If you want to build this project using the .SLN, you're gonna have to find all the retrieve the NuGet Packages.
