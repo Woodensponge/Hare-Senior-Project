@@ -1,3 +1,0 @@
-﻿  Main.cpp
-C:\Users\Woodensponge\Documents\GitHub\Hare\Hare\Main.cpp(73,45): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-  Hare.vcxproj -> C:\Users\Woodensponge\Documents\GitHub\Hare\bin\Win32\Debug\Hare.exe
